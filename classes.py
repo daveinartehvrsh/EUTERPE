@@ -6,23 +6,18 @@ import audio
 import random
 import os
 
-SAMPLERATE = 44100
-TRACKS = 10
-DATASETPATH = 'D:\RONALD_(versionprealpha)\RONALD_prealpha\data\loops'
 
+REP = 10
 DRUMS = {
-    'D:/RONALD_(versionprealpha)/RONALD_prealpha/data/loops/drums': [0]
+    'loops/drums': [0]
 }
-
-
-D_INTENSITY = [0, 0, 1, 1, 1, 0, 0]
-M_INTENSITY = [1, 1, 1, 1, 1, 1, 1]
-
 MELODY = {
-    'D:/RONALD_(versionprealpha)/RONALD_prealpha/data/loops/melodie': [0]
+    'loops/melodie': [0, -12]
 }
-
 LOOPKITS = [DRUMS, MELODY]
+D_INTENSITY = [0, 1, 1, 0, 1, 1, 1, 0, 1, 0]
+M_INTENSITY = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+INTENSITY = [D_INTENSITY,M_INTENSITY]
 
 install()
 
@@ -54,7 +49,13 @@ class Loop(AudioComponent):
         self.path = path
     
     def getInfo(self):
-        return self.getName()
+        print(self.getName())
+
+    def getRepr(self):
+        return f'{len(self.getData())}'
+    
+    def setGain(self, gain):
+        self.data *= gain
 
 class SequenceNode():
     def __init__(self, data, next=None, prev=None):
@@ -63,9 +64,7 @@ class SequenceNode():
         self.prev_node = prev
     
     def __str__(self):
-        return f'({self.data})'
-    def getInfo(self):
-        return self.data.getInfo()
+        return f'({self.data[0].getRepr()})'
     
 class Sequence(Component):
     
@@ -118,11 +117,20 @@ class Sequence(Component):
         if self.root is None:
             return 'empty sequence'
         this_node = self.root
-        print(this_node.getInfo(), end='->')
+        print(this_node, end='->')
         while this_node.next_node is not None:
             this_node = this_node.next_node
-            print(this_node.getInfo(), end='->')
+            print(this_node, end='->')
         print()
+
+    def getItems(self):
+        this_node = self.root
+        array=[]
+        while this_node.next_node is not None:           
+            array.append(this_node.data[0])   
+            this_node = this_node.next_node
+        array.append(this_node.data[0])  
+        return array
 
 class ContainerNode(Component):
     def __init__(self, data=None, parent=None):
@@ -133,7 +141,26 @@ class ContainerNode(Component):
         return f'({self.data})'
     
     def getInfo(self):
-        return self.data.getInfo()
+        if isinstance(self.data, Component):
+            return self.data.getInfo()
+        else:
+            print('(audio)')
+            
+class ContainerIter():
+    def __init__(self, container):
+        self.data = container.data
+        self.size = container.size
+        self.index = 1
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.index <= self.size:
+            item = self.data[self.index - 1]
+            self.index += 1
+            return item
+        raise StopIteration
 
 class Container(Component):
     def __init__(self, name='container'):
@@ -146,16 +173,27 @@ class Container(Component):
 
     def addItem(self, item):
         self.data.append(ContainerNode(item, self.getName()))
+        if self.size == 0:
+            self.heir = item
         self.size += 1
 
+    def get_nodes(self):
+        return self.data
+    
     def getItems(self):
-        return self.getData()
+        array=[]
+        for item in self.get_nodes():
+            array.append(item.data)
+        return array
     
     def getInfo(self):
         print(self.getName())
         for x in self.data: 
-            x.data.getInfo()
-            
+            x.getInfo()
+
+    def __iter__(self):
+        return ContainerIter(self)
+
 class Loopkit(Container):
     
     def fill(self, loopkit_preset, selection_method='random'):
@@ -163,15 +201,20 @@ class Loopkit(Container):
             if selection_method == 'random':
                 loop_name = random.choice(os.listdir(path))
                 path = path + "/" + loop_name
-            loop = audio.loadLoop(path)
-            loop.setName(loop_name)
-
+            data, sr = audio.loadLoop(path)
+            #audio.export(name=loop_name, audio=data)
+            loop = Loop(data, sr, path)
             for tune in tune_scheme:
                 loop.data = audio.tune(loop, tune)
+                name = loop_name + str(tune)
+                loop.setName(name)
                 self.addItem(loop)
+            self.getInfo()
 
 class Dataset(Container):
-    
+    def add_loopkit(self, loopkit):
+        self.addItem(loopkit)
+        
     def create_loopkit(self, name='loopkit', loopkit_preset=None):
         loopkit = Loopkit(name)
         loopkit.fill(loopkit_preset)
@@ -180,13 +223,42 @@ class Dataset(Container):
 class LoopSeq(Sequence):
         
     def fill(self, intensity_map, loopkit):
-        for intensity in intensity_map:
-            loop = random.choice(loopkit)
+        for i in range(REP):
+            loop = random.choice(list([loopkit]))
+            if self.size == 0:
+                self.heir = loop[0]
             self.add(loop)
+    
+    def stretch_sequence(self, to_len):
+        for item in self.getItems():
+            stretched = audio.stretch(item, to_len)
+            item.setData(stretched)
+
+    def render_sequence(self, intensity_map): 
+        out = np.array([])
+        for i, item in enumerate(self.getItems()):
+            gain = intensity_map[i]
+            out = np.append(out, item.data*gain)
+        return out
 
 class Section(Container):
-    ...
-    
+
+    def set_bar_lenght(self, bar_lenght=None):
+        self.bar_lenght = bar_lenght
+
+    def stretch_section(self):
+        for item in self.getItems():
+            item.stretch_sequence(self.bar_lenght)
+
+    def render_section(self):
+        trackouts = Loopkit()
+        track = np.zeros([self.bar_lenght*REP])
+        for i, item in enumerate(self.getItems()):       
+            trackout = item.render_sequence(INTENSITY[i])
+            trackouts.addItem(trackout)
+            track = np.add(track, trackout)
+        return track, trackouts
+
 class ValueComponent(Component):
     ...
 
@@ -218,7 +290,7 @@ class Algorithm(Component):
     version: str = field(default_factory=lambda: '0.0.0')
 
 class Generation:
-
+    ...
     def setAlgorithm(self, algorithm: Algorithm):
         self.algorithm = algorithm
 
@@ -228,18 +300,6 @@ class Generation:
         ...
 
 def main():
-    dataset = Dataset()
-    for loopkit_preset in LOOPKITS:
-        dataset.create_loopkit(name='loopkit', loopkit_preset=loopkit_preset) 
-    
-    section = Section()
-    for loopkit in dataset.getItems():
-        loopseq = LoopSeq()
-        loopseq.setName(loopkit.data.getName())
-        loopseq.fill(M_INTENSITY, loopkit=loopkit.data.getItems())
-        section.addItem(loopseq)
-    
-    section.getInfo()
-
+    ...
 if __name__ == '__main__':
     main()
