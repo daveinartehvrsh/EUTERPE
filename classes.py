@@ -216,6 +216,7 @@ class Dataset(Container):
 class LoopSeq(Sequence):
         
     def fill(self, intensity_map, loopkit, repetitions=2):
+        repetitions = len(intensity_map.getData())
         for i in range(repetitions):
             loop = random.choice(loopkit)
             self.add(loop)

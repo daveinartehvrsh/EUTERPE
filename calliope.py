@@ -22,17 +22,17 @@ class Calliope(Algorithm):
             dataset.add_loopkit(loopkit)
         self.datasets[name] = dataset
     
-    def create_loopseq(self, loopkit, intensity_map):
+    def create_loopseq(self, loopkit, intensity_map, repetitions):
         loopseq = LoopSeq()
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
-        loopseq.fill(intensity_map, loopkit=loops)
+        loopseq.fill(intensity_map, loopkit=loops, repetitions = repetitions)
         return loopseq
         
-    def create_section(self, dataset: Dataset, name):
+    def create_section(self, dataset: Dataset, name, repetitions):
         section = Section()
         for i, loopkit in enumerate(dataset):
-            loopseq = self.create_loopseq(loopkit.data, self.intensity_schemes[i])
+            loopseq = self.create_loopseq(loopkit.data, self.intensity_schemes[i], repetitions)
             section.addItem(loopseq)
         first_loop = section.getHeir()
         section.set_bar_lenght(first_loop.getLen())
@@ -62,7 +62,7 @@ class Calliope(Algorithm):
         #algorythm start
         for i in range(rep):
             self.create_dataset(i, dataset_preset=dataset_preset)
-            self.create_section(self.datasets[i], i)
+            self.create_section(self.datasets[i], i, repetitions=system_info['repetitions'])
             self.export_section(self.sections[i], i)
         
 
