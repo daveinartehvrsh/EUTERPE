@@ -1,58 +1,78 @@
 from classes import *
 import audio
+import presets
+from scheme import *
 
 class Calliope(Algorithm):
 
     def __init__(self):
         self.datasets = {}
         self.sections = {}
+        self.intensity_schemes = []
     
     def create_loopkit(self, name='loopkit', loopkit_preset=None):
         loopkit = Loopkit(name)
         loopkit.fill(loopkit_preset)
         return loopkit
 
-    def create_dataset(self, name):
+    def create_dataset(self, name, dataset_preset=None):
         dataset = Dataset()
-        for loopkit_preset in LOOPKITS:
-            loopkit = self.create_loopkit(name='loopkit', loopkit_preset=loopkit_preset)
+        for loopkit_preset in dataset_preset:
+            loopkit = self.create_loopkit(name='loopkit', loopkit_preset= dataset_preset[loopkit_preset])
             dataset.add_loopkit(loopkit)
         self.datasets[name] = dataset
     
     def create_loopseq(self, loopkit, intensity_map):
         loopseq = LoopSeq()
-        loopseq.setName(loopkit.data.getName())
-        loops = list(loopkit.data.getItems())
+        loopseq.setName(loopkit.getName())
+        loops = list(loopkit.getItems())
         loopseq.fill(intensity_map, loopkit=loops)
         return loopseq
         
     def create_section(self, dataset: Dataset, name):
         section = Section()
         for i, loopkit in enumerate(dataset):
-            loopseq = self.create_loopseq(loopkit, INTENSITY[i])
+            loopseq = self.create_loopseq(loopkit.data, self.intensity_schemes[i])
             section.addItem(loopseq)
-        section.set_bar_lenght(len(section.heir.heir.data))
+        first_loop = section.getHeir()
+        section.set_bar_lenght(first_loop.getLen())
         section.stretch_section()
         self.sections[name] = section
 
     def export_section(self, section: Section, name):
-        track, trackouts = section.render_section()
+        track, trackouts = section.render_section(self.intensity_schemes, )
         audio.export(name=(f'track{name}.wav'),audio=track)
 
+    def add_scheme(self, scheme_str: str):    
+            scheme = Scheme()
+            scheme.load_from_str(scheme_str)
+            self.intensity_schemes.append(scheme)
+            
     def getInfo():
         ...
     
-    def start(self):
-        for i in range(10):
-            self.create_dataset(i)
+    def start(self, system_info, dataset_preset=None, rep=None): 
+        #default_loading
+        if dataset_preset is None:
+            dataset_preset = presets.get_default_dataset(system_info['default_dataset'])
+        if rep is None:
+            rep = system_info['n_tracks']
+        for scheme_str in presets.get_schemes(system_info['default_track']):
+            self.add_scheme(scheme_str)
+        #algorythm start
+        for i in range(rep):
+            self.create_dataset(i, dataset_preset=dataset_preset)
             self.create_section(self.datasets[i], i)
             self.export_section(self.sections[i], i)
+        
 
     def stop():
         ...
+
 def main():
+    system_info = presets.get_default_config()    
     calliope = Calliope()
-    calliope.start()
+    calliope.start(system_info)
 
 if __name__ == '__main__':
     main()

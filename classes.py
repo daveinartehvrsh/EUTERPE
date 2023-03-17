@@ -6,19 +6,6 @@ import audio
 import random
 import os
 
-
-REP = 10
-DRUMS = {
-    'loops/drums': [0]
-}
-MELODY = {
-    'loops/melodie': [0, -12]
-}
-LOOPKITS = [DRUMS, MELODY]
-D_INTENSITY = [0, 1, 1, 0, 1, 1, 1, 0, 1, 0]
-M_INTENSITY = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-INTENSITY = [D_INTENSITY,M_INTENSITY]
-
 install()
 
 class Component(ABC):
@@ -57,6 +44,9 @@ class Loop(AudioComponent):
     def setGain(self, gain):
         self.data *= gain
 
+    def getLen(self):
+        return len(self.data)
+
 class SequenceNode():
     def __init__(self, data, next=None, prev=None):
         self.data = data
@@ -64,7 +54,7 @@ class SequenceNode():
         self.prev_node = prev
     
     def __str__(self):
-        return f'({self.data[0].getRepr()})'
+        return f'({self.data.getRepr()})'
     
 class Sequence(Component):
     
@@ -113,6 +103,9 @@ class Sequence(Component):
                 this_node = this_node.next_node
         return False
     
+    def getHeir(self):
+        return self.root.data
+    
     def getInfo(self):
         if self.root is None:
             return 'empty sequence'
@@ -127,9 +120,9 @@ class Sequence(Component):
         this_node = self.root
         array=[]
         while this_node.next_node is not None:           
-            array.append(this_node.data[0])   
+            array.append(this_node.data)   
             this_node = this_node.next_node
-        array.append(this_node.data[0])  
+        array.append(this_node.data)  
         return array
 
 class ContainerNode(Component):
@@ -177,6 +170,9 @@ class Container(Component):
             self.heir = item
         self.size += 1
 
+    def getHeir(self):
+        return self.heir.getHeir()
+
     def get_nodes(self):
         return self.data
     
@@ -196,37 +192,32 @@ class Container(Component):
 
 class Loopkit(Container):
     
-    def fill(self, loopkit_preset, selection_method='random'):
-        for path, tune_scheme in loopkit_preset.items():
-            if selection_method == 'random':
-                loop_name = random.choice(os.listdir(path))
-                path = path + "/" + loop_name
-            data, sr = audio.loadLoop(path)
-            #audio.export(name=loop_name, audio=data)
+    def fill(self, loopkit_preset):
+        path = loopkit_preset['path']
+        loop_name = random.choice(os.listdir(path))
+        path = path + "/" + loop_name
+        data, sr = audio.loadLoop(path)
+        #audio.export(name=loop_name, audio=data)           
+        for tune in loopkit_preset['tune_scheme']:
             loop = Loop(data, sr, path)
-            for tune in tune_scheme:
-                loop.data = audio.tune(loop, tune)
-                name = loop_name + str(tune)
-                loop.setName(name)
-                self.addItem(loop)
-            self.getInfo()
+            loop.data = audio.tune(loop, tune)
+            name = loop_name + str(tune)
+            loop.setName(name)
+            self.addItem(loop)
+        #self.getInfo()
 
 class Dataset(Container):
     def add_loopkit(self, loopkit):
         self.addItem(loopkit)
-        
-    def create_loopkit(self, name='loopkit', loopkit_preset=None):
-        loopkit = Loopkit(name)
-        loopkit.fill(loopkit_preset)
-        self.addItem(loopkit)
+
+    def fill(self, preset):
+        ...
     
 class LoopSeq(Sequence):
         
-    def fill(self, intensity_map, loopkit):
-        for i in range(REP):
-            loop = random.choice(list([loopkit]))
-            if self.size == 0:
-                self.heir = loop[0]
+    def fill(self, intensity_map, loopkit, repetitions=2):
+        for i in range(repetitions):
+            loop = random.choice(loopkit)
             self.add(loop)
     
     def stretch_sequence(self, to_len):
@@ -237,8 +228,8 @@ class LoopSeq(Sequence):
     def render_sequence(self, intensity_map): 
         out = np.array([])
         for i, item in enumerate(self.getItems()):
-            gain = intensity_map[i]
-            out = np.append(out, item.data*gain)
+            gain = intensity_map.data[i]
+            out = np.append(out, item.data*int(gain))
         return out
 
 class Section(Container):
@@ -250,11 +241,11 @@ class Section(Container):
         for item in self.getItems():
             item.stretch_sequence(self.bar_lenght)
 
-    def render_section(self):
+    def render_section(self, intensity_schemes):
         trackouts = Loopkit()
-        track = np.zeros([self.bar_lenght*REP])
+        track = np.zeros([self.bar_lenght*self.heir.size])
         for i, item in enumerate(self.getItems()):       
-            trackout = item.render_sequence(INTENSITY[i])
+            trackout = item.render_sequence(intensity_schemes[i])
             trackouts.addItem(trackout)
             track = np.add(track, trackout)
         return track, trackouts
