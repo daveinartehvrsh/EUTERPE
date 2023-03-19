@@ -230,7 +230,7 @@ class LoopSeq(Sequence):
         out = np.array([])
         for i, item in enumerate(self.getItems()):
             gain = intensity_map.data[i]
-            out = np.append(out, item.data*int(gain))
+            out = np.append(out, item.data*float(gain))
         return out
 
 class Section(Container):
