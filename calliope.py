@@ -41,7 +41,10 @@ class Calliope(Algorithm):
 
     def export_section(self, section: Section, name):
         track, trackouts = section.render_section(self.intensity_schemes)
+        cwd = os.getcwd()
+        os.chdir('out')
         audio.export(name=(f'track{name}.wav'),audio=track)
+        os.chdir(cwd)
 
     def add_scheme(self, scheme_str: str):    
             scheme = Scheme()
