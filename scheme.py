@@ -7,7 +7,6 @@ class Scheme(Component):
     def load_scheme(self, scheme):
         self.data = scheme
         self.steps = len(self.data)
-        #print(self.data, self.steps)
     
     def load_from_str(self, scheme_str):
         data = []

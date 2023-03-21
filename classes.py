@@ -198,7 +198,7 @@ class Loopkit(Container):
         path = path + "/" + loop_name
         data, sr = audio.loadLoop(path)
         #audio.export(name=loop_name, audio=data)           
-        for tune in loopkit_preset['tune_scheme']:
+        for tune in loopkit_preset['tune_scheme'].data:
             loop = Loop(data, sr, path)
             loop.data = audio.tune(loop, tune)
             name = loop_name + str(tune)
@@ -215,38 +215,43 @@ class Dataset(Container):
     
 class LoopSeq(Sequence):
         
-    def fill(self, intensity_map, loopkit, repetitions=2):
-        repetitions = len(intensity_map.getData())
+    def fill(self, loopkit, repetitions):
         for i in range(repetitions):
             loop = random.choice(loopkit)
             self.add(loop)
-    
+
+    def setIntensityScheme(self, intensity_scheme):
+        self.intensity_scheme = intensity_scheme
     def stretch_sequence(self, to_len):
         for item in self.getItems():
             stretched = audio.stretch(item, to_len)
             item.setData(stretched)
 
-    def render_sequence(self, intensity_map): 
+    def render_sequence(self): 
         out = np.array([])
         for i, item in enumerate(self.getItems()):
-            gain = intensity_map.data[i]
+            gain = self.intensity_scheme.data[i]
             out = np.append(out, item.data*float(gain))
         return out
 
 class Section(Container):
 
     def set_bar_lenght(self, bar_lenght=None):
+        if bar_lenght is None:
+            first_loop = self.getHeir()
+            bar_lenght = first_loop.getLen()
         self.bar_lenght = bar_lenght
 
     def stretch_section(self):
         for item in self.getItems():
             item.stretch_sequence(self.bar_lenght)
 
-    def render_section(self, intensity_schemes):
+    def render_section(self):
         trackouts = Loopkit()
         track = np.zeros([self.bar_lenght*self.heir.size])
+
         for i, item in enumerate(self.getItems()):       
-            trackout = item.render_sequence(intensity_schemes[i])
+            trackout = item.render_sequence()
             trackouts.addItem(trackout)
             track = np.add(track, trackout)
         return track, trackouts

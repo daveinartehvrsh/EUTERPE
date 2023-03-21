@@ -1,38 +1,32 @@
 from configparser import ConfigParser
+from scheme import *
 
-def get_default_config():
+def convert_scheme(str: str):
+    scheme = Scheme()
+    scheme.load_from_str(str)
+    return scheme
+
+def get_system_config(name = 'default.ini'):
     configur = ConfigParser()
-    configur.read('config.ini')
+    configur.read(name)
     system_info = {}
-    system_info['sr'] = configur.getint('system_default', 'sr')
-    system_info['n_tracks'] = configur.getint('system_default', 'n_tracks')
-    system_info['default_dataset'] = configur.get('system_default', 'default_dataset')
-    system_info['default_track'] = configur.get('system_default', 'default_track')
-    system_info['repetitions'] = configur.getint('system_default', 'repetitions')
+    system_info['sr'] = configur.getint('system', 'sr')
+    system_info['outputfolder'] = configur.get('system', 'outputfolder')
+    system_info['loop_rep'] = configur.getint('system', 'loop_rep')
+    system_info['steps'] = configur.getint('system', 'steps')
+    system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')
+    system_info['d_gain'] = configur.getfloat('tracks', 'd_gain')
+    system_info['b_gain'] = configur.getfloat('tracks', 'b_gain')
+    system_info['m_path'] = configur.get('tracks', 'm_path')
+    system_info['d_path'] = configur.get('tracks', 'd_path')
+    system_info['b_path'] = configur.get('tracks', 'b_path')
+    system_info['m_intensity'] = convert_scheme(configur.get('tracks', 'm_intensity'))
+    system_info['d_intensity'] = convert_scheme(configur.get('tracks', 'd_intensity'))
+    system_info['b_intensity'] = convert_scheme(configur.get('tracks', 'b_intensity'))
+    system_info['m_tune'] = convert_scheme(configur.get('tracks', 'm_tune'))
+    system_info['d_tune'] = convert_scheme(configur.get('tracks', 'd_tune'))
+    system_info['b_tune'] = convert_scheme(configur.get('tracks', 'b_tune'))
     return system_info
-    
-
-def get_default_dataset(name):
-    configur = ConfigParser()
-    configur.read('config.ini')
-    loopkit_names = configur.get(name, 'loopkits')
-    dataset_preset = {} 
-    for loopkit_name in loopkit_names.split(', '):
-        loopkit_preset = {}
-        loopkit_preset['path'] = configur.get(loopkit_name, 'path')
-        tune_scheme = configur.get(loopkit_name, 'tune_scheme')
-        loopkit_preset['tune_scheme'] = tune_scheme.split(', ')
-        dataset_preset[loopkit_name] = loopkit_preset
-    return dataset_preset
-
-def get_schemes(name):
-    configur = ConfigParser()
-    configur.read('config.ini')
-    scheme_names = configur.get(name, 'intensity_schemes')
-    schemes = []
-    for item in scheme_names.split(', '):
-        schemes.append(configur.get('schemes', item))
-    return schemes
 
 def main():
     ...
