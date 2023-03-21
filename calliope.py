@@ -1,6 +1,7 @@
 from classes import *
 import audio
 import presets
+from rich.progress import Progress
 
 class Calliope(Algorithm):
 
@@ -25,7 +26,7 @@ class Calliope(Algorithm):
 
         bass_info = {'path': system_info['b_path'],'intensity_scheme': system_info['b_intensity'], 'tune_scheme': system_info['b_tune']}
         bass_loopkit = self.create_loopkit(name='bass', loopkit_preset=bass_info)
-       
+    
         dataset.addItem(drum_loopkit)
         dataset.addItem(melody_loopkit)
         dataset.addItem(bass_loopkit)
@@ -63,19 +64,29 @@ class Calliope(Algorithm):
     def export_section(self, section: Section, name):
         track, trackouts = section.render_section()
         cwd = os.getcwd()
-        os.chdir('out')
+        out = 'out'
+        os.chdir(out)
         audio.export(name=(f'track{name}.wav'),audio=track)
+        section.getInfo()
+        loop_names = []
+        for loopSeq in section.getData():
+            loop = loopSeq.data.getHeir()
+            loop_names.append(f'{loop.getName()}\n')
+        msg = f'Track exported at: {out}\nLoops used: {loop_names}'
+        print(msg)
         os.chdir(cwd)
             
     def getInfo():
         ...
     
-    def start(self, system_info, rep = 1): 
+    def start(self, system_info): 
         #algorythm start
-        for i in range(rep):
+
+        for i in range(system_info['steps']):
             self.create_dataset(i, system_info=system_info)
             self.create_section(self.datasets[i], i, system_info)
-            self.export_section(self.sections[i], i)
+        
+        self.export_section(self.sections[i], i)
 
     def stop():
         ...

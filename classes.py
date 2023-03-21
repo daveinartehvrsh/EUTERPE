@@ -5,6 +5,7 @@ from rich.traceback import install
 import audio
 import random
 import os
+from rich.progress import track
 
 install()
 
@@ -35,17 +36,23 @@ class Loop(AudioComponent):
         self.sr = sr
         self.path = path
     
+    #def setGain(self, gain):
+    #    self.data *= gain
+
+    def setTune(self, tune):
+        self.tune = tune
+
+    def getTune(self):
+        return self.tune
+
+    def getLen(self):
+        return len(self.data)
+    
     def getInfo(self):
         print(self.getName())
 
     def getRepr(self):
-        return f'{len(self.getData())}'
-    
-    def setGain(self, gain):
-        self.data *= gain
-
-    def getLen(self):
-        return len(self.data)
+        return f'{self.getTune()}'
 
 class SequenceNode():
     def __init__(self, data, next=None, prev=None):
@@ -54,7 +61,7 @@ class SequenceNode():
         self.prev_node = prev
     
     def __str__(self):
-        return f'({self.data.getRepr()})'
+        return f'[{self.data.getRepr()}]'
     
 class Sequence(Component):
     
@@ -109,11 +116,12 @@ class Sequence(Component):
     def getInfo(self):
         if self.root is None:
             return 'empty sequence'
+        print(f'{self.getName()} - |', end='')
         this_node = self.root
-        print(this_node, end='->')
+        print(this_node, end='')
         while this_node.next_node is not None:
             this_node = this_node.next_node
-            print(this_node, end='->')
+            print(this_node, end='')
         print()
 
     def getItems(self):
@@ -201,8 +209,9 @@ class Loopkit(Container):
         for tune in loopkit_preset['tune_scheme'].data:
             loop = Loop(data, sr, path)
             loop.data = audio.tune(loop, tune)
-            name = loop_name + str(tune)
+            name = loop_name + f' [{tune}]'
             loop.setName(name)
+            loop.setTune(tune)
             self.addItem(loop)
         #self.getInfo()
 
