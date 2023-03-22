@@ -2,12 +2,15 @@ from classes import *
 import audio
 import presets
 from rich.progress import track
+import analyze
+import librosa
 
 class Calliope(Algorithm):
 
     def __init__(self):
         self.datasets = {}
         self.sections = {}
+        self.tracks = {}
         self.intensity_schemes = []
     
     def create_loopkit(self, name='loopkit', loopkit_preset=None):
@@ -64,12 +67,26 @@ class Calliope(Algorithm):
     def export_section(self, section: Section, name):
         beat, trackouts = section.render_section()
         cwd = os.getcwd()
-        out = 'out'
+        out = 'data/out'
         os.chdir(out)
         audio.export(name=(f'track{name}.wav'),audio=beat)
         section.getInfo()
         os.chdir(cwd)
-            
+    
+    def analyze(self, system_info):
+        
+        ref, _ = librosa.load(system_info['reference'], sr=system_info['sr'])
+        dir = 'C:/Users/david/Documents/CALLIOPE/alpha/data/out'
+        sr=system_info['sr']
+
+        for filename in os.listdir(dir):
+
+            f = os.path.join(dir, filename)
+            beat, _ = librosa.load(f, sr=sr)
+            mfccScore = analyze.mfccDTWScore(beat, ref, sr)
+            chromaScore = analyze.chromaDTWScore(beat, ref, sr)
+            loopinfo = [mfccScore, chromaScore]
+
     def getInfo():
         ...
 
@@ -81,12 +98,8 @@ class Calliope(Algorithm):
             self.create_dataset(i, system_info=system_info)
             self.create_section(self.datasets[i], i, system_info)
             self.export_section(self.sections[i], i)
+            #self.analyze(system_info)
         
-        
-        
-
-   
-
 def main():
     system_info = presets.get_system_config()    
     calliope = Calliope()
