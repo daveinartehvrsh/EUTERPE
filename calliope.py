@@ -1,7 +1,7 @@
 from classes import *
 import audio
 import presets
-from rich.progress import Progress
+from rich.progress import track
 
 class Calliope(Algorithm):
 
@@ -62,34 +62,30 @@ class Calliope(Algorithm):
         self.sections[name] = section
 
     def export_section(self, section: Section, name):
-        track, trackouts = section.render_section()
+        beat, trackouts = section.render_section()
         cwd = os.getcwd()
         out = 'out'
         os.chdir(out)
-        audio.export(name=(f'track{name}.wav'),audio=track)
+        audio.export(name=(f'track{name}.wav'),audio=beat)
         section.getInfo()
-        loop_names = []
-        for loopSeq in section.getData():
-            loop = loopSeq.data.getHeir()
-            loop_names.append(f'{loop.getName()}\n')
-        msg = f'Track exported at: {out}\nLoops used: {loop_names}'
-        print(msg)
         os.chdir(cwd)
             
     def getInfo():
         ...
+
+    def stop(self):    
+        ...
     
     def start(self, system_info): 
-        #algorythm start
-
         for i in range(system_info['steps']):
             self.create_dataset(i, system_info=system_info)
             self.create_section(self.datasets[i], i, system_info)
+            self.export_section(self.sections[i], i)
         
-        self.export_section(self.sections[i], i)
+        
+        
 
-    def stop():
-        ...
+   
 
 def main():
     system_info = presets.get_system_config()    

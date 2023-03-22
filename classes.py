@@ -218,19 +218,17 @@ class Loopkit(Container):
 class Dataset(Container):
     def add_loopkit(self, loopkit):
         self.addItem(loopkit)
-
-    def fill(self, preset):
-        ...
     
 class LoopSeq(Sequence):
         
     def fill(self, loopkit, repetitions):
-        for i in range(repetitions):
+        for i in track(range(repetitions), 'filling sequence...'):
             loop = random.choice(loopkit)
             self.add(loop)
 
     def setIntensityScheme(self, intensity_scheme):
         self.intensity_scheme = intensity_scheme
+        
     def stretch_sequence(self, to_len):
         for item in self.getItems():
             stretched = audio.stretch(item, to_len)
@@ -242,6 +240,18 @@ class LoopSeq(Sequence):
             gain = self.intensity_scheme.data[i]
             out = np.append(out, item.data*float(gain))
         return out
+    
+    def getInfo(self):
+        items = self.getItems()
+        msg = ''
+        for i, item in enumerate(items):
+            loop_str = f'[GAIN: {self.intensity_scheme.data[i]} | TUNE: {item.getTune()}'
+            while len(loop_str) < 22:
+                loop_str += ' '
+            loop_str += ']'
+            msg += loop_str
+            
+        print(f'{self.getName()} | loop used: {item.getName()}\n{msg}\n')
 
 class Section(Container):
 
@@ -252,18 +262,18 @@ class Section(Container):
         self.bar_lenght = bar_lenght
 
     def stretch_section(self):
-        for item in self.getItems():
+        for item in track(self.getItems(), 'stretching section...'):
             item.stretch_sequence(self.bar_lenght)
 
     def render_section(self):
         trackouts = Loopkit()
-        track = np.zeros([self.bar_lenght*self.heir.size])
+        beat = np.zeros([self.bar_lenght*self.heir.size])
 
-        for i, item in enumerate(self.getItems()):       
+        for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
             trackout = item.render_sequence()
             trackouts.addItem(trackout)
-            track = np.add(track, trackout)
-        return track, trackouts
+            beat = np.add(beat, trackout)
+        return beat, trackouts
 
 class ValueComponent(Component):
     ...
