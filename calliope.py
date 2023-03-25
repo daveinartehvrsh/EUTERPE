@@ -70,22 +70,19 @@ class Calliope(Algorithm):
         out = 'data/out'
         os.chdir(out)
         audio.export(name=(f'track{name}.wav'),audio=beat)
-        section.getInfo()
         os.chdir(cwd)
     
-    def analyze(self, system_info):
+    def add_track(self, section: Section, name, system_info):
+        beat , _ = section.render_section()
+        self.tracks[name] = self.analyze(system_info=system_info, beat=beat)
+        
+    def analyze(self, system_info, beat):
         
         ref, _ = librosa.load(system_info['reference'], sr=system_info['sr'])
-        dir = 'C:/Users/david/Documents/CALLIOPE/alpha/data/out'
         sr=system_info['sr']
 
-        for filename in os.listdir(dir):
-
-            f = os.path.join(dir, filename)
-            beat, _ = librosa.load(f, sr=sr)
-            mfccScore = analyze.mfccDTWScore(beat, ref, sr)
-            chromaScore = analyze.chromaDTWScore(beat, ref, sr)
-            loopinfo = [mfccScore, chromaScore]
+        mfccScore = analyze.mfccDTWScore(beat, ref, sr)
+        return mfccScore
 
     def getInfo():
         ...
@@ -97,13 +94,14 @@ class Calliope(Algorithm):
         for i in range(system_info['steps']):
             self.create_dataset(i, system_info=system_info)
             self.create_section(self.datasets[i], i, system_info)
+            self.add_track(self.sections[i], i, system_info)
             self.export_section(self.sections[i], i)
-            #self.analyze(system_info)
         
 def main():
     system_info = presets.get_system_config()    
     calliope = Calliope()
     calliope.start(system_info)
+    print(calliope.tracks)
 
 if __name__ == '__main__':
     main()
