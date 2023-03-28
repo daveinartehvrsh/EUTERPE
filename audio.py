@@ -16,7 +16,3 @@ def loadLoop(path, sr=48000):
 
 def export(name = 'test.wav', audio=[], sr=48000):
     sf.write(name, audio, sr, 'PCM_16')
-    
-
-def render():
-    ...

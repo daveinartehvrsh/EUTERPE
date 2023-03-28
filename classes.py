@@ -1,13 +1,9 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
 import numpy as np
-from rich.traceback import install
 import audio
 import random
 import os
 from rich.progress import track
-
-install()
 
 class Component(ABC):
 
@@ -36,9 +32,6 @@ class Loop(AudioComponent):
         self.sr = sr
         self.path = path
     
-    #def setGain(self, gain):
-    #    self.data *= gain
-
     def setTune(self, tune):
         self.tune = tune
 
@@ -198,46 +191,40 @@ class Container(Component):
     def __iter__(self):
         return ContainerIter(self)
 
-class Loopkit(Container):
-    
-    def fill(self, loopkit_preset):
-        path = loopkit_preset['path']
+class Loopkit(Container): 
+    def fill(self, path, tune_scheme):
         loop_name = random.choice(os.listdir(path))
         path = path + "/" + loop_name
-        data, sr = audio.loadLoop(path)
-        #audio.export(name=loop_name, audio=data)           
-        for tune in loopkit_preset['tune_scheme'].data:
+        data, sr = audio.loadLoop(path)          
+        for tune in tune_scheme.data:
             loop = Loop(data, sr, path)
             loop.data = audio.tune(loop, tune)
             name = loop_name + f' [{tune}]'
             loop.setName(name)
             loop.setTune(tune)
             self.addItem(loop)
-        #self.getInfo()
 
 class Dataset(Container):
     def add_loopkit(self, loopkit):
         self.addItem(loopkit)
     
 class LoopSeq(Sequence):
-        
-    def fill(self, loopkit, repetitions):
+
+    def fill(self, loopkit, repetitions, gain):
+        self.gain = gain
         for i in track(range(repetitions), 'filling sequence...'):
             loop = random.choice(loopkit)
             self.add(loop)
-
-    def setIntensityScheme(self, intensity_scheme):
-        self.intensity_scheme = intensity_scheme
-        
+   
     def stretch_sequence(self, to_len):
         for item in self.getItems():
             stretched = audio.stretch(item, to_len)
             item.setData(stretched)
 
-    def render_sequence(self): 
+    def render_sequence(self, intensity_scheme): 
         out = np.array([])
         for i, item in enumerate(self.getItems()):
-            gain = self.intensity_scheme.data[i]
+            gain = intensity_scheme[i] * self.gain
             out = np.append(out, item.data*float(gain))
         return out
     
@@ -245,7 +232,7 @@ class LoopSeq(Sequence):
         items = self.getItems()
         msg = ''
         for i, item in enumerate(items):
-            loop_str = f'[GAIN: {self.intensity_scheme.data[i]} | TUNE: {item.getTune()}'
+            loop_str = f'[TUNE: {item.getTune()}'
             while len(loop_str) < 22:
                 loop_str += ' '
             loop_str += ']'
@@ -265,12 +252,12 @@ class Section(Container):
         for item in track(self.getItems(), 'stretching section...'):
             item.stretch_sequence(self.bar_lenght)
 
-    def render_section(self):
+    def render_section(self, intensity_schemes):
         trackouts = Loopkit()
         beat = np.zeros([self.bar_lenght*self.heir.size])
 
         for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
-            trackout = item.render_sequence()
+            trackout = item.render_sequence(intensity_schemes[i])
             trackouts.addItem(trackout)
             beat = np.add(beat, trackout)
         return beat, trackouts
@@ -279,31 +266,27 @@ class ValueComponent(Component):
     ...
 
 class Score(ValueComponent):
-    ...
+    def __init__(self, name='score', value=0):
+        self.name = name
+        self.value = value
+    
+    def getInfo(self):
+        print(f'{self.getName()} - {self.value}')
 
 class ScoreVector(Container):
-    ...
+    def __init__(self, name='score vector', data=[]):
+        self.name = name
+        self.size = 0
+        self.data = np.array(data)
 
 class ScoreMap(Container):
-    ...
-
-class TextComponent(Component):
-    @abstractmethod
-    def __repr__(self) -> str:
-        ...
-
-class Preset(Container):
-    ...
-
-@dataclass
-class InfoElement(TextComponent):
-    name: str
-
-class Info:
-    ...
+    def __init__(self, name='score map'):
+        self.name = name
+        self.size = 0
+        self.data = []
 
 class Algorithm(Component):
-    version: str = field(default_factory=lambda: '0.0.0')
+    ...
 
 class Generation:
     ...
