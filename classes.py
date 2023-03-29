@@ -212,6 +212,7 @@ class LoopSeq(Sequence):
 
     def fill(self, loopkit, repetitions, gain):
         self.gain = gain
+        self.seq_info = {}
         for i in track(range(repetitions), 'filling sequence...'):
             loop = random.choice(loopkit)
             self.add(loop)
