@@ -3,6 +3,7 @@ import audio
 import presets
 import analyze
 import librosa
+from scheme import *
 
 class Calliope(Algorithm):
 
@@ -79,7 +80,9 @@ class Calliope(Algorithm):
 
     def render_drum_intensity(self):
         d_intensity = self.system_info['d_intensity'].convert_to_len(self.system_info['loop_rep'])
-        return d_intensity
+        out = random_round(d_intensity)
+        print(out)
+        return out
     
     def render_melody_intensity(self):
         m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
@@ -87,7 +90,9 @@ class Calliope(Algorithm):
     
     def render_bass_intensity(self):
         b_intensity = self.system_info['b_intensity'].convert_to_len(self.system_info['loop_rep'])
-        return b_intensity
+        out = random_round(b_intensity)
+        print(out)
+        return out
 
     def export_section(self, section: Section, name):
         intensity_schemes = [self.render_drum_intensity(),
@@ -133,7 +138,7 @@ class Calliope(Algorithm):
         for i in range(self.system_info['steps']):
             self.create_dataset(i)
             self.create_section(self.datasets[i], i)
-            self.add_track(self.sections[i], i)
+            #self.add_track(self.sections[i], i)
             self.export_section(self.sections[i], i)
         
 def main():
