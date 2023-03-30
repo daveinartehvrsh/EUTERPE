@@ -14,6 +14,32 @@ class Calliope(Algorithm):
         self.tracks = ScoreMap()
         self.intensity_schemes = []
     
+    def render_drum_intensity(self):
+        d_intensity = self.system_info['d_intensity'].convert_to_len(self.system_info['loop_rep'])
+        out = random_round(d_intensity)
+        print(out)
+        return out
+    
+    def render_melody_tune(self):
+        m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
+        m_intensity = random_round(m_intensity)
+        out = []
+        for i in m_intensity:
+            out.append(i*-12)
+        print(out)
+        return out
+    
+    def render_melody_intensity(self):
+        m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
+        out = np.ones(len(m_intensity))
+        return out
+    
+    def render_bass_intensity(self):
+        b_intensity = self.system_info['b_intensity'].convert_to_len(self.system_info['loop_rep'])
+        out = random_round(b_intensity)
+        print(out)
+        return out
+
     def create_drum_loopkit(self, name='drums'):
         loopkit = Loopkit(name)
         loopkit.fill(path = self.system_info['d_path'], tune_scheme = self.system_info['d_tune'])
@@ -53,7 +79,8 @@ class Calliope(Algorithm):
         loopseq = LoopSeq()
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
-        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.system_info['m_gain'])
+        tune_scheme = self.render_melody_tune()
+        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.system_info['m_gain'], tune_scheme=tune_scheme)
         return loopseq
     
     def create_bass_loopseq(self, loopkit, repetitions):
@@ -78,22 +105,6 @@ class Calliope(Algorithm):
         section.stretch_section()
         self.sections[name] = section
 
-    def render_drum_intensity(self):
-        d_intensity = self.system_info['d_intensity'].convert_to_len(self.system_info['loop_rep'])
-        out = random_round(d_intensity)
-        print(out)
-        return out
-    
-    def render_melody_intensity(self):
-        m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
-        return m_intensity
-    
-    def render_bass_intensity(self):
-        b_intensity = self.system_info['b_intensity'].convert_to_len(self.system_info['loop_rep'])
-        out = random_round(b_intensity)
-        print(out)
-        return out
-
     def export_section(self, section: Section, name):
         intensity_schemes = [self.render_drum_intensity(),
                             self.render_melody_intensity(),
@@ -111,8 +122,7 @@ class Calliope(Algorithm):
                             self.render_bass_intensity()]
         beat , _ = section.render_section(intensity_schemes)
         self.tracks.addItem(ScoreVector(name=name, data=self.analyze(beat)))
-        
-        
+               
     def analyze(self, beat):
         sr=self.system_info['sr']
         

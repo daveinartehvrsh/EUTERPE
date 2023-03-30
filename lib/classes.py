@@ -29,16 +29,16 @@ class Loop(AudioComponent):
 
 class Loopkit(Container): 
     def fill(self, path, tune_scheme):
-        #cwd = os.getcwd()
-        #path = os.path.join(cwd, path)
-        loop_name = random.choice(os.listdir(path))
-        path = path + "/" + loop_name
-        data, sr = audio.loadLoop(path)          
+        # load as many loops as there are tunes in the tune scheme (config_file)         
         for tune in tune_scheme.data:
+            # get random loop from path (selection algorithms may be added later)
+            loop_name = random.choice(os.listdir(path))
+            loop_path = path + "/" + loop_name
+            data, sr = audio.loadLoop(loop_path)
             loop = Loop(data, sr, path)
             loop.data = audio.tune(loop, tune)
-            name = loop_name + f' [{tune}]'
-            loop.setName(name)
+
+            loop.setName(loop_name)
             loop.setTune(tune)
             self.addItem(loop)
 
@@ -48,13 +48,20 @@ class Dataset(Container):
     
 class LoopSeq(Sequence):
 
-    def fill(self, loopkit, repetitions, gain):
+    def fill(self, loopkit, repetitions, gain, tune_scheme=False):
         self.gain = gain
         self.seq_info = {}
         for i in track(range(repetitions), 'filling sequence...'):
             loop = random.choice(loopkit)
-            self.add(loop)
-   
+            if tune_scheme:
+                tuned_data = audio.tune(loop, tune_scheme[i])
+                tuned = Loop(tuned_data, loop.sr, loop.path)
+                tuned.setName(loop.getName())                
+                tuned.setTune(tune_scheme[i])
+                self.add(tuned)
+            else: 
+                self.add(loop)
+
     def stretch_sequence(self, to_len):
         for item in self.getItems():
             stretched = audio.stretch(item, to_len)
@@ -65,6 +72,7 @@ class LoopSeq(Sequence):
         for i, item in enumerate(self.getItems()):
             gain = intensity_scheme[i] * self.gain
             out = np.append(out, item.data*float(gain))
+        
         return out
     
     def getInfo(self):
