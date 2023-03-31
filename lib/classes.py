@@ -28,18 +28,15 @@ class Loop(AudioComponent):
         return f'{self.getTune()}'
 
 class Loopkit(Container): 
-    def fill(self, path, tune_scheme):
-        # load as many loops as there are tunes in the tune scheme (config_file)         
-        for tune in tune_scheme.data:
+    def fill(self, path, n_loops):
+        # load as many loops as n_loops (config_file)         
+        for i in range(n_loops):
             # get random loop from path (selection algorithms may be added later)
             loop_name = random.choice(os.listdir(path))
             loop_path = path + "/" + loop_name
             data, sr = audio.loadLoop(loop_path)
             loop = Loop(data, sr, path)
-            loop.data = audio.tune(loop, tune)
-
             loop.setName(loop_name)
-            loop.setTune(tune)
             self.addItem(loop)
 
 class Dataset(Container):

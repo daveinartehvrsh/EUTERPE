@@ -33,9 +33,9 @@ def get_system_config(name = 'data/default.ini'):
         system_info['m_intensity'] = convert_scheme(configur.get('tracks', 'm_intensity'))
         system_info['d_intensity'] = convert_scheme(configur.get('tracks', 'd_intensity'))
         system_info['b_intensity'] = convert_scheme(configur.get('tracks', 'b_intensity'))
-        system_info['m_tune'] = convert_scheme(configur.get('tracks', 'm_tune'))
-        system_info['d_tune'] = convert_scheme(configur.get('tracks', 'd_tune'))
-        system_info['b_tune'] = convert_scheme(configur.get('tracks', 'b_tune'))
+        system_info['d_n_loops'] = configur.getint('tracks', 'd_n_loops')
+        system_info['m_n_loops'] = configur.getint('tracks', 'm_n_loops')
+        system_info['b_n_loops'] = configur.getint('tracks', 'b_n_loops')
     return system_info
 
 def load_preset(selected_preset, system_to_override):
