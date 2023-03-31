@@ -4,8 +4,74 @@ import lib.presets as presets
 import lib.analyze as analyze
 import librosa
 from lib.scheme_utils import *
+from lib.abstract import BeatMaker, LoopSelectionSystem
 
-class LOS_v1(LoopSelectionSystem):
+class Ronald_v1(BeatMaker):
+    def __init__(self, system_info):
+        self.track_info = {
+            'loop_rep': system_info['loop_rep'],
+        }
+
+        self.drum_track = {
+            'gain': system_info['d_gain'],
+            'intensity': system_info['d_intensity'],
+        }
+        self.melody_track = {
+            'gain': system_info['m_gain'],
+            'intensity': system_info['m_intensity'],
+        }
+        self.bass_track = {
+            'gain': system_info['b_gain'],
+            'intensity': system_info['b_intensity'],
+        }
+
+        self.structure = {
+            'drums': {},
+            'melody': {},
+            'bass': {}
+        }
+          
+    def create_drum_loopseq(self, loopkit, repetitions):
+        loopseq = LoopSeq()
+        loopseq.setName(loopkit.getName())
+        loops = list(loopkit.getItems())
+        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.drum_track['gain'])
+        return loopseq
+    
+    def create_melody_loopseq(self, loopkit, repetitions):
+        loopseq = LoopSeq()
+        loopseq.setName(loopkit.getName())
+        loops = list(loopkit.getItems())
+        tune_scheme = create_rantune_scheme(repetitions)
+        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.melody_track['gain'], tune_scheme=tune_scheme)
+        return loopseq
+    
+    def create_bass_loopseq(self, loopkit, repetitions):
+        loopseq = LoopSeq()
+        loopseq.setName(loopkit.getName())
+        loops = list(loopkit.getItems())
+        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.bass_track['gain'])
+        return loopseq
+
+    def create_section(self, dataset: Dataset, name):
+        section = Section()
+        rep = self.track_info['loop_rep']
+        drum_seq = self.create_drum_loopseq(dataset.data[0].data, rep)
+        melody_seq = self.create_melody_loopseq(dataset.data[1].data, rep)
+        bass_seq = self.create_bass_loopseq(dataset.data[2].data, rep)
+
+        section.addItem(drum_seq)
+        section.addItem(melody_seq)
+        section.addItem(bass_seq)
+
+        section.set_bar_lenght()
+        section.stretch_section()
+        return section
+
+    def getInfo():
+        ...
+
+class LSS_v1(LoopSelectionSystem):
 
     def __init__(self, system_info):
 
@@ -57,7 +123,8 @@ class Calliope(Algorithm):
 
     def __init__(self, system_info):
         self.system_info = system_info
-        self.los = LOS_v1(system_info)
+        self.beatmaker = Ronald_v1(system_info)
+        self.lss = LSS_v1(system_info)
         self.datasets = {}
         self.sections = {}
         self.tracks = ScoreMap()
@@ -68,16 +135,7 @@ class Calliope(Algorithm):
         out = random_round(d_intensity)
         print(out)
         return out
-    
-    def render_melody_tune(self):
-        m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
-        m_intensity = random_round(m_intensity)
-        out = []
-        for i in m_intensity:
-            out.append(i*-12)
-        print(out)
-        return out
-    
+      
     def render_melody_intensity(self):
         m_intensity = self.system_info['m_intensity'].convert_to_len(self.system_info['loop_rep'])
         out = np.ones(len(m_intensity))
@@ -90,44 +148,10 @@ class Calliope(Algorithm):
         return out
     
     def create_dataset(self, name):       
-        self.datasets[name] = self.los.create_dataset(name)
+        self.datasets[name] = self.lss.create_dataset(name)
     
-    def create_drum_loopseq(self, loopkit, repetitions):
-        loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
-        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.system_info['d_gain'])
-        return loopseq
-    
-    def create_melody_loopseq(self, loopkit, repetitions):
-        loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
-        tune_scheme = self.render_melody_tune()
-        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.system_info['m_gain'], tune_scheme=tune_scheme)
-        return loopseq
-    
-    def create_bass_loopseq(self, loopkit, repetitions):
-        loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
-        loopseq.fill(loopkit=loops, repetitions = repetitions, gain=self.system_info['b_gain'])
-        return loopseq
-
     def create_section(self, dataset: Dataset, name):
-        section = Section()
-        rep = self.system_info['loop_rep']
-        drum_seq = self.create_drum_loopseq(dataset.data[0].data, rep)
-        melody_seq = self.create_melody_loopseq(dataset.data[1].data, rep)
-        bass_seq = self.create_bass_loopseq(dataset.data[2].data, rep)
-
-        section.addItem(drum_seq)
-        section.addItem(melody_seq)
-        section.addItem(bass_seq)
-
-        section.set_bar_lenght()
-        section.stretch_section()
-        self.sections[name] = section
+        self.sections[name] = self.beatmaker.create_section(dataset, name)
 
     def export_section(self, section: Section, name):
         intensity_schemes = [self.render_drum_intensity(),
