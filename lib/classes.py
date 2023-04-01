@@ -45,10 +45,10 @@ class Dataset(Container):
     
 class LoopSeq(Sequence):
 
-    def fill(self, loopkit, repetitions, gain, tune_scheme=False):
+    def fill(self, loopkit, loop_rep, gain, tune_scheme=False):
         self.gain = gain
         self.seq_info = {}
-        for i in track(range(repetitions), 'filling sequence...'):
+        for i in track(range(loop_rep), 'filling sequence...'):
             loop = random.choice(loopkit)
             if tune_scheme:
                 tuned_data = audio.tune(loop, tune_scheme[i])
@@ -126,8 +126,16 @@ class ScoreMap(Container):
         self.size = 0
         self.data = []
 
+class BeatMaker(Algorithm):
+    def create_section(self, name):
+        ...
+
+class LoopSelectionSystem(Algorithm):
+    def create_dataset(self, name):
+        ...
 
 def main():
     ...
+
 if __name__ == '__main__':
     main()

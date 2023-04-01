@@ -27,11 +27,5 @@ class ValueComponent(Component):
 class Algorithm(Component):
     ...
 
-class BeatMaker(Algorithm):
-    def create_section(self, name):
-        ...
 
-class LoopSelectionSystem(Algorithm):
-    def create_dataset(self, name):
-        ...
    
