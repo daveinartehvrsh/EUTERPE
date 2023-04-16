@@ -22,12 +22,12 @@ class Calliope(Algorithm):
         self.sections[name] = self.beatmaker.create_section(dataset, name)
 
     def export_section(self, section: Section, name):
-        intensity_schemes = self.beatmaker.render_structure()       
-        beat, trackouts = section.render_section(intensity_schemes)
+        #intensity_schemes = self.beatmaker.render_structure()       
+        beat, trackouts = section.render_section()
         cwd = os.getcwd()
-        out = 'data/out'
+        out = os.path.join(self.system_info['outputfolder'], self.system_info['preset'])
         os.chdir(out)
-        audio.export(name=(f'track{name}.wav'),audio=beat)
+        audio.export(name=(f'{name}.wav'),audio=beat)
         os.chdir(cwd)
 
     def getInfo():

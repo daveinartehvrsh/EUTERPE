@@ -3,33 +3,38 @@ from lib.classes import *
 class LSS_v1(LoopSelectionSystem):
 
     def __init__(self, system_info):
+        self.info = {
+            'name': 'LSS_v1',
+        }
 
         self.drum_kit = {
             'path': system_info['d_path'],
-            'n_loops': system_info['d_n_loops'],
+            'n_loops': int(system_info['d_n_loops']),
         }
         self.melody_kit = {
             'path': system_info['m_path'],
-            'n_loops': system_info['m_n_loops'],
+            'n_loops': int(system_info['m_n_loops']),
         }
         self.bass_kit = {
             'path': system_info['b_path'],
-            'n_loops': system_info['b_n_loops'],
+            'n_loops': int(system_info['b_n_loops']),
         }
 
     def create_drum_loopkit(self, name='drums'):
         loopkit = Loopkit(name)
         loopkit.fill(path = self.drum_kit['path'], n_loops = self.drum_kit['n_loops'])
+        self.info['bar_lenght'] = loopkit.getHeir().getLen()
+        print(self.info['bar_lenght'])
         return loopkit
     
     def create_melody_loopkit(self, name='melody'):
         loopkit = Loopkit(name)       
-        loopkit.fill(path = self.melody_kit['path'], n_loops = self.melody_kit['n_loops'])
+        loopkit.fill(path = self.melody_kit['path'], n_loops = self.melody_kit['n_loops'], info=self.info)
         return loopkit
     
     def create_bass_loopkit(self, name='bass'):
         loopkit = Loopkit(name)
-        loopkit.fill(path = self.bass_kit['path'], n_loops = self.bass_kit['n_loops'])
+        loopkit.fill(path = self.bass_kit['path'], n_loops = self.bass_kit['n_loops'], info=self.info)
         return loopkit
 
     def create_dataset(self, name):
