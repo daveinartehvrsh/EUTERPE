@@ -12,24 +12,16 @@ def get_system_config(name = 'data/default.ini'):
     configur.read(name)
     system_info = {}
     if name=='data/default.ini':
+        #   system config load
         system_info['preset name'] = 'default'
         system_info['sr'] = configur.getint('system', 'sr')
         system_info['outputfolder'] = configur.get('system', 'outputfolder')
         system_info['loop_rep'] = configur.getint('system', 'loop_rep')
         system_info['steps'] = configur.getint('system', 'steps')
-        system_info['reference'] = configur.get('system', 'reference')
+        #   tracks config load
         system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')
         system_info['d_gain'] = configur.getfloat('tracks', 'd_gain')
         system_info['b_gain'] = configur.getfloat('tracks', 'b_gain')
-        system_info['m_path'] = configur.get('tracks', 'm_path')
-        system_info['d_path'] = configur.get('tracks', 'd_path')
-        system_info['b_path'] = configur.get('tracks', 'b_path')
-        system_info['m_intensity'] = configur.get('tracks', 'm_intensity')
-        system_info['d_intensity'] = configur.get('tracks', 'd_intensity')
-        system_info['b_intensity'] = configur.get('tracks', 'b_intensity')
-        system_info['d_n_loops'] = configur.getint('tracks', 'd_n_loops')
-        system_info['m_n_loops'] = configur.getint('tracks', 'm_n_loops')
-        system_info['b_n_loops'] = configur.getint('tracks', 'b_n_loops')
     return system_info
 
 def load_preset(selected_preset, system_to_override):
