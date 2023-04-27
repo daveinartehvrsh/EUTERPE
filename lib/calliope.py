@@ -2,8 +2,9 @@ from lib.classes import *
 import lib.audio as audio
 import lib.presets as presets
 from lib.ronald_v1 import Ronald_v1
-from lib.lss_v1 import LSS_v1
-
+from lib.lss_v1 import LSS_v1, Dataset
+from lib.ronald_v1 import Section
+import os
 class Calliope(Algorithm):
 
     def __init__(self, system_info):
@@ -12,7 +13,6 @@ class Calliope(Algorithm):
         self.lss = LSS_v1(system_info)
         self.datasets = {}
         self.sections = {}
-        self.tracks = ScoreMap()
         self.intensity_schemes = []
         
     def create_dataset(self, name):       
@@ -21,9 +21,8 @@ class Calliope(Algorithm):
     def create_section(self, dataset: Dataset, name):
         self.sections[name] = self.beatmaker.create_section(dataset, name)
 
-    def export_section(self, section: Section, name):
-        #intensity_schemes = self.beatmaker.render_structure()       
-        beat, trackouts = section.render_section()
+    def export_section(self, section: Section, name):    
+        beat, trackouts = section.render_section(self.lss.info['bar_lenght'], self.system_info['loop_rep'])
         cwd = os.getcwd()
         out = os.path.join(self.system_info['outputfolder'], self.system_info['preset'])
         os.chdir(out)

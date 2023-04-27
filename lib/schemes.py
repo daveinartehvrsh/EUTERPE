@@ -1,5 +1,5 @@
 import random
-from lib.datastructs import *
+import numpy as np
 
 def load_from_str(scheme_str):
     data = []
@@ -31,4 +31,10 @@ def make_ones(len):
     scheme = []
     for i in range(len):
         scheme.append(1)
+    return scheme
+
+def make_zeros(len):
+    scheme = []
+    for i in range(len):
+        scheme.append(0)
     return scheme

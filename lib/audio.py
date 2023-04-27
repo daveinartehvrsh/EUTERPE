@@ -29,15 +29,15 @@ def get_tonality(loop):
     return pitch
 
 
-def check_audio_length(ref_len, audio2):
-    if len(audio2) < ref_len / 2:
-        audio2 = audio2 * 2
-    elif len(audio2) > ref_len * 2:
-        midpoint = len(audio2) // 2
-        audio2_1 = audio2[:midpoint]
-        audio2_2 = audio2[midpoint:]
+def trim_loop(ref_len, audio):
+    if len(audio) < ref_len / 2:
+        audio = audio * 2
+    elif len(audio) > ref_len * 2:
+        midpoint = len(audio) // 2
+        audio2_1 = audio[:midpoint]
+        audio2_2 = audio[midpoint:]
         return [audio2_1, audio2_2], 2
-    return [audio2], 1
+    return [audio], 1
 
 def export(name = 'test.wav', audio=[], sr=48000):
     sf.write(name, audio, sr, 'PCM_16')

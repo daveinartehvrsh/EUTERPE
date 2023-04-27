@@ -1,5 +1,62 @@
 from lib.classes import *
+from lib.lss_v1 import Loopkit, Dataset
 import lib.schemes as schemes
+import random
+import lib.audio as audio
+
+class LoopSeq(Sequence):
+
+    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False):
+        self.gain = gain
+        self.structure = structure
+        for i in track(range(loop_rep), 'filling sequence...'):
+            loop = random.choice(loopkit)
+            if tune_scheme[i]:
+                tuned_data = audio.tune(loop, tune_scheme[i])
+                tuned = Loop(id=loop.id, name=loop.name, data=tuned_data, sr=loop.sr, path=loop.path)           
+                tuned.setTune(tune_scheme[i])
+                self.add(tuned)
+            else:
+                self.add(loop)
+
+    def render_sequence(self): 
+        out = np.array([])
+        for i, item in enumerate(self.getItems()):
+            gain = self.structure[i] * self.gain
+            out = np.append(out, item.data*float(gain))
+        
+        return out
+    
+    def getInfo(self):
+        items = self.getItems()
+        msg = ''
+        for i, item in enumerate(items):
+            loop_str = f'[TUNE: {item.getTune()}'
+            while len(loop_str) < 22:
+                loop_str += ' '
+            loop_str += ']'
+            msg += loop_str
+            
+        print(f'{self.getName()} | loop used: {item.getName()}\n{msg}\n')
+
+class Section(Container):
+
+    def set_bar_lenght(self, bar_lenght=None):
+        if bar_lenght is None:
+            first_loop = self.getHeir()
+            bar_lenght = first_loop.getLen()
+        self.bar_lenght = bar_lenght
+
+    def render_section(self, bar_lenght, loop_rep):
+        trackouts = Loopkit()
+        beat = np.zeros([bar_lenght*loop_rep])
+
+        for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
+            trackout = item.render_sequence()
+            trackouts.addItem(trackout)
+            beat = np.add(beat, trackout)
+        return beat, trackouts
+
 
 class Ronald_v1(BeatMaker):
     def __init__(self, system_info):
@@ -35,10 +92,11 @@ class Ronald_v1(BeatMaker):
         loopseq = LoopSeq()
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
-        loopseq.fill(loopkit=loops, loop_rep = loop_rep, gain=self.drum_track['gain'], structure=self.drum_track['structure'])
-        
-        #SETTING GLOBAL BAR LENGHT !!!!
-        self.info['bar_lenght'] = len(loopseq.getHeir().data)
+        tune_scheme = schemes.make_zeros(loop_rep)
+        loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
+                     gain=self.drum_track['gain'], 
+                     structure=self.drum_track['structure'],
+                     tune_scheme=tune_scheme)
 
         return loopseq
     
@@ -47,14 +105,21 @@ class Ronald_v1(BeatMaker):
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
         tune_scheme = schemes.make_rantune(loop_rep)
-        loopseq.fill(loopkit=loops, loop_rep = loop_rep, gain=self.melody_track['gain'], structure=self.melody_track['structure'], tune_scheme=tune_scheme)
+        loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
+                     gain=self.melody_track['gain'], 
+                     structure=self.melody_track['structure'], 
+                     tune_scheme=tune_scheme)
         return loopseq
     
     def create_bass_loopseq(self, loopkit, loop_rep):
         loopseq = LoopSeq()
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
-        loopseq.fill(loopkit=loops, loop_rep = loop_rep, gain=self.bass_track['gain'], structure=self.bass_track['structure'])
+        tune_scheme = schemes.make_zeros(loop_rep)
+        loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
+                     gain=self.bass_track['gain'], 
+                     structure=self.bass_track['structure'],
+                     tune_scheme=tune_scheme)
         return loopseq
 
     def create_section(self, dataset: Dataset, name):
@@ -68,8 +133,6 @@ class Ronald_v1(BeatMaker):
         section.addItem(melody_seq)
         section.addItem(bass_seq)
 
-        #section.set_bar_lenght()
-        section.stretch_section(self.info['bar_lenght'])
         return section
 
     def getInfo():
