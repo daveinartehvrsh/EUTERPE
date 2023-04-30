@@ -1,8 +1,9 @@
-from lib.classes import *
-from lib.lss_v1 import Loopkit, Dataset
+from lib.abstract import *
+from lib.lss_v1 import Loopkit, Dataset, Loop
 import lib.schemes as schemes
 import random
 import lib.audio as audio
+from rich.progress import track
 
 class LoopSeq(Sequence):
 
@@ -41,27 +42,10 @@ class LoopSeq(Sequence):
 
 class Section(Container):
 
-    def set_bar_lenght(self, bar_lenght=None):
-        if bar_lenght is None:
-            first_loop = self.getHeir()
-            bar_lenght = first_loop.getLen()
-        self.bar_lenght = bar_lenght
-
-    def render_section(self, bar_lenght, loop_rep):
-        trackouts = Loopkit()
-        beat = np.zeros([bar_lenght*loop_rep])
-
-        for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
-            trackout = item.render_sequence()
-            trackouts.addItem(trackout)
-            beat = np.add(beat, trackout)
-        return beat, trackouts
-
-
-class Ronald_v1(BeatMaker):
-    def __init__(self, system_info):
+    def __init__(self, system_info, name='section_as_a_track'):
+        super().__init__(name)
         self.info = {
-            'loop_rep': int(system_info['loop_rep']),
+            'loop_rep': int(int(system_info['bars']) / system_info['loop_beats']),
         }
 
         self.drum_track = {
@@ -122,18 +106,33 @@ class Ronald_v1(BeatMaker):
                      tune_scheme=tune_scheme)
         return loopseq
 
-    def create_section(self, dataset: Dataset, name):
-        section = Section()
+    def fill(self, dataset: Dataset):
         rep = self.info['loop_rep']
         drum_seq = self.create_drum_loopseq(dataset.data[0].data, rep)
         melody_seq = self.create_melody_loopseq(dataset.data[1].data, rep)
         bass_seq = self.create_bass_loopseq(dataset.data[2].data, rep)
 
-        section.addItem(drum_seq)
-        section.addItem(melody_seq)
-        section.addItem(bass_seq)
+        self.addItem(drum_seq)
+        self.addItem(melody_seq)
+        self.addItem(bass_seq)
 
-        return section
+    def render_section(self, bar_lenght, loop_rep):
+        trackouts = Loopkit()
+        beat = np.zeros([bar_lenght*loop_rep])
+
+        for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
+            trackout = item.render_sequence()
+            trackouts.addItem(trackout)
+            beat = np.add(beat, trackout)
+        return beat, trackouts
+    
+
+class Ronald_v1(BeatMaker):
+    def __init__(self, system_info):
+        self.track = Section(system_info)
+
+    def make_track(self, dataset: Dataset):
+        self.track.fill(dataset)
 
     def getInfo():
         ...

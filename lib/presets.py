@@ -15,8 +15,14 @@ def get_system_config():
     system_info['preset name'] = 'default'
     system_info['sr'] = configur.getint('system', 'sr')
     system_info['outputfolder'] = configur.get('system', 'outputfolder')
-    system_info['loop_rep'] = configur.getint('system', 'loop_rep')
-    system_info['steps'] = configur.getint('system', 'steps')
+    system_info['loop_beats'] = configur.getint('system', 'loop_beats')
+
+    #   user defined config
+    system_info['bars'] = input('\n| insert lenght of the beat in BARS\n> number of bars: ')
+    system_info['BPM'] = input('\n| insert BPM\n> BPM: ')
+    if system_info['BPM'] != 'auto':
+        system_info['BPM'] = int(system_info['BPM'])
+    
     #   tracks config load
     system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')
     system_info['d_gain'] = configur.getfloat('tracks', 'd_gain')

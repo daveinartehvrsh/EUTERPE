@@ -171,3 +171,19 @@ class Container(Component):
 
     def __iter__(self):
         return ContainerIter(self)
+    
+    def remove(self, item):
+        for x in self.data:
+            if x.data == item:
+                self.data.remove(x)
+                self.size -= 1
+                return True
+        return False
+
+class BeatMaker(Algorithm):
+    def create_section(self, name):
+        ...
+
+class LoopSelectionSystem(Algorithm):
+    def create_dataset(self, name):
+        ...

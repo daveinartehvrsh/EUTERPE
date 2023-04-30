@@ -1,28 +1,25 @@
-from lib.classes import *
 import lib.audio as audio
-import lib.presets as presets
-from lib.ronald_v1 import Ronald_v1
-from lib.lss_v1 import LSS_v1, Dataset
-from lib.ronald_v1 import Section
+from lib.ronald_v1 import Ronald_v1, Section
+from lib.lss_v1 import LSS_v1
 import os
-class Calliope(Algorithm):
+
+DIVIDER = '-----------------------------'
+
+class Calliope():
 
     def __init__(self, system_info):
         self.system_info = system_info
         self.beatmaker = Ronald_v1(system_info)
-        self.lss = LSS_v1(system_info)
-        self.datasets = {}
         self.sections = {}
         self.intensity_schemes = []
         
-    def create_dataset(self, name):       
-        self.datasets[name] = self.lss.create_dataset(name)
+    def init_lss(self, gen_no):       
+        self.lss = LSS_v1(self.system_info, gen_no)
+        self.lss.init_lss()
     
-    def create_section(self, dataset: Dataset, name):
-        self.sections[name] = self.beatmaker.create_section(dataset, name)
-
     def export_section(self, section: Section, name):    
-        beat, trackouts = section.render_section(self.lss.info['bar_lenght'], self.system_info['loop_rep'])
+        beat, trackouts = section.render_section(self.lss.dataset.info['bar_lenght'], 
+                                                 self.beatmaker.track.info['loop_rep'])
         cwd = os.getcwd()
         out = os.path.join(self.system_info['outputfolder'], self.system_info['preset'])
         os.chdir(out)
@@ -31,15 +28,21 @@ class Calliope(Algorithm):
 
     def getInfo():
         ...
+ 
+    def refresh(self, gen_no):
+        self.lss = None
+        self.lss = LSS_v1(self.system_info, gen_no)
 
-    def stop(self):    
-        ...
-    
-    def start(self): 
-        for i in range(self.system_info['steps']):
-            self.create_dataset(i)
-            self.create_section(self.datasets[i], i)
-            self.export_section(self.sections[i], i)
+        self.beatmaker = None
+        self.beatmaker = Ronald_v1(self.system_info)
+
+
+    def run(self, n_tracks): 
+        for i in range(n_tracks):
+            self.init_lss(gen_no=i)
+            self.beatmaker.make_track(self.lss.dataset)
+            self.export_section(self.beatmaker.track, i)
+            self.refresh(i)
         
 def main():
     ...

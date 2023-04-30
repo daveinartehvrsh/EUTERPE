@@ -1,39 +1,111 @@
-from lib.classes import Container, Loop, LoopSelectionSystem
-from lib.abstract import *
+from lib.abstract import AudioComponent, Container, LoopSelectionSystem
 import lib.audio as audio
+from lib.audio import Loop
+import lib.util as util
+from lib.util import DIVIDER
 import random
 import os
 
 class Loopkit(Container):
-                
-    def fill(self, path, n_loops, info):       
-        for i in range(int(n_loops)):
-            loop_name = random.choice(os.listdir(path))
-            loop_path = os.path.join(path, loop_name)
-            data, sr = audio.loadLoop(loop_path)
-            '''if info['bar_lenght']:
-                loops, num = audio.trim_loop(info['bar_lenght'], data)
-                for i in range(num):
-                    loop = Loop(id=0, name=loop_name, data=loops[i], sr=sr, path=path)
-                    loop = audio.stretch(loop, info['bar_lenght'])
-                    self.addItem(loop)'''
-            loop = Loop(id=0, name=loop_name, data=data, sr=sr, path=path)
-            self.addItem(loop)
+              
+    def stretch_loop(self, loop, lenght):
+        loop.tone_stretch(lenght)
 
-    def stretch(self, bar_lenght):
+    def stretch_loop_at_index(self, index, lenght):
+        loop = self.getItems()[index]
+        self.stretch_loop(loop, lenght) 
+
+    def stretch_all(self, bar_lenght):
+        for item in self.getItems():
+            self.stretch_loop(item, bar_lenght)  
+
+    def tune(self, tonality):
+        for item in self.getItems():
+            item_tone = util.extract_tonality_from_str(item.getName())
+            if item_tone is not None:
+                tone_dif = int(util.scale_to_numeric(item_tone)) - int(util.scale_to_numeric(tonality))
+                item.tune(tone_dif)
+                item.setTune(tone_dif)
+
+    def stretch_all(self, bar_lenght):
         for item in self.getItems():
             item.stretch(bar_lenght)
 
+    def trim_loops(self, bar_lenght):
+        for item in self.getItems():
+            loops = audio.trim_loop(data=item, ref_len=bar_lenght, log=True)
+            if loops is not None:
+                for loop in loops:
+                    new_loop = Loop(id=0, name=item.getName(), data=loop, sr=item.sr, path=item.path)
+                    self.addItem(new_loop)
+                self.remove(item)
+
+    def fill(self, path, n_loops, info, log=False):
+
+        if log:
+            print(f'{DIVIDER} STARTING LOOPKIT FILL PROCESS {DIVIDER}\n')
+            print(f'| Filling {self.getName()} loopkit')
+            print(f'| Loading {n_loops} loops from {path}')
+
+        if info['BPM'] != 'auto':  
+            min_len = int(info['sr'] * 60 / info['BPM'] * info['loop_beats'])
+            info['bar_lenght'] = min_len
+
+            if log:
+                print(f'! global bar lenght set to {info["bar_lenght"]/info["sr"]} sec')
+
+        for i in range(int(n_loops)):
+            loop = audio.load_loop_from_path(path=path, sr=info['sr'])
+            if log:
+                print(f'\n-> loaded data: {loop.getName()}')
+            if 'bar_lenght' not in info:
+                min_len = int(info['sr'] * 8)
+                loops = audio.check_min_len(loop, min_len, log=True)
+                
+                info['bar_lenght'] = len(loops[0])
+                if log:
+                    print(f'-> global bar lenght set to {len(loops[0])/loop.sr} sec')
+
+            else:                   
+                loops = audio.check_min_len(loop, info['bar_lenght'], log=True)
+
+            if log and len(loops)>1:
+                    print(f'-> splitted in {len(loops)} loops, adding loops to loopkit')
+            for new_data in loops:                    
+                new_loop = Loop(id=0, name=loop.getName(), data=new_data, sr=loop.sr, path=path)                        
+                self.addItem(new_loop)
+
+        if log:
+            print(f'\n! ! ! LOOPKIT FILL PROCESS COMPLETED {DIVIDER}\n')
+            lk = self.getItems()
+            print(f'\n! {len(lk)} loops added to {self.getName()} loopkit')
+
+
+class Drumkit(Loopkit):
+    def stretch_loop(self, loop, lenght):
+        loop.stretch(lenght)
+        return loop
+
+class Melodykit(Loopkit):
+    def stretch_loop(self, loop, lenght):
+        loop.tone_stretch(lenght)
+        return loop
+
+class Basskit(Loopkit):
+
+    def stretch_loop(self, loop, lenght):
+        loop.tone_stretch(lenght)
+        return loop
+
 class Dataset(Container):
-    pass
 
-class LSS_v1(LoopSelectionSystem):
-
-    def __init__(self, system_info):
+    def __init__(self, system_info=None, name='dataset'):
+        super().__init__(name)
         self.info = {
-            'name': 'LSS_v1'
+            'BPM': system_info['BPM'],
+            'loop_beats': system_info['loop_beats'],
+            'sr': system_info['sr'],
         }
-
         self.drum_kit = {
             'path': system_info['d_path'],
             'n_loops': int(system_info['d_n_loops']),
@@ -48,36 +120,56 @@ class LSS_v1(LoopSelectionSystem):
         }
 
     def create_drum_loopkit(self, name='drums'):
-        loopkit = Loopkit(name)
-        loopkit.fill(path = self.drum_kit['path'], n_loops = self.drum_kit['n_loops'], info=self.info)
-        self.info['bar_lenght'] = loopkit.getHeir().getLen()
-        loopkit.stretch(self.info['bar_lenght'])
+        loopkit = Drumkit(name)
+        loopkit.fill(path = self.drum_kit['path'], n_loops = self.drum_kit['n_loops'], info=self.info, log=True)
+        loopkit.stretch_all(self.info['bar_lenght'])
         return loopkit
     
     def create_melody_loopkit(self, name='melody'):
-        loopkit = Loopkit(name)       
-        loopkit.fill(path = self.melody_kit['path'], n_loops = self.melody_kit['n_loops'], info=self.info)
-        loopkit.stretch(self.info['bar_lenght'])
+        loopkit = Melodykit(name)       
+        loopkit.fill(path = self.melody_kit['path'], n_loops = self.melody_kit['n_loops'], info=self.info, log=True)
+        loopkit.trim_loops(self.info['bar_lenght'])        
+        if 'scale' not in self.info:
+            self.info['scale'] = util.extract_tonality_from_str(loopkit.getHeir().getName()) 
+        loopkit.tune(self.info['scale'])
+        loopkit.stretch_all(self.info['bar_lenght'])        
         return loopkit
     
     def create_bass_loopkit(self, name='bass'):
-        loopkit = Loopkit(name)
-        loopkit.fill(path = self.bass_kit['path'], n_loops = self.bass_kit['n_loops'], info=self.info)
-        loopkit.stretch(self.info['bar_lenght'])
+        loopkit = Basskit(name)
+        loopkit.fill(path = self.bass_kit['path'], n_loops = self.bass_kit['n_loops'], info=self.info, log=True)
+        loopkit.trim_loops(self.info['bar_lenght'])
+        if 'scale' not in self.info:
+            self.info['scale'] = util.extract_tonality_from_str(loopkit.getHeir().getName())            
+        loopkit.tune(self.info['scale'])
+        loopkit.stretch_all(self.info['bar_lenght'])
         return loopkit
 
-    def create_dataset(self, name):
-        dataset = Dataset()
+    def normalize_loops(self, log=False):
+        if log:
+            print(f'{DIVIDER} NORMALIZING LOOPS INSIDE {self.getName()} {DIVIDER}')
+        for item in self.getItems():        
 
+    def fill(self):        
         drum_loopkit = self.create_drum_loopkit()
         melody_loopkit = self.create_melody_loopkit()
         bass_loopkit = self.create_bass_loopkit()
+            
+        self.addItem(drum_loopkit)
+        self.addItem(melody_loopkit)
+        self.addItem(bass_loopkit)
+
+class LSS_v1(LoopSelectionSystem):
+
+    def __init__(self, system_info, gen_no):
+        self.info = {
+            'name': 'LSS_v1',
+            'gen_no': gen_no
+        }
+        self.dataset = Dataset(system_info, gen_no)
     
-        dataset.addItem(drum_loopkit)
-        dataset.addItem(melody_loopkit)
-        dataset.addItem(bass_loopkit)
-        
-        return dataset
+    def init_lss(self):
+        self.dataset.fill()
 
     def getInfo(self):
         return super().getInfo() 
