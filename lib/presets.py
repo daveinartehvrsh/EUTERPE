@@ -18,10 +18,17 @@ def get_system_config():
     system_info['loop_beats'] = configur.getint('system', 'loop_beats')
 
     #   user defined config
-    system_info['bars'] = input('\n| insert lenght of the beat in BARS\n> number of bars: ')
-    system_info['BPM'] = input('\n| insert BPM\n> BPM: ')
+    system_info['bars'] = configur.getint('system', 'bars')
+    if system_info['bars'] == '?':
+        system_info['bars'] = input('\n| insert lenght of the beat in BARS\n> number of bars: ')
+    system_info['BPM'] = configur.get('system', 'BPM')
+    if system_info['BPM'] == '?':
+        system_info['BPM'] = input('\n| insert BPM\n> BPM: ')
     if system_info['BPM'] != 'auto':
         system_info['BPM'] = int(system_info['BPM'])
+    system_info['preset'] = configur.get('system', 'preset')
+    if system_info['preset'] == '?':
+        system_info['preset'] = input('\n| insert preset name\n> preset name: ')
     
     #   tracks config load
     system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')

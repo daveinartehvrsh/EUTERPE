@@ -46,23 +46,22 @@ class Loop(AudioComponent):
 
 def check_min_len(loop, min_len, log=False):
     if log:
-        print(f'| Current lenght: {len(loop.data)/loop.sr} sec')
+        print(f'| audio lenght: {len(loop.data)/loop.sr} sec')
     audio = loop.data
     sr = loop.sr
     ratio = min_len/len(audio)          
-    if ratio > 1.7:
-        repeats = int(ratio+0.8)                   
-        audio = np.repeat(audio, repeats)
+    if ratio > 1.6:                
+        audio = np.append(audio, audio)
         if log:
-            print(f'| Too short at loading: ({(len(audio)/repeats)/sr} sec)')
-            print(f'-> Repeated {repeats} times, difference reduced by {(min_len/sr - (len(audio)/sr)/repeats)-(min_len/sr - len(audio)/sr)} sec\n')
+            print(f'| Too short at loading, lenght after: {len(audio)/loop.sr}')
+            print(f'-> Repeated {2} times, difference reduced by {(min_len/sr - (len(audio)/sr)/2)-(min_len/sr - len(audio)/sr)} sec\n')
         return np.array([audio])
-    elif ratio < 0.3:
+    elif ratio < 0.5:
         midpoint = int((len(audio) / 2) + 0.5) 
         audio2_1 = audio[:midpoint]
         audio2_2 = audio[midpoint:]
         if log:
-            print(f'| Too long at loading: ({len(audio)/sr} sec)') 
+            print(f'| Too long at loading, lenght after: {len(audio2_1)/loop.sr}') 
             print(f'-> Splitted in 2. Difference reduced by {(min_len/sr - (len(audio)/sr))-(len(audio2_1)/sr - min_len/sr)} sec\n')
         return [audio2_1, audio2_2]
     return np.array([audio])
@@ -71,7 +70,7 @@ def stretch(loop, to_len):
     audio = loop.data
     cur_len = len(audio)
     sr = loop.sr
-    stretch_ratio = to_len / cur_len
+    stretch_ratio = to_len/cur_len
     stretched_audio = librosa.resample(y=audio, orig_sr=sr, target_sr=int(sr * stretch_ratio))
     if len(stretched_audio) < to_len:
         padding_len = to_len - len(stretched_audio)
@@ -81,8 +80,8 @@ def stretch(loop, to_len):
 def tone_stretch(loop, to_len):
     audio = loop.data
     cur_len = len(audio)
-    sr = loop.sr
-    stretch_ratio = cur_len / to_len
+    sr = loop.sr  
+    stretch_ratio = to_len/cur_len
     stretched_audio = librosa.effects.time_stretch(y=audio, rate=stretch_ratio)
     if len(stretched_audio) < to_len:
         padding_len = to_len - len(stretched_audio)

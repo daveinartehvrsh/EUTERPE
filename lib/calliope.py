@@ -37,9 +37,16 @@ class Calliope():
         self.beatmaker = Ronald_v1(self.system_info)
 
 
-    def run(self, n_tracks): 
+    def run(self, n_tracks, log=False): 
         for i in range(n_tracks):
+
+            if log:
+                print(f'{DIVIDER} GENERATING TRACK {i} {DIVIDER}\n')
+                print(f'! Starting loop selection...')
             self.init_lss(gen_no=i)
+
+            if log:
+                print(f'! Starting track cration...')
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
             self.refresh(i)

@@ -43,12 +43,11 @@ class Loopkit(Container):
     def fill(self, path, n_loops, info, log=False):
 
         if log:
-            print(f'{DIVIDER} STARTING LOOPKIT FILL PROCESS {DIVIDER}\n')
-            print(f'| Filling {self.getName()} loopkit')
+            print(f'\n! Starting {self.getName()}kit filling process...')
             print(f'| Loading {n_loops} loops from {path}')
 
         if info['BPM'] != 'auto':  
-            min_len = int(info['sr'] * 60 / info['BPM'] * info['loop_beats'])
+            min_len = int(info['sr'] * (60 / info['BPM']) * info['loop_beats']*4)
             info['bar_lenght'] = min_len
 
             if log:
@@ -57,29 +56,26 @@ class Loopkit(Container):
         for i in range(int(n_loops)):
             loop = audio.load_loop_from_path(path=path, sr=info['sr'])
             if log:
-                print(f'\n-> loaded data: {loop.getName()}')
+                print(f'\n! loaded data: {loop.getName()}')
             if 'bar_lenght' not in info:
-                min_len = int(info['sr'] * 8)
+                min_len = int(info['sr'] * 10)
                 loops = audio.check_min_len(loop, min_len, log=True)
                 
                 info['bar_lenght'] = len(loops[0])
                 if log:
-                    print(f'-> global bar lenght set to {len(loops[0])/loop.sr} sec')
+                    print(f'! global bar lenght set to {len(loops[0])/loop.sr} sec')
 
             else:                   
                 loops = audio.check_min_len(loop, info['bar_lenght'], log=True)
 
-            if log and len(loops)>1:
-                    print(f'-> splitted in {len(loops)} loops, adding loops to loopkit')
+            if log:
+                    print(f'! adding {len(loops)} loops to loopkit')
             for new_data in loops:                    
                 new_loop = Loop(id=0, name=loop.getName(), data=new_data, sr=loop.sr, path=path)                        
                 self.addItem(new_loop)
 
         if log:
-            print(f'\n! ! ! LOOPKIT FILL PROCESS COMPLETED {DIVIDER}\n')
-            lk = self.getItems()
-            print(f'\n! {len(lk)} loops added to {self.getName()} loopkit')
-
+            print(f'\n! filling completed successfully\n')
 
 class Drumkit(Loopkit):
     def stretch_loop(self, loop, lenght):
@@ -122,13 +118,14 @@ class Dataset(Container):
     def create_drum_loopkit(self, name='drums'):
         loopkit = Drumkit(name)
         loopkit.fill(path = self.drum_kit['path'], n_loops = self.drum_kit['n_loops'], info=self.info, log=True)
+        #loopkit.trim_loops(self.info['bar_lenght'])  
         loopkit.stretch_all(self.info['bar_lenght'])
         return loopkit
     
     def create_melody_loopkit(self, name='melody'):
         loopkit = Melodykit(name)       
         loopkit.fill(path = self.melody_kit['path'], n_loops = self.melody_kit['n_loops'], info=self.info, log=True)
-        loopkit.trim_loops(self.info['bar_lenght'])        
+        #loopkit.trim_loops(self.info['bar_lenght'])        
         if 'scale' not in self.info:
             self.info['scale'] = util.extract_tonality_from_str(loopkit.getHeir().getName()) 
         loopkit.tune(self.info['scale'])
@@ -138,7 +135,7 @@ class Dataset(Container):
     def create_bass_loopkit(self, name='bass'):
         loopkit = Basskit(name)
         loopkit.fill(path = self.bass_kit['path'], n_loops = self.bass_kit['n_loops'], info=self.info, log=True)
-        loopkit.trim_loops(self.info['bar_lenght'])
+        #loopkit.trim_loops(self.info['bar_lenght'])
         if 'scale' not in self.info:
             self.info['scale'] = util.extract_tonality_from_str(loopkit.getHeir().getName())            
         loopkit.tune(self.info['scale'])
@@ -146,9 +143,11 @@ class Dataset(Container):
         return loopkit
 
     def normalize_loops(self, log=False):
+        return
         if log:
             print(f'{DIVIDER} NORMALIZING LOOPS INSIDE {self.getName()} {DIVIDER}')
         for item in self.getItems():        
+            continue
 
     def fill(self):        
         drum_loopkit = self.create_drum_loopkit()

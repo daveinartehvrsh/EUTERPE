@@ -7,11 +7,14 @@ from rich.progress import track
 
 class LoopSeq(Sequence):
 
-    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False):
+    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False, log=False):
+        
         self.gain = gain
         self.structure = structure
         for i in track(range(loop_rep), 'filling sequence...'):
             loop = random.choice(loopkit)
+            if log:
+                print(f'> {i}: {loop.getName()} > {bool(self.structure[i])} > {tune_scheme[i]}st')
             if tune_scheme[i]:
                 tuned_data = audio.tune(loop, tune_scheme[i])
                 tuned = Loop(id=loop.id, name=loop.name, data=tuned_data, sr=loop.sr, path=loop.path)           
@@ -50,15 +53,18 @@ class Section(Container):
 
         self.drum_track = {
             'gain': system_info['d_gain'],
-            'structure': schemes.make_ranbinary(self.info['loop_rep'], system_info['d_intensity'])
+            'structure': schemes.make_ranbinary(self.info['loop_rep'], system_info['d_intensity']),
+            'intensity': system_info['d_intensity']
         }
         self.melody_track = {
             'gain': system_info['m_gain'],
-            'structure': schemes.make_ones(self.info['loop_rep'])
+            'structure': schemes.make_ones(self.info['loop_rep']),
+            'intensity': system_info['m_intensity']
         }
         self.bass_track = {
             'gain': system_info['b_gain'],
-            'structure': schemes.make_ranbinary(self.info['loop_rep'], system_info['b_intensity'])
+            'structure': schemes.make_ranbinary(self.info['loop_rep'], system_info['b_intensity']),
+            'intensity': system_info['b_intensity']
         }
 
     def set_bar_lenght(self, bar_lenght):
@@ -80,7 +86,7 @@ class Section(Container):
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.drum_track['gain'], 
                      structure=self.drum_track['structure'],
-                     tune_scheme=tune_scheme)
+                     tune_scheme=tune_scheme, log=True)
 
         return loopseq
     
@@ -88,11 +94,11 @@ class Section(Container):
         loopseq = LoopSeq()
         loopseq.setName(loopkit.getName())
         loops = list(loopkit.getItems())
-        tune_scheme = schemes.make_rantune(loop_rep)
+        tune_scheme = schemes.make_rantune(loop_rep, prob=float(self.melody_track['intensity']))
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.melody_track['gain'], 
                      structure=self.melody_track['structure'], 
-                     tune_scheme=tune_scheme)
+                     tune_scheme=tune_scheme, log=True)
         return loopseq
     
     def create_bass_loopseq(self, loopkit, loop_rep):
@@ -103,7 +109,7 @@ class Section(Container):
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.bass_track['gain'], 
                      structure=self.bass_track['structure'],
-                     tune_scheme=tune_scheme)
+                     tune_scheme=tune_scheme, log=True)
         return loopseq
 
     def fill(self, dataset: Dataset):
