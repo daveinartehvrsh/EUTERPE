@@ -1,7 +1,5 @@
 import re
 
-DIVIDER = '-----------------------------'
-
 def bars_to_seconds(num_bars, bpm):
     sec_per_beat = 60 / bpm
     beats_per_bar = 4
@@ -14,13 +12,18 @@ def remove_whitespace(input_string):
     return input_string.replace(" ", "").replace("\t", "").replace("\n", "").replace("\r", "")
 
 def extract_tonality_from_str(string):
+    if string[-4:] == '.wav' or string[:-4] == '.mp3':
+        string = string[:-4]
+
+    elements = string.split('_')
     regex = r'[A-G]{1}(#|b)?(\s)?(min|maj|min7|maj7|7|m|M|Min|Maj)?$'
-    match = re.search(regex, string)
-    if match:
-        tonality = match.group(0)
-        return remove_whitespace(tonality)
-    else:
-        return None
+    for element in elements:
+        match = re.search(regex, element)
+        if match:
+            tonality = match.group(0)
+            return remove_whitespace(tonality)
+        
+    return None
 
 def scale_to_numeric(string):
     if string is None:
@@ -66,3 +69,9 @@ def scale_to_numeric(string):
     else:
         root = tone_map[string[0]]
         return root
+    
+def main():
+    loop_name = 'OS_DRIP_166_Gm_Polyform_Analog_Chords_2.wav'
+    print(extract_tonality_from_str(loop_name))
+if __name__ == "__main__":
+    main()

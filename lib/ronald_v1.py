@@ -1,47 +1,48 @@
-from lib.abstract import *
+from lib.abstract import Container, Sequence, BeatMaker
 from lib.lss_v1 import Loopkit, Dataset, Loop
 import lib.schemes as schemes
 import random
 import lib.audio as audio
-from rich.progress import track
+import numpy as np
+
+import logging
+logger = logging.getLogger('my_logger')
 
 class LoopSeq(Sequence):
 
-    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False, log=False):
+    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False):
         
+        logger.info(f'filling {self.get_name()} sequence')
+
         self.gain = gain
         self.structure = structure
-        for i in track(range(loop_rep), 'filling sequence...'):
+        for i in range(loop_rep):
             loop = random.choice(loopkit)
-            if log:
-                print(f'> {i}: {loop.getName()} > {bool(self.structure[i])} > {tune_scheme[i]}st')
+            if self.structure[i]:
+                logger.info(f' |{i+1}|: {loop.get_name()} > {tune_scheme[i]}st')
+            elif not self.structure[i]:
+                logger.info(f' |{i+1}|: empty')
+            else:
+                logger.error('something strange happened')
             if tune_scheme[i]:
                 tuned_data = audio.tune(loop, tune_scheme[i])
                 tuned = Loop(id=loop.id, name=loop.name, data=tuned_data, sr=loop.sr, path=loop.path)           
-                tuned.setTune(tune_scheme[i])
                 self.add(tuned)
             else:
                 self.add(loop)
+        
+        logger.info(f'Completed {self.get_name()} sequencencing\n')
 
     def render_sequence(self): 
         out = np.array([])
-        for i, item in enumerate(self.getItems()):
+        for i, item in enumerate(self.get_items()):
             gain = self.structure[i] * self.gain
             out = np.append(out, item.data*float(gain))
         
         return out
     
-    def getInfo(self):
-        items = self.getItems()
-        msg = ''
-        for i, item in enumerate(items):
-            loop_str = f'[TUNE: {item.getTune()}'
-            while len(loop_str) < 22:
-                loop_str += ' '
-            loop_str += ']'
-            msg += loop_str
-            
-        print(f'{self.getName()} | loop used: {item.getName()}\n{msg}\n')
+    def get_info(self):
+        ...
 
 class Section(Container):
 
@@ -80,36 +81,36 @@ class Section(Container):
     
     def create_drum_loopseq(self, loopkit, loop_rep):
         loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
+        loopseq.set_name(loopkit.get_name())
+        loops = loopkit.get_items()
         tune_scheme = schemes.make_zeros(loop_rep)
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.drum_track['gain'], 
                      structure=self.drum_track['structure'],
-                     tune_scheme=tune_scheme, log=True)
+                     tune_scheme=tune_scheme)
 
         return loopseq
     
     def create_melody_loopseq(self, loopkit, loop_rep):
         loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
+        loopseq.set_name(loopkit.get_name())
+        loops = loopkit.get_items()
         tune_scheme = schemes.make_rantune(loop_rep, prob=float(self.melody_track['intensity']))
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.melody_track['gain'], 
                      structure=self.melody_track['structure'], 
-                     tune_scheme=tune_scheme, log=True)
+                     tune_scheme=tune_scheme)
         return loopseq
     
     def create_bass_loopseq(self, loopkit, loop_rep):
         loopseq = LoopSeq()
-        loopseq.setName(loopkit.getName())
-        loops = list(loopkit.getItems())
+        loopseq.set_name(loopkit.get_name())
+        loops = loopkit.get_items()
         tune_scheme = schemes.make_zeros(loop_rep)
         loopseq.fill(loopkit=loops, loop_rep = loop_rep, 
                      gain=self.bass_track['gain'], 
                      structure=self.bass_track['structure'],
-                     tune_scheme=tune_scheme, log=True)
+                     tune_scheme=tune_scheme)
         return loopseq
 
     def fill(self, dataset: Dataset):
@@ -118,21 +119,20 @@ class Section(Container):
         melody_seq = self.create_melody_loopseq(dataset.data[1].data, rep)
         bass_seq = self.create_bass_loopseq(dataset.data[2].data, rep)
 
-        self.addItem(drum_seq)
-        self.addItem(melody_seq)
-        self.addItem(bass_seq)
+        self.add_item(drum_seq)
+        self.add_item(melody_seq)
+        self.add_item(bass_seq)
 
     def render_section(self, bar_lenght, loop_rep):
         trackouts = Loopkit()
         beat = np.zeros([bar_lenght*loop_rep])
 
-        for i, item in track(enumerate(self.getItems()), 'rendering section...'):       
+        for i, item in enumerate(self.get_items()):       
             trackout = item.render_sequence()
-            trackouts.addItem(trackout)
+            trackouts.add_item(trackout)
             beat = np.add(beat, trackout)
         return beat, trackouts
     
-
 class Ronald_v1(BeatMaker):
     def __init__(self, system_info):
         self.track = Section(system_info)
@@ -140,5 +140,5 @@ class Ronald_v1(BeatMaker):
     def make_track(self, dataset: Dataset):
         self.track.fill(dataset)
 
-    def getInfo():
+    def get_info():
         ...

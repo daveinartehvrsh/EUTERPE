@@ -1,22 +1,21 @@
 from abc import ABC, abstractmethod
-import numpy as np
 
 class Component(ABC):
 
-    def setName(self, name):
+    def set_name(self, name):
         self.name = name
 
-    def getName(self):
+    def get_name(self):
         return self.name
     
-    def setData(self, data):
+    def set_data(self, data):
         self.data = data
 
-    def getData(self):
+    def get_data(self):
         return self.data
     
     @abstractmethod
-    def getInfo(self):
+    def get_info(self):
         ...
 
 class AudioComponent(Component):
@@ -84,13 +83,13 @@ class Sequence(Component):
                 this_node = this_node.next_node
         return False
     
-    def getHeir(self):
-        return self.root.data
+    def get_heir(self):
+        return self.root.get_data()
     
-    def getInfo(self):
+    def get_info(self):
         if self.root is None:
             return 'empty sequence'
-        print(f'{self.getName()} - |', end='')
+        print(f'{self.get_name()} - |', end='')
         this_node = self.root
         print(this_node, end='')
         while this_node.next_node is not None:
@@ -98,7 +97,7 @@ class Sequence(Component):
             print(this_node, end='')
         print()
 
-    def getItems(self):
+    def get_items(self):
         this_node = self.root
         array=[]
         while this_node.next_node is not None:           
@@ -115,9 +114,9 @@ class ContainerNode(Component):
     def __str__(self):  
         return f'({self.data})'
     
-    def getInfo(self):
+    def get_info(self):
         if isinstance(self.data, Component):
-            return self.data.getInfo()
+            return self.data.get_info()
         else:
             print('(audio)')
             
@@ -143,38 +142,38 @@ class Container(Component):
         self.size = 0
         self.data = []
 
-    def getSize(self):
+    def get_size(self):
         return self.size
 
-    def addItem(self, item):
-        self.data.append(ContainerNode(item, self.getName()))
+    def add_item(self, item):
+        self.data.append(ContainerNode(item, self.get_name()))
         if self.size == 0:
             self.heir = item
         self.size += 1
 
-    def getHeir(self):
-        return self.heir.getHeir()
+    def get_heir(self):
+        return self.heir.get_heir()
 
     def get_nodes(self):
         return self.data
     
-    def getItems(self):
+    def get_items(self):
         array=[]
         for item in self.get_nodes():
             array.append(item.data)
         return array
     
-    def getInfo(self):
-        print(self.getName())
+    def get_info(self):
+        print(self.get_name())
         for x in self.data: 
-            x.getInfo()
+            x.get_info()
 
     def __iter__(self):
         return ContainerIter(self)
     
     def remove(self, item):
-        for x in self.data:
-            if x.data == item:
+        for x in self.get_data():
+            if x.get_data() == item:
                 self.data.remove(x)
                 self.size -= 1
                 return True
