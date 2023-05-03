@@ -1,0 +1,93 @@
+2023-05-02 21:49:13,894 WARNING: ----------------------------- GENERATING TRACK 0 -----------------------------
+
+2023-05-02 21:49:13,895 INFO: Starting loop selection...
+2023-05-02 21:49:13,896 INFO: Starting basskit filling process...
+2023-05-02 21:49:13,896 INFO: Loading 2 loops from data\01_23\ronald\bass
+2023-05-02 21:49:14,968 WARNING: loaded data: OS_RND_144_808_bass_kiss_F#m.wav
+2023-05-02 21:49:14,969 INFO: tonality detected: D
+2023-05-02 21:49:14,969 INFO: Tonality set to D as OS_RND_144_808_bass_kiss_F#m.wav
+2023-05-02 21:49:15,319 INFO: Tuned OS_RND_144_808_bass_kiss_F#m.wav to D > 0st
+2023-05-02 21:49:15,320 DEBUG: Audio lenght: 13.333015873015873 sec
+2023-05-02 21:49:15,321 INFO: global bar lenght set to 13.333015873015873 sec
+2023-05-02 21:49:15,322 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:15,570 WARNING: loaded data: OS_RND_142_808_bass_heartless_Am.wav
+2023-05-02 21:49:15,571 INFO: tonality detected: D
+2023-05-02 21:49:15,869 INFO: Tuned OS_RND_142_808_bass_heartless_Am.wav to D > 0st
+2023-05-02 21:49:15,869 DEBUG: Audio lenght: 13.521020408163265 sec
+2023-05-02 21:49:15,870 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:15,870 INFO: Filling bass completed successfully
+
+2023-05-02 21:49:16,045 INFO: Starting drumskit filling process...
+2023-05-02 21:49:16,045 INFO: Loading 3 loops from data\01_23\ronald\drums
+2023-05-02 21:49:16,255 WARNING: loaded data: OS_RND_140_no_kick_snare_loop_flow.wav
+2023-05-02 21:49:16,256 INFO: tonality detected: D
+2023-05-02 21:49:16,562 INFO: Tuned OS_RND_140_no_kick_snare_loop_flow.wav to D > 0st
+2023-05-02 21:49:16,562 DEBUG: Audio lenght: 13.714013605442178 sec
+2023-05-02 21:49:16,563 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:16,715 WARNING: loaded data: OS_RND_140_drum_loop_poppin.wav
+2023-05-02 21:49:16,715 INFO: tonality detected: D
+2023-05-02 21:49:17,018 INFO: Tuned OS_RND_140_drum_loop_poppin.wav to D > 0st
+2023-05-02 21:49:17,019 DEBUG: Audio lenght: 13.714013605442178 sec
+2023-05-02 21:49:17,019 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:17,191 WARNING: loaded data: OS_RCK_140_drum_loop_diana.wav
+2023-05-02 21:49:17,192 DEBUG: Audio lenght: 6.857006802721089 sec
+2023-05-02 21:49:17,193 INFO: Too short at loading, lenght after: 13.714013605442178
+2023-05-02 21:49:17,193 WARNING: Repeated 2 times, difference reduced by 6.857006802721089 sec
+2023-05-02 21:49:17,194 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:17,194 INFO: Filling drums completed successfully
+
+2023-05-02 21:49:17,657 INFO: Starting melodykit filling process...
+2023-05-02 21:49:17,657 INFO: Loading 2 loops from data\01_23\ronald\melody
+2023-05-02 21:49:17,896 WARNING: loaded data: jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav
+2023-05-02 21:49:17,896 INFO: tonality detected: Ebmaj
+2023-05-02 21:49:18,583 INFO: Tuned jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav to D > -1st
+2023-05-02 21:49:18,584 DEBUG: Audio lenght: 20.093015873015872 sec
+2023-05-02 21:49:18,585 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:18,782 WARNING: loaded data: jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav
+2023-05-02 21:49:18,782 INFO: tonality detected: Ebmaj
+2023-05-02 21:49:19,010 INFO: Tuned jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav to D > -1st
+2023-05-02 21:49:19,011 DEBUG: Audio lenght: 5.6250113378684805 sec
+2023-05-02 21:49:19,012 INFO: Too short at loading, lenght after: 11.250022675736961
+2023-05-02 21:49:19,013 WARNING: Repeated 2 times, difference reduced by 5.6250113378684805 sec
+2023-05-02 21:49:19,014 INFO: Adding 1 loops to loopkit
+2023-05-02 21:49:19,014 INFO: Filling melody completed successfully
+
+2023-05-02 21:49:19,557 INFO: Starting track creation...
+2023-05-02 21:49:19,557 INFO: filling drums sequence
+2023-05-02 21:49:19,558 INFO:  |1|: empty
+2023-05-02 21:49:19,558 INFO:  |2|: empty
+2023-05-02 21:49:19,558 INFO:  |3|: OS_RND_140_no_kick_snare_loop_flow.wav > 0st
+2023-05-02 21:49:19,559 INFO:  |4|: OS_RCK_140_drum_loop_diana.wav > 0st
+2023-05-02 21:49:19,559 INFO:  |5|: empty
+2023-05-02 21:49:19,559 INFO:  |6|: empty
+2023-05-02 21:49:19,559 INFO:  |7|: OS_RND_140_drum_loop_poppin.wav > 0st
+2023-05-02 21:49:19,560 INFO:  |8|: empty
+2023-05-02 21:49:19,560 INFO: Completed drums sequencencing
+
+2023-05-02 21:49:19,560 INFO: filling melody sequence
+2023-05-02 21:49:19,560 INFO:  |1|: jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav > 0st
+2023-05-02 21:49:19,561 INFO:  |2|: jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav > 0st
+2023-05-02 21:49:19,561 INFO:  |3|: jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav > 0st
+2023-05-02 21:49:19,561 INFO:  |4|: jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav > 0st
+2023-05-02 21:49:19,561 INFO:  |5|: jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav > 0st
+2023-05-02 21:49:19,562 INFO:  |6|: jc_ss_215_loop_beautiful_light_2_piano_3_Ebmaj.wav > 0st
+2023-05-02 21:49:19,562 INFO:  |7|: jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav > 0st
+2023-05-02 21:49:19,562 INFO:  |8|: jc_ss_128_loop_walk_up_loud_full_Ebmaj.wav > 0st
+2023-05-02 21:49:19,562 INFO: Completed melody sequencencing
+
+2023-05-02 21:49:19,563 INFO: filling bass sequence
+2023-05-02 21:49:19,563 INFO:  |1|: empty
+2023-05-02 21:49:19,563 INFO:  |2|: empty
+2023-05-02 21:49:19,563 INFO:  |3|: OS_RND_142_808_bass_heartless_Am.wav > 0st
+2023-05-02 21:49:19,564 INFO:  |4|: OS_RND_142_808_bass_heartless_Am.wav > 0st
+2023-05-02 21:49:19,564 INFO:  |5|: empty
+2023-05-02 21:49:19,564 INFO:  |6|: empty
+2023-05-02 21:49:19,564 INFO:  |7|: OS_RND_142_808_bass_heartless_Am.wav > 0st
+2023-05-02 21:49:19,564 INFO:  |8|: empty
+2023-05-02 21:49:19,565 INFO: Completed bass sequencencing
+
+2023-05-02 21:49:19,565 INFO: rendering track no° 0
+2023-05-02 21:49:19,809 INFO: Output folder: D:\calliope\dev\data\output
+2023-05-02 21:49:19,994 INFO: Track exported at: <built-in function getcwd>/0.wav | lenght: 106.66412698412698 sec
+2023-05-02 21:49:20,435 INFO: Trackouts exported at D:\calliope\dev\data\output\ronald_0\stems
+

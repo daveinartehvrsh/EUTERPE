@@ -40,7 +40,7 @@ class Calliope():
             os.chdir(f'{new_dir}_{cur_time}')
                    
         audio.export(name=(f'{name}.wav'),audio=beat)
-        logger.info(f'Track exported at: {os.getcwd}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
+        logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
         if len(trackouts.get_data()) > 0:
             os.mkdir('stems')
             os.chdir('stems')
