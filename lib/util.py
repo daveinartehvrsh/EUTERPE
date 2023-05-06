@@ -1,4 +1,40 @@
 import re
+import os.path
+import pandas as pd
+
+def loop_to_CSV(input_string, csv_file=None):
+    
+    # Apply the subfunctions to the input string
+    result1 = input_string
+    result2 = scale_to_numeric(extract_tonality_from_str(input_string))
+    
+
+    new_row = pd.DataFrame({
+        'Subfunction 1 Output': [result1],
+        'Subfunction 2 Output': [result2],
+    })
+
+    # Check if a CSV file was provided
+        # check if the CSV file already exists
+    if csv_file:
+        try:
+            # if it does, read the existing data into a DataFrame
+            existing_data = pd.read_csv(csv_file)
+        except FileNotFoundError:
+            # if the file doesn't exist, create an empty DataFrame
+            existing_data = pd.DataFrame()
+        
+        # concatenate the new row to the existing DataFrame
+        combined_data = pd.concat([existing_data, new_row], ignore_index=True)
+        
+        # write the combined DataFrame to the CSV file
+        combined_data.to_csv(csv_file, index=False)
+    else:
+        # if no CSV file is provided, simply print the new row
+        csv_file = 'dataset.csv'
+        new_row.to_csv(csv_file, index=False)
+        print(f"CSV file created: {csv_file}")
+
 
 def bars_to_seconds(num_bars, bpm):
     sec_per_beat = 60 / bpm

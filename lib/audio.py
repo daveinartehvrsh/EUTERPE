@@ -65,14 +65,14 @@ def check_min_len(loop, min_len):
     audio = loop.data
     sr = loop.sr
     ratio = min_len/len(audio)          
-    if ratio > 1.6:                        
+    if ratio > 1.4:                        
         audio = np.append(audio, audio)
 
         logger.info(f'Too short at loading, lenght after: {len(audio)/loop.sr}')
         logger.warning(f'Repeated {2} times, difference reduced by {(min_len/sr - (len(audio)/sr)/2)-(min_len/sr - len(audio)/sr)} sec')
         
         return np.array([audio])
-    elif ratio < 0.5:
+    elif ratio < 0.7:
         midpoint = int((len(audio) / 2) + 0.5) 
         audio2_1 = audio[:midpoint]
         audio2_2 = audio[midpoint:]

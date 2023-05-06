@@ -3,3 +3,5 @@ lib\__pycache__
 data\output
 
 __pycache__
+*.wav
+*.txt

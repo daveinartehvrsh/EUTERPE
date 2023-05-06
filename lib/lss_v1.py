@@ -43,10 +43,10 @@ class Loopkit(Container):
         for i in range(int(n_loops)):
             loop = audio.load_loop_from_path(path=path, sr=sr)
 
-            logger.warning(f'loaded data: {loop.get_name()}')
+            logger.info(f'loaded data: {loop.get_name()}')
 
             loop_tone = util.extract_tonality_from_str(loop.get_name())
-            if loop_tone is not None:
+            if loop_tone is not None and not isinstance(self, Drumkit):
                 logger.info(f'tonality detected: {loop_tone}')
                 if 'scale' not in info:
                     info['scale'] = util.extract_tonality_from_str(loop.get_name())
