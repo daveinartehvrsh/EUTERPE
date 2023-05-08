@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 
+import logging
+logger = logging.getLogger('my_logger')
+
 class Component(ABC):
 
     def set_name(self, name):
@@ -14,6 +17,12 @@ class Component(ABC):
     def get_data(self):
         return self.data
     
+    def get_len(self):
+        return len(self.data)
+    
+    def __len__(self):
+        return self.get_len(self)
+
     @abstractmethod
     def get_info(self):
         ...
@@ -114,6 +123,12 @@ class ContainerNode(Component):
     def __str__(self):  
         return f'({self.data})'
     
+    def get_heir(self):
+        if isinstance(self.data, (Container, Sequence)):
+            return self.data[0]
+        else:
+            return self.data
+
     def get_info(self):
         if isinstance(self.data, Component):
             return self.data.get_info()
@@ -150,9 +165,11 @@ class Container(Component):
         if self.size == 0:
             self.heir = item
         self.size += 1
+        if isinstance(item, Component):
+            logger.debug(f'added item: "{item.get_name()}" to "{self.get_name()}" Container')
 
     def get_heir(self):
-        return self.heir.get_heir()
+        return self.get_data()[0].get_heir()
 
     def get_nodes(self):
         return self.data
@@ -183,6 +200,6 @@ class BeatMaker(Algorithm):
     def create_section(self, name):
         ...
 
-class LoopSelectionSystem(Algorithm):
+class AudioSelectionSystem(Algorithm):
     def create_dataset(self, name):
         ...

@@ -4,14 +4,12 @@ import pandas as pd
 
 def loop_to_CSV(input_string, csv_file=None):
     
-    # Apply the subfunctions to the input string
     result1 = input_string
     result2 = scale_to_numeric(extract_tonality_from_str(input_string))
-    
 
     new_row = pd.DataFrame({
-        'Subfunction 1 Output': [result1],
-        'Subfunction 2 Output': [result2],
+        'Loop name': [result1],
+        'Scale': [result2],
     })
 
     # Check if a CSV file was provided
@@ -109,5 +107,6 @@ def scale_to_numeric(string):
 def main():
     loop_name = 'OS_DRIP_166_Gm_Polyform_Analog_Chords_2.wav'
     print(extract_tonality_from_str(loop_name))
+    
 if __name__ == "__main__":
     main()

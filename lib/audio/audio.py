@@ -9,23 +9,47 @@ import logging
 logger = logging.getLogger('my_logger')
 
 class Loop(AudioComponent):
-    def __init__(self, id: int, name: str, data, sr: int, path: str, tune_st: int = 0):
+    def __init__(self, id: int, name: str, data, sr: int, path: str, st_shift: int = 0, scale: int = None):
         self.id = id
         self.name = name
         self.data = data
         self.sr = sr
         self.path = path
-        self.tune_st = tune_st
+        self.st_shift = st_shift
+        self.scale = scale
+        self.gain = 1
     
-    def tune(self, tune_st):
-        self.set_data(tune(self, tune_st))
-        self.tune_st += tune_st
+    def trim(self, lenght):
+        loops = trim_loop(self, lenght)
+        self.set_data(loops[0])
+        if len(loops) > 1:
+            return loops
+        return None
 
-    def tone_stretch(self, bar_lenght):
-        self.set_data(tone_stretch(self, bar_lenght))
+    def tune(self, st_shift):
+        self.set_data(tune(self, st_shift))
+        self.st_shift += st_shift
 
-    def stretch(self, bar_lenght):
-        self.set_data(stretch(self, bar_lenght))
+    def stretch(self, bar_lenght, mode='key'):
+        if mode == 'key':
+            self.set_data(stretch_key(self, bar_lenght))
+        elif mode == 'resample':
+            self.set_data(stretch_resample(self, bar_lenght))
+
+    def normalize(self):
+        self.set_data(normalize(self))
+
+    def set_scale(self, scale):
+        self.scale = scale
+
+    def get_scale(self):
+        return self.scale
+
+    def set_gain(self, gain):
+        self.gain = gain
+
+    def get_gain(self):
+        return self.gain
 
     def get_sr(self):
         return self.sr
@@ -34,14 +58,17 @@ class Loop(AudioComponent):
         return self.id
 
     def get_tune(self):
-        return self.tune_st
+        return self.st_shift
 
-    def get_len(self):
-        return len(self.data)
-    
     def get_path(self):
         return self.path
 
+    def get_repr(self):
+        return f'{self.get_tune()}'
+    
+    def get_heir(self):
+        return self
+    
     def get_info(self):
         info = {
             'id': self.get_id(),
@@ -49,30 +76,32 @@ class Loop(AudioComponent):
             'data': self.data,
             'sr': self.sr,
             'path': self.get_path(),
-            'tune': self.get_tune()
+            'scale': self.scale,
+            'st_shift': self.get_tune(),
+            'gain': self.get_gain()
         }
 
-    def get_repr(self):
-        return f'{self.get_tune()}'
-    
-    def get_heir(self):
-        return self
+def normalize(loop):
+    data = loop.get_data()
+    loop.set_data(data)
+    return data
 
-def check_min_len(loop, min_len):
+def trim_loop(loop, min_len):
 
     logger.debug(f'Audio lenght: {len(loop.get_data())/loop.sr} sec')
 
     audio = loop.data
     sr = loop.sr
     ratio = min_len/len(audio)          
-    if ratio > 1.4:                        
-        audio = np.append(audio, audio)
+    if ratio > 1.7:
+        array = audio                       
+        audio = np.append(audio, array)
 
         logger.info(f'Too short at loading, lenght after: {len(audio)/loop.sr}')
         logger.warning(f'Repeated {2} times, difference reduced by {(min_len/sr - (len(audio)/sr)/2)-(min_len/sr - len(audio)/sr)} sec')
         
         return np.array([audio])
-    elif ratio < 0.7:
+    elif ratio < 0.5:
         midpoint = int((len(audio) / 2) + 0.5) 
         audio2_1 = audio[:midpoint]
         audio2_2 = audio[midpoint:]
@@ -83,7 +112,7 @@ def check_min_len(loop, min_len):
         return [audio2_1, audio2_2]
     return np.array([audio])
 
-def stretch(loop, to_len):
+def stretch_resample(loop, to_len):
     audio = loop.data
     cur_len = len(audio)
     sr = loop.sr
@@ -94,7 +123,7 @@ def stretch(loop, to_len):
         stretched_audio = np.pad(stretched_audio, (0, padding_len), mode='constant')
     return stretched_audio[:to_len]
 
-def tone_stretch(loop, to_len):
+def stretch_key(loop, to_len):
     audio = loop.data
     cur_len = len(audio)
     sr = loop.sr  
@@ -119,28 +148,6 @@ def load_loop_from_path(path, sr):
     data, sr = loadLoop(loop_path, sr)           
     loop = Loop(id=0, name=loop_name, data=data, sr=sr, path=path)
     return loop
-
-def trim_loop(ref_len, data):
-    audio = data.data
-    ratio = ref_len / len(audio)
-    if  ratio > 1.2:
-        audio = np.repeat(audio, 2)
-
-        logger.info(f'Too short: {len(audio)/2*data.sr}. Ratio = {ratio} | Reference lenght: {ref_len/data.sr} sec')
-        logger.warning(f'Audio doubled. Difference reduced by {(ref_len/data.sr - (len(audio)/data.sr)/2)-(ref_len/data.sr - len(audio)/data.sr)} sec')       
-
-        return np.array([audio])
-    elif ratio < 0.6:
-        midpoint = int((len(audio) / 2) + 0.5) 
-        audio2_1 = audio[:midpoint]
-        audio2_2 = audio[midpoint:]
-
-        logger.info(f'Too long: {len(audio)/data.sr}. Ratio = {ratio}')
-        logger.warning(f'Divided in half. Difference reduced by {(ref_len/data.sr - midpoint*2/data.sr)-(ref_len/data.sr - midpoint/data.sr)} sec')
-
-        return [audio2_1, audio2_2]
-    else:    
-        return None
 
 def export(name = 'test.wav', audio=[], sr=48000):
     sf.write(name, audio, sr, 'PCM_16')

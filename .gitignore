@@ -1,9 +1,8 @@
-lib\__pycache__
-
 data\output\*
 
-__pycache__
 *.wav
 *.jpg
 *.mp4
 *.txt
+
+*\__pycache__

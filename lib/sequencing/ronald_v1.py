@@ -133,7 +133,7 @@ class Section(Container):
             beat = np.add(beat, trackout)
         return beat, trackouts
     
-class Ronald_v1(BeatMaker):
+class Ronald(BeatMaker):
     def __init__(self, system_info):
         self.track = Section(system_info)
 
