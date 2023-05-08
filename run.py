@@ -1,8 +1,8 @@
 from lib.calliope import Calliope
-import lib.presets as presets
+import lib.utils.presets as presets
 import time
 import logging
-import lib.log_info
+import lib.utils.log_info
 
 logger = logging.getLogger('my_logger')
 

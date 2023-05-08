@@ -1,7 +1,7 @@
-from lib.abstract import Container, LoopSelectionSystem
-import lib.audio as audio
-from lib.audio import Loop
-import lib.util as util
+from lib.components.abstract import Container, LoopSelectionSystem
+import lib.audio.audio as audio
+from lib.audio.audio import Loop
+import lib.utils.util as util
 
 import logging
 logger = logging.getLogger('my_logger')

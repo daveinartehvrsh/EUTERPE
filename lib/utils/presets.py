@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+import os
 
 def get_presets():
     config = ConfigParser()
@@ -14,7 +15,10 @@ def get_system_config():
     #   system config load
     system_info['preset name'] = 'default'
     system_info['sr'] = configur.getint('system', 'sr')
-    system_info['outputfolder'] = configur.get('system', 'outputfolder')
+    base_dir = configur.get('system', 'basedir')
+
+    system_info['outputfolder'] = os.path.join(base_dir, configur.get('system', 'outputfolder'))
+    system_info['datasetfolder'] = os.path.join(base_dir, configur.get('system', 'datasetfolder'))
     system_info['loop_beats'] = configur.getint('system', 'loop_beats')
 
     #   user defined config

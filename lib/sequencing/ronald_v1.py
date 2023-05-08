@@ -1,8 +1,8 @@
-from lib.abstract import Container, Sequence, BeatMaker
-from lib.lss_v1 import Loopkit, Dataset, Loop
-import lib.schemes as schemes
+from lib.components.abstract import Container, Sequence, BeatMaker
+from lib.selection.lss_v1 import Loopkit, Dataset, Loop
+import lib.utils.schemes as schemes
 import random
-import lib.audio as audio
+import lib.audio.audio as audio
 import numpy as np
 
 import logging

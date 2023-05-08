@@ -1,10 +1,10 @@
-import lib.audio as audio
-from lib.ronald_v1 import Ronald_v1, Section
-from lib.lss_v1 import LSS_v1
+import lib.audio.audio as audio
+from lib.sequencing.ronald_v1 import Ronald_v1, Section
+from lib.selection.lss_v1 import LSS_v1
 import os
 import time as time
 
-from lib.log_info import DIVIDER
+from lib.utils.log_info import DIVIDER
 import logging
 logger = logging.getLogger('my_logger')
 

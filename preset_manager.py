@@ -1,5 +1,5 @@
-import lib.util as util
-import lib.audio as audio
+import lib.utils.util as util
+import lib.audio.audio as audio
 import os 
 
 ANALYSIS_DIR = 'data\\01_23'

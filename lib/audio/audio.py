@@ -1,5 +1,5 @@
 import librosa
-from lib.abstract import AudioComponent
+from lib.components.abstract import AudioComponent
 import soundfile as sf
 import numpy as np
 import random
