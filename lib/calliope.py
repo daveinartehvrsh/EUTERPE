@@ -24,7 +24,6 @@ class Calliope():
         logger.info(f'rendering track no. {name}')    
         beat, trackouts = section.render_section(self.lss.dataset.info['bar_lenght'], 
                                                  self.beatmaker.track.info['loop_rep'])
-        
         os.chdir(self.system_info['outputdirectory'])         
         audio.export(name=(f'{name}.wav'),audio=beat)
         logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')

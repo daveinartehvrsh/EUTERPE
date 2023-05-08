@@ -28,7 +28,7 @@ def get_system_config():
         system_info['BPM'] = int(system_info['BPM'])
     system_info['preset'] = configur.get('system', 'preset')
     if system_info['preset'] == '?':
-        system_info['preset'] = input('> Select preset [default, benny, ronald, sutoru]\n! ')
+        system_info['preset'] = input('> Select preset\n! ')
     
     #   tracks config load
     system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')
