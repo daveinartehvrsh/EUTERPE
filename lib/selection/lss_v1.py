@@ -20,14 +20,17 @@ class Dataset(Container):
         self.drum_kit = {
             'path': system_info['d_path'],
             'n_loops': int(system_info['d_n_loops']),
+            'gain': system_info['d_gain'],
         }
         self.melody_kit = {
             'path': system_info['m_path'],
             'n_loops': int(system_info['m_n_loops']),
+            'gain': system_info['m_gain'],
         }
         self.bass_kit = {
             'path': system_info['b_path'],
             'n_loops': int(system_info['b_n_loops']),
+            'gain': system_info['b_gain'],
         }
 
     def init_loopkit(self, name='loopkit'):
@@ -47,16 +50,16 @@ class Dataset(Container):
             logger.info(f'      Stretched {item.get_name()} loopkit to normalize lenghts to {self.get_heir().get_len()} samples')
 
     def fill(self):
-        kits = [('bass', self.bass_kit['n_loops']), 
-                ('drums',self.drum_kit['n_loops']), 
-                ('melody', self.melody_kit['n_loops'])]
+        kits = [('bass', self.bass_kit['n_loops'], self.bass_kit['gain']), 
+                ('drums',self.drum_kit['n_loops'], self.drum_kit['gain']), 
+                ('melody', self.melody_kit['n_loops'], self.melody_kit['gain'])]
         
         for i, kit in enumerate(kits):
             loopkit = self.init_loopkit(kit[0])
             path = os.path.join(self.info['path'], kit[0])
             loopkit.fill(path=path, n_loops=kit[1], info=self.info)
             loopkit.normalize_loop_length(info=self.info)
-            loopkit.normalize_amplitude()
+            loopkit.normalize_amplitude(gain=kit[2])
             self.add_item(loopkit)
         
         self.normalize_length()

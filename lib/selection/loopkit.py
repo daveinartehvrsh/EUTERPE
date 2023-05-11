@@ -58,11 +58,12 @@ class Loopkit(Container):
             if loops is not None:
                 for new_data in loops:
                     new_loop = Loop(id=0, name=item.get_name(), data=new_data, sr=info['sr'], path=item.get_path())
+                    
                     self.add_item(new_loop)
 
-    def normalize_amplitude(self):
+    def normalize_amplitude(self, gain):
         for item in self.get_items():
-            item.normalize()
+            item.normalize(gain)
 
 class Drumkit(Loopkit):
     def stretch(self, lenght):

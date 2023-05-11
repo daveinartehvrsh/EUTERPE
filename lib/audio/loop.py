@@ -33,14 +33,24 @@ class Loop(AudioComponent):
         elif mode == 'resample':
             self.set_data(audio.stretch_resample(self, bar_lenght))
 
-    def normalize(self):
-        self.set_data(audio.normalize(self))
-
+    def normalize(self, gain=None):
+        if gain is not None:
+            self.set_gain_db(gain)
+            self.set_data(audio.normalize(self)*self.get_gain())
+            logger.info(f'      Normalized {self.get_name()} to -{self.get_gain()} dB')
+        else:    
+            self.set_data(audio.normalize(self))
+            logger.info(f'      Normalized {self.get_name()} to 0 dB')
+        
     def set_scale(self, scale):
         self.scale = scale
 
     def get_scale(self):
         return self.scale
+
+    def set_gain_db(self, db_reduction):
+        amplitude_reduction = 10 ** (-float(db_reduction) / 20)
+        self.gain = amplitude_reduction
 
     def set_gain(self, gain):
         self.gain = gain

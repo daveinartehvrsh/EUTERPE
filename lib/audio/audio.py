@@ -71,8 +71,3 @@ def load_loop_from_path(path, sr):
 
 def export(name = 'test.wav', audio=[], sr=48000):
     sf.write(name, audio, sr, 'PCM_16')
-
-def main():
-    ...   
-if __name__ == "__main__":
-    main()

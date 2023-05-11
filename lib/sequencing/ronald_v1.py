@@ -10,7 +10,7 @@ import numpy as np
 import logging
 logger = logging.getLogger('my_logger')
 
-class LoopSeq(Sequence):
+class Trackout(Sequence):
 
     def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False):
         
@@ -38,7 +38,7 @@ class LoopSeq(Sequence):
     def render_sequence(self): 
         out = np.array([])
         for i, item in enumerate(self.get_items()):
-            gain = self.structure[i] * self.gain
+            gain = self.structure[i]# * self.gain
             out = np.append(out, item.data*float(gain))
         
         return out
@@ -46,7 +46,7 @@ class LoopSeq(Sequence):
     def get_info(self):
         ...
 
-class Section(Container):
+class Mixer(Container):
 
     def __init__(self, system_info, name='section_as_a_track'):
         super().__init__(name)
@@ -82,7 +82,7 @@ class Section(Container):
         return structure
     
     def create_drum_loopseq(self, loopkit, loop_rep):
-        loopseq = LoopSeq()
+        loopseq = Trackout()
         loopseq.set_name(loopkit.get_name())
         loops = loopkit.get_items()
         tune_scheme = schemes.make_zeros(loop_rep)
@@ -94,7 +94,7 @@ class Section(Container):
         return loopseq
     
     def create_melody_loopseq(self, loopkit, loop_rep):
-        loopseq = LoopSeq()
+        loopseq = Trackout()
         loopseq.set_name(loopkit.get_name())
         loops = loopkit.get_items()
         tune_scheme = schemes.make_rantune(loop_rep, prob=float(self.melody_track['intensity']))
@@ -105,7 +105,7 @@ class Section(Container):
         return loopseq
     
     def create_bass_loopseq(self, loopkit, loop_rep):
-        loopseq = LoopSeq()
+        loopseq = Trackout()
         loopseq.set_name(loopkit.get_name())
         loops = loopkit.get_items()
         tune_scheme = schemes.make_zeros(loop_rep)
@@ -142,7 +142,7 @@ class Section(Container):
     
 class Ronald(BeatMaker):
     def __init__(self, system_info):
-        self.track = Section(system_info)
+        self.track = Mixer(system_info)
 
     def make_track(self, dataset: Dataset):
         self.track.fill(dataset)
