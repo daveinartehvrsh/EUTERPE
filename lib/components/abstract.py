@@ -125,7 +125,7 @@ class ContainerNode(Component):
     
     def get_heir(self):
         if isinstance(self.data, (Container, Sequence)):
-            return self.data[0]
+            return self.data.get_heir()
         else:
             return self.data
 
@@ -166,7 +166,7 @@ class Container(Component):
             self.heir = item
         self.size += 1
         if isinstance(item, Component):
-            logger.debug(f'added item: "{item.get_name()}" to "{self.get_name()}" Container')
+            logger.debug(f'     added item: "{item.get_name()}" to "{self.get_name()}" Container')
 
     def get_heir(self):
         return self.get_data()[0].get_heir()

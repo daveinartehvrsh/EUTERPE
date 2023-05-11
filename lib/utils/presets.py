@@ -15,7 +15,7 @@ def get_system_config():
     #   system config load
     system_info['preset name'] = 'default'
     system_info['sr'] = configur.getint('system', 'sr')
-
+    system_info['dataset_path'] = configur.get('system', 'dataset_path')
     system_info['outputfolder'] = configur.get('system', 'outputfolder')
     system_info['loop_beats'] = configur.getint('system', 'loop_beats')
 

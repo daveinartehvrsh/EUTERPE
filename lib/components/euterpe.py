@@ -22,8 +22,7 @@ class Euterpe():
     
     def export_section(self, section: Section, name):
         logger.info(f'rendering track no. {name}')    
-        beat, trackouts = section.render_section(self.lss.dataset.info['bar_lenght'], 
-                                                 self.beatmaker.track.info['loop_rep'])
+        beat, trackouts = section.render_section(self.lss.dataset.get_heir().get_len())
         os.chdir(self.system_info['outputdirectory'])         
         audio.export(name=(f'{name}.wav'),audio=beat)
         logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
@@ -67,8 +66,7 @@ class Euterpe():
         self.beatmaker = None
         self.beatmaker = Ronald(self.system_info)
 
-    def context_init(self):
-        
+    def context_init(self):        
         self.system_info["basefolder"] = os.getcwd()
         os.chdir(self.system_info['outputfolder'])
         gen_dir = f'{time.strftime("%m_%d__%H_%M_%S", time.localtime())}'
@@ -78,9 +76,7 @@ class Euterpe():
         os.chdir(self.system_info["basefolder"])
 
     def run(self, n_tracks): 
-
         formatter = logging.Formatter('%(asctime)s> %(message)s')
-
         self.context_init()
 
         for i in range(n_tracks):
@@ -92,14 +88,8 @@ class Euterpe():
             logger.addHandler(file_handler)
             logger.warning(f'STARTING GENERATION OF TRACK {i}')
             logger.info(f'Starting loop selection...')
-
             self.init_lss(gen_no=i)
-
             logger.info(f'Starting track creation...')
-
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
-
-            
-
             logger.removeHandler(file_handler)

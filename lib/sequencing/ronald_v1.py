@@ -1,5 +1,7 @@
 from lib.components.abstract import Container, Sequence, BeatMaker
-from lib.selection.lss_v1 import Loopkit, Dataset, Loop
+from lib.selection.lss_v1 import Dataset
+from lib.audio.loop import Loop
+from lib.selection.loopkit import Loopkit
 import lib.utils.schemes as schemes
 import random
 import lib.audio.audio as audio
@@ -49,7 +51,7 @@ class Section(Container):
     def __init__(self, system_info, name='section_as_a_track'):
         super().__init__(name)
         self.info = {
-            'loop_rep': int(int(system_info['bars']) / system_info['loop_beats']),
+            'loop_rep': system_info['loop_beats'],
         }
 
         self.drum_track = {
@@ -115,17 +117,22 @@ class Section(Container):
 
     def fill(self, dataset: Dataset):
         rep = self.info['loop_rep']
-        drum_seq = self.create_drum_loopseq(dataset.data[0].data, rep)
-        melody_seq = self.create_melody_loopseq(dataset.data[1].data, rep)
-        bass_seq = self.create_bass_loopseq(dataset.data[2].data, rep)
+        for item in dataset.get_items():
+            if item.get_name() == 'drums':
+                drum_seq = self.create_drum_loopseq(item, rep)
+                self.add_item(drum_seq)
+            elif item.get_name() == 'melody':
+                melody_seq = self.create_melody_loopseq(item, rep)
+                self.add_item(melody_seq)
+            elif item.get_name() == 'bass':
+                bass_seq = self.create_bass_loopseq(item, rep)
+                self.add_item(bass_seq)
+            else:
+                logger.error('something strange happened')
 
-        self.add_item(drum_seq)
-        self.add_item(melody_seq)
-        self.add_item(bass_seq)
-
-    def render_section(self, bar_lenght, loop_rep):
+    def render_section(self, bar_lenght):
         trackouts = Loopkit()
-        beat = np.zeros([bar_lenght*loop_rep])
+        beat = np.zeros([bar_lenght*self.info["loop_rep"]])
 
         for i, item in enumerate(self.get_items()):       
             trackout = item.render_sequence()
