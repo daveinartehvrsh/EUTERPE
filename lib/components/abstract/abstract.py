@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+import lib.audio.audio as audio
 import logging
 logger = logging.getLogger('my_logger')
 
@@ -22,13 +22,37 @@ class Component(ABC):
     
     def __len__(self):
         return self.get_len(self)
+    
+    def get_heir(self):
+        return self
 
     @abstractmethod
     def get_info(self):
         ...
 
 class AudioComponent(Component):
-    ...
+
+    def set_gain(self, gain):
+        self.gain = gain
+
+    def get_gain(self):
+        return self.gain
+
+    def get_sr(self):
+        return self.sr
+
+    def set_gain_db(self, db_reduction):
+        amplitude_reduction = 10 ** (-float(db_reduction) / 20)
+        self.gain = amplitude_reduction
+    
+    def normalize(self, gain=None):
+        if gain is not None:
+            self.set_gain_db(gain)
+            self.set_data(audio.normalize(self)*self.get_gain())
+            logger.info(f'      Normalized {self.get_name()} to -{self.get_gain()} dB')
+        else:    
+            self.set_data(audio.normalize(self))
+            logger.info(f'      Normalized {self.get_name()} to 0 dB')
 
 class ValueComponent(Component):
     ...

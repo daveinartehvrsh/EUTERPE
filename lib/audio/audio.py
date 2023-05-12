@@ -1,6 +1,6 @@
 import librosa
-from lib.components.abstract import AudioComponent
-from lib.audio.loop import Loop
+from lib.components.abstract.abstract import AudioComponent
+from lib.components.datastructs.loop import Loop
 import soundfile as sf
 import numpy as np
 import random

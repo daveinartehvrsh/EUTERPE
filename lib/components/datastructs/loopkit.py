@@ -1,6 +1,6 @@
-from lib.components.abstract import Container
+from lib.components.abstract.abstract import Container
 import lib.audio.audio as audio
-from lib.audio.loop import Loop
+from lib.components.datastructs.loop import Loop
 import lib.utils.util as util  
 
 import logging

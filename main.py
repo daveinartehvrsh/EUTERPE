@@ -1,5 +1,5 @@
 from lib.components.euterpe import Euterpe
-import lib.utils.presets as presets
+import lib.components.presets as presets
 import time
 import logging
 import lib.utils.log_info

@@ -1,6 +1,8 @@
 import lib.audio.audio as audio
-from lib.sequencing.ronald_v1 import Ronald, Mixer
-from lib.selection.lss_v1 import LSS
+from lib.components.modules.selection.lss_v1 import LSS
+from lib.components.datastructs.mixer import Mixer
+from lib.components.modules.sequencing.ronald_v1 import Ronald
+
 import os
 import time as time
 

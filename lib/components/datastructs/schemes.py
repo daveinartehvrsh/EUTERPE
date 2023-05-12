@@ -1,6 +1,9 @@
 import random
 import numpy as np
 
+def Scheme(ValueComponent):
+    ...
+
 def load_from_str(scheme_str):
     data = []
     for value in scheme_str.split(', '):
