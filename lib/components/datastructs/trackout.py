@@ -1,5 +1,5 @@
 import random
-import lib.audio.audio as audio
+import lib.audio as audio
 from lib.components.datastructs.loop import Loop
 from lib.components.abstract.abstract import Sequence
 import numpy as np
@@ -23,7 +23,7 @@ class Trackout(Sequence):
             else:
                 logger.error('something strange happened')
             if tune_scheme[i]:
-                tuned_data = audio.tune(loop, tune_scheme[i])
+                tuned_data = audio.tune.tune(loop, tune_scheme[i])
                 tuned = Loop(id=loop.id, name=loop.name, data=tuned_data, sr=loop.sr, path=loop.path)           
                 self.add(tuned)
             else:

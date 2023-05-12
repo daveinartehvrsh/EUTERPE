@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import lib.audio.audio as audio
+import lib.audio as audio
 import logging
 logger = logging.getLogger('my_logger')
 
@@ -48,10 +48,10 @@ class AudioComponent(Component):
     def normalize(self, gain=None):
         if gain is not None:
             self.set_gain_db(gain)
-            self.set_data(audio.normalize(self)*self.get_gain())
-            logger.info(f'      Normalized {self.get_name()} to -{self.get_gain()} dB')
+            self.set_data(audio.transform.normalize(self)*self.get_gain())
+            logger.info(f'      Normalized {self.get_name()} to -{gain} dB')
         else:    
-            self.set_data(audio.normalize(self))
+            self.set_data(audio.transform.normalize(self))
             logger.info(f'      Normalized {self.get_name()} to 0 dB')
 
 class ValueComponent(Component):
@@ -190,7 +190,7 @@ class Container(Component):
             self.heir = item
         self.size += 1
         if isinstance(item, Component):
-            logger.debug(f'     added item: "{item.get_name()}" to "{self.get_name()}" Container')
+            logger.debug(f'added item: "{item.get_name()}" to "{self.get_name()}" Container')
 
     def get_heir(self):
         return self.get_data()[0].get_heir()

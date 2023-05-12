@@ -19,7 +19,6 @@ presets.load_preset(system_info['preset'], system_info)
 euterpe = Euterpe(system_info)
 n_tracks = int(input('> how many tracks do you want to render?\n! '))
 time.sleep(1)
-print(f'\n\t\t\t\t!!! STARTING GENERATION of {n_tracks} tracks by {system_info["preset"]}!!!\n')
-logger.info(f'generation started at {time.strftime("%H:%M:%S", time.localtime())}')
+logger.warning('starting generation...\n')
 euterpe.run(n_tracks)
 

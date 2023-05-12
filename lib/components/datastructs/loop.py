@@ -1,5 +1,5 @@
 from lib.components.abstract.abstract import AudioComponent
-import lib.audio.audio as audio
+import lib.audio as audio
 
 import logging
 logger = logging.getLogger('my_logger')
@@ -16,24 +16,23 @@ class Loop(AudioComponent):
         self.gain = 1
     
     def trim(self, lenght):
-        loops = audio.trim_loop(self, lenght)
+        loops = audio.transform.trim_loop(self, lenght)
         self.set_data(loops[0])
         if len(loops) > 1:
             return loops
         return None
 
     def tune(self, st_shift):
-        self.set_data(audio.tune(self, st_shift))
+        self.set_data(audio.tune.tune(self, st_shift))
         self.st_shift += st_shift
 
     def stretch(self, bar_lenght, mode='key'):
-        logger.info(f'      Stretching {self.get_name()} from {self.get_len()} to {bar_lenght} bars with {mode} mode')
+        logger.info(f'  Stretching {self.get_name()} from {self.get_len()/self.sr}s to {bar_lenght/self.sr}s with {mode} mode')
         if mode == 'key':
-            self.set_data(audio.stretch_key(self, bar_lenght))
+            self.set_data(audio.stretch.stretch_key(self, bar_lenght))
         elif mode == 'resample':
-            self.set_data(audio.stretch_resample(self, bar_lenght))
-
-        
+            self.set_data(audio.stretch.stretch_resample(self, bar_lenght))
+    
     def set_scale(self, scale):
         self.scale = scale
 

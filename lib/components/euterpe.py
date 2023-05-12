@@ -1,4 +1,4 @@
-import lib.audio.audio as audio
+import lib.audio as audio
 from lib.components.modules.selection.lss_v1 import LSS
 from lib.components.datastructs.mixer import Mixer
 from lib.components.modules.sequencing.ronald_v1 import Ronald
@@ -23,18 +23,18 @@ class Euterpe():
         self.lss.init_lss()
     
     def export_section(self, section: Mixer, name):
-        logger.info(f'      rendering track no. {name}')    
+        logger.info(f'mixing track no. {name}')    
         beat, trackouts = section.render_section(self.lss.dataset.get_heir().get_len())
         os.chdir(self.system_info['outputdirectory'])         
-        audio.export(name=(f'{name}.wav'),audio=beat)
+        audio.file.export(name=(f'{name}.wav'),audio=beat)
         logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
         if len(trackouts.get_data()) > 0:
             os.mkdir('stems')
             os.chdir('stems')
             for i, trackout in enumerate(trackouts.get_items()):
-                audio.export(name=(f'{name}_{i}.wav'),audio=trackout)
+                audio.file.export(name=(f'{name}_{i}.wav'),audio=trackout)
             
-            logger.info(f'Mixer exported at {os.getcwd()}\n')
+            logger.info(f'track exported at {os.getcwd()}\n')
         os.chdir(self.system_info['basefolder'])
 
     def get_info():
@@ -57,7 +57,7 @@ class Euterpe():
 
         self.system_info['outputdirectory'] = os.getcwd()
         
-        logger.info(f'      Completed initialization of context for generation no. {gen_no}')
+        logger.info(f'Completed initialization of context for generation no. {gen_no}')
         logger.info(f'Output folder: {os.getcwd()}')
 
         os.chdir(self.system_info["basefolder"])

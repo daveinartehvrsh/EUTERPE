@@ -1,5 +1,7 @@
 from configparser import ConfigParser
 import os
+import logging
+logger = logging.getLogger('my_logger')
 
 def get_presets():
     config = ConfigParser()
@@ -15,8 +17,9 @@ def get_system_config():
     #   system config load
     system_info['preset name'] = 'default'
     system_info['sr'] = configur.getint('system', 'sr')
-    system_info['dataset_path'] = configur.get('system', 'dataset_path')
-    system_info['outputfolder'] = configur.get('system', 'outputfolder')
+    system_info['user_folder'] = configur.get('system', 'user_folder')
+    system_info['dataset_path'] = os.path.join(system_info['user_folder'], 'dataset')
+    system_info['outputfolder'] = os.path.join(system_info['user_folder'], 'output')
     system_info['loop_beats'] = configur.getint('system', 'loop_beats')
 
     #   user defined config
@@ -45,8 +48,14 @@ def load_preset(selected_preset, system_to_override):
         preset_options = configur[selected_preset]
         for option in preset_options:
             system_to_override[option] = preset_options[option]
+
+        system_to_override['d_path'] = os.path.join(system_to_override['dataset_path'], system_to_override['d_path'])
+        system_to_override['m_path'] = os.path.join(system_to_override['dataset_path'], system_to_override['m_path'])
+        system_to_override['b_path'] = os.path.join(system_to_override['dataset_path'], system_to_override['b_path'])
+        logger.info(f'  preset {selected_preset} loaded')
     else:
-        print('invalid preset, back to default')
+        print('ERROR: invalid preset, back to default')
+        load_preset('default', system_to_override)
 
 def main():
     ...
