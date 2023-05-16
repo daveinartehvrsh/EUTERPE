@@ -33,6 +33,31 @@ def loop_to_CSV(input_string, csv_file=None):
         new_row.to_csv(csv_file, index=False)
         print(f"CSV file created: {csv_file}")
 
+import os
+import pandas as pd
+
+def count_to_csv(string, kit, csv_file):
+    # Check if the file exists
+    if os.path.exists(csv_file):
+        # Read the existing CSV file into a pandas DataFrame
+        df = pd.read_csv(csv_file)
+    else:
+        # Create a new DataFrame with columns "String" and "Count"
+        df = pd.DataFrame(columns=['name', 'kit', 'count'])
+
+    # Check if the string already exists in the DataFrame
+    if string in df['name'].values:
+        # If it exists, increment the count in the second column
+        df.loc[df['name'] == string, 'count'] += 1
+        df.loc[df['name'] == string, 'kit'] = kit
+    else:
+        # If it doesn't exist, add a new row with the string and count 1
+        new_row = pd.DataFrame({'name': [string], 'kit': [kit],  'count': [1]})
+        df = pd.concat([df, new_row], ignore_index=True)
+    
+    # Write the DataFrame to the CSV file
+    df.to_csv(csv_file, index=False)
+
 
 def bars_to_seconds(num_bars, bpm):
     sec_per_beat = 60 / bpm

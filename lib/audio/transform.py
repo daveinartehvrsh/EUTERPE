@@ -8,7 +8,7 @@ def normalize(loop):
     return data
 
 def trim_loop(loop, min_len):
-    logger.debug(f'   Audio lenght: {len(loop.get_data())/loop.sr} sec')
+    logger.debug(f'audio lenght: {len(loop.get_data())/loop.sr} sec')
     audio = loop.data
     sr = loop.sr
     ratio = min_len/len(audio)          

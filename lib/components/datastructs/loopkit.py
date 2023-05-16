@@ -20,24 +20,24 @@ class Loopkit(Container):
         sr = info['sr']
 
         logger.info(f'Starting"{self.get_name()}" filling process...')
-        logger.info(f'  Loading {n_loops} loops from {path}')
+        logger.info(f'Loading {n_loops} loops from {path}')
 
         for i in range(int(n_loops)):
             loop = audio.file.load_loop_from_path(path=path, sr=sr)
             
             loop_tone = util.extract_tonality_from_str(loop.get_name())
             if loop_tone is not None and not isinstance(self, Drumkit):
-                logger.info(f'      tonality detected: {loop_tone}')
+                logger.info(f'tonality detected: {loop_tone}')
                 if 'scale' not in info:
                     info['scale'] = util.extract_tonality_from_str(loop.get_name())
                     logger.info(f'WARN: global scale set to {info["scale"]} as {loop.get_name()}')
                 
                 tone_dif = int(util.scale_to_numeric(info['scale']) - util.scale_to_numeric(loop_tone))
                 loop.tune(st_shift=tone_dif)
-                logger.info(f'      Tuned {loop.get_name()} to {info["scale"]} > {tone_dif}st')
+                logger.info(f'Tuned {loop.get_name()} to {info["scale"]} > {tone_dif}st')
                 
                 
-            logger.info(f'  Trimming {loop.get_name()} around 12s')
+            logger.info(f'Trimming {loop.get_name()} around 12s')
             min_len = int(info['sr'] * 12)
             loops = loop.trim(min_len)
             if loops is not None:
@@ -52,7 +52,7 @@ class Loopkit(Container):
             info['bar_lenght'] = self.get_heir().get_len()
             logger.info(f'WARN: global bar lenght set to {info["bar_lenght"]} samples ({info["bar_lenght"]/info["sr"]} sec))')
 
-        logger.info(f'  Trimming loops lenght to {info["bar_lenght"]/info["sr"]} samples')
+        logger.info(f'Trimming loops lenght to {info["bar_lenght"]/info["sr"]} samples')
         for item in self.get_items():
             loops = item.trim(info['bar_lenght'])
             if loops is not None:

@@ -27,7 +27,7 @@ class Loop(AudioComponent):
         self.st_shift += st_shift
 
     def stretch(self, bar_lenght, mode='key'):
-        logger.info(f'  Stretching {self.get_name()} from {self.get_len()/self.sr}s to {bar_lenght/self.sr}s with {mode} mode')
+        logger.info(f'Stretching {self.get_name()} from {self.get_len()/self.sr}s to {bar_lenght/self.sr}s with {mode} mode')
         if mode == 'key':
             self.set_data(audio.stretch.stretch_key(self, bar_lenght))
         elif mode == 'resample':

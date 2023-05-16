@@ -43,7 +43,7 @@ class Euterpe():
     def refresh(self, gen_no):
 
         os.chdir(self.system_info["outputfolder"])        
-        new_dir = f'{self.system_info["preset"]}_{gen_no}'
+        new_dir = f'gen_{gen_no}'
         logger.info(f'Output folder: {os.getcwd()}')
 
         if not os.path.exists(new_dir):
@@ -61,7 +61,6 @@ class Euterpe():
         logger.info(f'Output folder: {os.getcwd()}')
 
         os.chdir(self.system_info["basefolder"])
-
         self.lss = None
         self.lss = LSS(self.system_info, gen_no)
 
@@ -71,27 +70,34 @@ class Euterpe():
     def context_init(self):        
         self.system_info["basefolder"] = os.getcwd()
         os.chdir(self.system_info['outputfolder'])
-        gen_dir = f'{time.strftime("%m_%d__%H_%M_%S", time.localtime())}'
+        gen_dir = f'{self.system_info["preset"]}_{time.strftime("%m_%d__%H_%M_%S", time.localtime())}'
         os.mkdir(gen_dir)
         os.chdir(gen_dir)
         self.system_info['outputfolder'] = os.getcwd()
         os.chdir(self.system_info["basefolder"])
 
-    def run(self, n_tracks): 
+    def setup_log(self):
         formatter = logging.Formatter('%(asctime)s> %(message)s')
+        log_file = f'{self.system_info["outputdirectory"]}/log.log'
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+        return file_handler
+
+    def export_info(self, file_handler):
+        self.lss.dataset.to_csv(csv_name=f'{self.system_info["outputfolder"]}/loops.csv')
+        logger.removeHandler(file_handler)
+
+    def run(self, n_tracks):         
         self.context_init()
 
         for i in range(n_tracks):
             self.refresh(i)
-            filename = f'{self.system_info["outputdirectory"]}/generation_{i}.txt'
-            file_handler = logging.FileHandler(filename)
-            file_handler.setLevel(logging.DEBUG)
-            file_handler.setFormatter(formatter)
-            logger.addHandler(file_handler)
-            logger.warning(f'STARTING GENERATION OF TRACK {i}')
-            logger.info(f'Starting loop selection...')
+            file_handler = self.setup_log()
             self.init_lss(gen_no=i)
-            logger.info(f'Starting track creation...')
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
-            logger.removeHandler(file_handler)
+            self.export_info(file_handler)
+
+            

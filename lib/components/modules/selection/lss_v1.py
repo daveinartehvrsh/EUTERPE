@@ -34,6 +34,7 @@ class LSS(AudioSelectionSystem):
     
     def init_lss(self):
         self.dataset.fill(info=self.info)
+        self.dataset.to_csv(csv_name=f'data/loop_count.csv')
 
     def get_info(self):
         return super().get_info() 

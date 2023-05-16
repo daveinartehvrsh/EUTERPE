@@ -49,10 +49,10 @@ class AudioComponent(Component):
         if gain is not None:
             self.set_gain_db(gain)
             self.set_data(audio.transform.normalize(self)*self.get_gain())
-            logger.info(f'      Normalized {self.get_name()} to -{gain} dB')
+            logger.info(f'normalized {self.get_name()} peaks to -{gain} dB')
         else:    
             self.set_data(audio.transform.normalize(self))
-            logger.info(f'      Normalized {self.get_name()} to 0 dB')
+            logger.info(f'normalized {self.get_name()} peaks to 0 dB')
 
 class ValueComponent(Component):
     ...
