@@ -19,10 +19,14 @@ def get_system_config():
     system_info['sr'] = configur.getint('system', 'sr')
     system_info['user_folder'] = configur.get('system', 'user_folder')
     system_info['dataset_path'] = os.path.join(system_info['user_folder'], 'dataset')
-    system_info['outputfolder'] = os.path.join(system_info['user_folder'], 'output')
+    system_info['output_path'] = os.path.join(system_info['user_folder'], 'output')
     system_info['loop_beats'] = configur.getint('system', 'loop_beats')
+    
 
     #   user defined config
+    system_info['n_tracks'] = configur.get('system', 'n_tracks')
+    if system_info['n_tracks'] == '?':
+        system_info['n_tracks'] = input('> Specify number of tracks\n! ')
     system_info['bars'] = configur.getint('system', 'bars')
     if system_info['bars'] == '?':
         system_info['bars'] = input('> Specify bars lenght of the beat\n! ')
@@ -31,9 +35,9 @@ def get_system_config():
         system_info['BPM'] = input('> Insert BPM\n! ')
     if system_info['BPM'] != 'auto':
         system_info['BPM'] = int(system_info['BPM'])
-    system_info['preset'] = configur.get('system', 'preset')
-    if system_info['preset'] == '?':
-        system_info['preset'] = input('> Select preset\n! ')
+    system_info['preset_batch'] = configur.get('system', 'preset')
+    if system_info['preset_batch'] == '?':
+        system_info['preset_batch'] = input('> Select preset\n! ')
     
     #   tracks config load
     system_info['m_gain'] = configur.getfloat('tracks', 'm_gain')

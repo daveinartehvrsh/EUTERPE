@@ -23,7 +23,7 @@ class Loopkit(Container):
         logger.info(f'Loading {n_loops} loops from {path}')
 
         for i in range(int(n_loops)):
-            loop = audio.file.load_loop_from_path(path=path, sr=sr)
+            loop = audio.file.rnd_loop(path=path, sr=sr)
             
             loop_tone = util.extract_tonality_from_str(loop.get_name())
             if loop_tone is not None and not isinstance(self, Drumkit):

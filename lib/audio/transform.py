@@ -1,16 +1,19 @@
 import numpy as np
+from lib.components.abstract.abstract import AudioComponent
+import librosa
 import logging
 logger = logging.getLogger('my_logger')
 
-def normalize(loop):
-    data = loop.get_data()
-    loop.set_data(data)
+def normalize(audio: AudioComponent):
+    data = audio.get_data()
+    audio.set_data(librosa.util.normalize(data))
     return data
 
-def trim_loop(loop, min_len):
-    logger.debug(f'audio lenght: {len(loop.get_data())/loop.sr} sec')
-    audio = loop.data
-    sr = loop.sr
+def trim_loop(audio: AudioComponent, min_len):
+    logger.debug(f'audio lenght: {len(audio.get_data())/audio.sr} sec')
+    sr = audio.sr
+    audio = audio.data
+    
     ratio = min_len/len(audio)          
     if ratio > 1.3:
         array = audio                       

@@ -23,7 +23,7 @@ class Loop(AudioComponent):
         return None
 
     def tune(self, st_shift):
-        self.set_data(audio.tune.tune(self, st_shift))
+        self.set_data(audio.tune.st_shift(self, st_shift))
         self.st_shift += st_shift
 
     def stretch(self, bar_lenght, mode='key'):
@@ -63,3 +63,5 @@ class Loop(AudioComponent):
             'gain': self.get_gain()
         }
 
+class Track(Loop):
+    ...

@@ -3,16 +3,26 @@ import librosa
 import soundfile as sf
 import random
 from lib.components.datastructs.loop import Loop
+from lib.components.abstract.abstract import AudioComponent
+import logging
+logger = logging.getLogger('my_logger')
 
-def loadLoop(path, sr):
+def load(name, path, sr):
     data, sr = librosa.load(path, sr=sr)
-    return data, sr
+    audio = AudioComponent(name=name, data=data, sr=sr, path=path)
+    return audio
 
-def load_loop_from_path(path, sr):
-    loop_name = random.choice(os.listdir(path))
-    loop_path = os.path.join(path, loop_name)
-    data, sr = loadLoop(loop_path, sr)           
-    loop = Loop(id=0, name=loop_name, data=data, sr=sr, path=path)
+def rnd_loop(path, sr):
+    options = []
+    for root, _, files in os.walk(path):
+        for file in files:
+            if file.endswith('.wav'):
+                options.append(os.path.join(root, file))
+    logger.info(f'Found {len(options)} loops in {path}')
+    loop_path = random.choice(options)
+    loop_name = loop_path.split('\\')[-1]
+    audio = load(name=loop_name, path=loop_path, sr=sr)           
+    loop = Loop(id=0, name=loop_name, data=audio.get_data(), sr=sr, path=path)
     return loop
 
 def export(name = 'test.wav', audio=[], sr=48000):

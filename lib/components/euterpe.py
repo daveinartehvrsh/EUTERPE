@@ -25,6 +25,7 @@ class Euterpe():
     def export_section(self, section: Mixer, name):
         logger.info(f'mixing track no. {name}')    
         beat, trackouts = section.render_section(self.lss.dataset.get_heir().get_len())
+        beat = audio.transform.normalize(beat)
         os.chdir(self.system_info['outputdirectory'])         
         audio.file.export(name=(f'{name}.wav'),audio=beat)
         logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
@@ -42,8 +43,8 @@ class Euterpe():
  
     def refresh(self, gen_no):
 
-        os.chdir(self.system_info["outputfolder"])        
-        new_dir = f'gen_{gen_no}'
+        os.chdir(self.system_info["output_path"])        
+        new_dir = f'{self.system_info["preset"]}_{gen_no}'
         logger.info(f'Output folder: {os.getcwd()}')
 
         if not os.path.exists(new_dir):
@@ -69,11 +70,11 @@ class Euterpe():
 
     def context_init(self):        
         self.system_info["basefolder"] = os.getcwd()
-        os.chdir(self.system_info['outputfolder'])
-        gen_dir = f'{self.system_info["preset"]}_{time.strftime("%m_%d__%H_%M_%S", time.localtime())}'
+        os.chdir(self.system_info['output_path'])
+        gen_dir = f'{time.strftime("%d%m_%H%M_%S", time.localtime())}'
         os.mkdir(gen_dir)
         os.chdir(gen_dir)
-        self.system_info['outputfolder'] = os.getcwd()
+        self.system_info['output_path'] = os.getcwd()
         os.chdir(self.system_info["basefolder"])
 
     def setup_log(self):
@@ -86,7 +87,7 @@ class Euterpe():
         return file_handler
 
     def export_info(self, file_handler):
-        self.lss.dataset.to_csv(csv_name=f'{self.system_info["outputfolder"]}/loops.csv')
+        self.lss.dataset.to_csv(csv_name=f'{self.system_info["output_path"]}/loops.csv')
         logger.removeHandler(file_handler)
 
     def run(self, n_tracks):         

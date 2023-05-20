@@ -31,6 +31,12 @@ class Component(ABC):
         ...
 
 class AudioComponent(Component):
+    def __init__(self, name, data, sr, gain=1, path=None):
+        self.name = name
+        self.data = data
+        self.sr = sr
+        self.gain = gain
+        self.path = path
 
     def set_gain(self, gain):
         self.gain = gain
@@ -54,6 +60,8 @@ class AudioComponent(Component):
             self.set_data(audio.transform.normalize(self))
             logger.info(f'normalized {self.get_name()} peaks to 0 dB')
 
+    def get_info(self):
+        ...
 class ValueComponent(Component):
     ...
 

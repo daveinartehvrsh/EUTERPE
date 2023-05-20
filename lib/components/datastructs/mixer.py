@@ -2,6 +2,7 @@ from lib.components.abstract.abstract import Container
 from lib.components.datastructs.dataset import Dataset
 from lib.components.datastructs.trackout import Trackout
 from lib.components.datastructs.loopkit import Loopkit
+from lib.components.datastructs.loop import Track
 import lib.components.datastructs.schemes as schemes
 import numpy as np
 import logging
@@ -100,5 +101,6 @@ class Mixer(Container):
             trackout = item.render_sequence()
             trackouts.add_item(trackout)
             beat = np.add(beat, trackout)
-        return beat, trackouts
+            track = Track(id=i, name=i, data=beat, sr=0, path=None, scale=None, st_shift=0)
+        return track, trackouts
     

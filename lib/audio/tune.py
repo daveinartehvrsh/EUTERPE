@@ -1,5 +1,6 @@
 import librosa
+from lib.components.abstract.abstract import AudioComponent
 
-def tune(loop, semitones_distance):
-    tuned = librosa.effects.pitch_shift(y=loop.data, sr=48000, n_steps=semitones_distance)
+def st_shift(audio: AudioComponent, semitones_distance: int):
+    tuned = librosa.effects.pitch_shift(y=audio.data, sr=48000, n_steps=semitones_distance)
     return tuned

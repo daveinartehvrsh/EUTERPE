@@ -1,3 +1,5 @@
+import time 
+timer = time.time()
 from lib.components.euterpe import Euterpe
 import lib.components.presets as presets
 import time
@@ -8,17 +10,24 @@ logger = logging.getLogger('my_logger')
 
 with open('data/welcome.txt') as f:
     print(f.read())
-time.sleep(1)
 
 logger.warning('loading deafult configuration...\n')
-time.sleep(1)
 system_info = presets.get_system_config()
 
-presets.load_preset(system_info['preset'], system_info)
+preset_batch = system_info['preset_batch'].split(',')
+logger.warning(f'preset selected: {preset_batch}\n')
 
-euterpe = Euterpe(system_info)
-n_tracks = int(input('> how many tracks do you want to render?\n! '))
-time.sleep(1)
-logger.warning('starting generation...\n')
-euterpe.run(n_tracks)
+print(time.time() - timer, 'seconds to start')
+
+for preset in preset_batch:
+    system_info['preset'] = preset
+    presets.load_preset(preset, system_info)
+
+    euterpe = Euterpe(system_info)
+    time.sleep(1)
+    logger.warning('starting generation...\n')
+    euterpe.run(n_tracks=int(system_info['n_tracks']))
+
+timer = time.time() - timer
+print(f'finished in {timer} seconds')
 

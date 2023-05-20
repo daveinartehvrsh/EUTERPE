@@ -23,8 +23,8 @@ class Trackout(Sequence):
             else:
                 logger.error('something strange happened')
             if tune_scheme[i]:
-                tuned_data = audio.tune.tune(loop, tune_scheme[i])
-                tuned = Loop(id=loop.id, name=loop.name, data=tuned_data, sr=loop.sr, path=loop.path)           
+                tuned_data = audio.tune.st_shift(loop, tune_scheme[i])
+                tuned = Loop(id=loop.id, name=loop.get_name(), data=tuned_data, sr=loop.sr, path=loop.path)           
                 self.add(tuned)
             else:
                 self.add(loop)
@@ -35,7 +35,7 @@ class Trackout(Sequence):
         out = np.array([])
         for i, item in enumerate(self.get_items()):
             gain = self.structure[i]# * self.gain
-            out = np.append(out, item.data*float(gain))
+            out = np.append(out, item.get_data()*float(gain))
         
         return out
     
