@@ -75,7 +75,7 @@ def extract_tonality_from_str(string):
         string = string[:-4]
 
     elements = string.split('_')
-    regex = r'[A-G]{1}(#|b)?(\s)?(min|maj|min7|maj7|7|m|M|Min|Maj)?$'
+    regex = r'^[A-G]{1}(#|b)?(\s)?(min|maj|min7|maj7|7|m|Min|Maj)?$'
     for element in elements:
         match = re.search(regex, element)
         if match:
@@ -130,7 +130,7 @@ def scale_to_numeric(string):
         return root
     
 def main():
-    loop_name = 'OS_DRIP_166_Gm_Polyform_Analog_Chords_2.wav'
+    loop_name = 'CPA_BFD_140_808_loop_alaska_D#m'
     print(extract_tonality_from_str(loop_name))
     
 if __name__ == "__main__":

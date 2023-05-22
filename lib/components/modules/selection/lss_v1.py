@@ -13,6 +13,11 @@ class LSS(AudioSelectionSystem):
             'loop_beats': system_info['loop_beats'],
             'sr': system_info['sr'],
             'kits': {
+                'bass': {
+                    'path': system_info['b_path'],
+                    'n_loops': int(system_info['b_n_loops']),
+                    'gain': system_info['b_gain'],
+                },
                 'drums': {
                     'path': system_info['d_path'],
                     'n_loops': int(system_info['d_n_loops']),
@@ -23,11 +28,7 @@ class LSS(AudioSelectionSystem):
                     'n_loops': int(system_info['m_n_loops']),
                     'gain': system_info['m_gain'],
                 },
-                'bass': {
-                    'path': system_info['b_path'],
-                    'n_loops': int(system_info['b_n_loops']),
-                    'gain': system_info['b_gain'],
-                },
+                
             }
         }
         self.dataset = Dataset(gen_no)
@@ -37,4 +38,4 @@ class LSS(AudioSelectionSystem):
         self.dataset.to_csv(csv_name=f'data/loop_count.csv')
 
     def get_info(self):
-        return super().get_info() 
+        return super().get_info()
