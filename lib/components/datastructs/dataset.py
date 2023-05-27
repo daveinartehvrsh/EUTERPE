@@ -25,7 +25,7 @@ class Dataset(Container):
     def normalize_length(self):
         for item in self.get_items():
             item.stretch(lenght = self.get_heir().get_len())
-            logger.info(f'stretched {item.get_name()} loopkit to {self.get_heir().get_len()} samples')
+            logger.info(f'Stretched {item.get_name()} loopkit to global lenght')
 
     def fill(self, info):
         kits = info['kits'].keys()
@@ -39,6 +39,7 @@ class Dataset(Container):
         
         self.normalize_length()
         self.update_count()
+        logger.info(f'Dataset filled with {len(self.get_loops())} loops\n\n')
     
     def get_loops(self):
         loops = []

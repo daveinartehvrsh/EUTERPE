@@ -1,29 +1,29 @@
 name,kit,count
-SO_TI_133_drum_loop_bordes_hefty_lows.wav,drums,84
-SO_TI_95_drum_loop_blooping_playa_bounce.wav_v2,drums,62
-SO_TI_95_drum_loop_blooping_playa_bounce.wav_v3,drums,62
-SO_TI_95_drum_loop_blooping_playa_bounce.wav,drums,62
-DS_GREX_160_drum_loop_dnb.wav,drums,79
+SO_TI_133_drum_loop_bordes_hefty_lows.wav,drums,88
+SO_TI_95_drum_loop_blooping_playa_bounce.wav_v2,drums,70
+SO_TI_95_drum_loop_blooping_playa_bounce.wav_v3,drums,70
+SO_TI_95_drum_loop_blooping_playa_bounce.wav,drums,70
+DS_GREX_160_drum_loop_dnb.wav,drums,83
 OS_SCE_120_melodic_songstarter_travel_Bm.wav,melody,18
 OS_RND_140_acoustic_guitar_arp_chords_Fm.wav,melody,19
 OS_DRL_140_piano_chords_intro_bax_Cm.wav,melody,11
-KMRBI_TDM_145_808_bass_loop_swish_G#m.wav,bass,40
+KMRBI_TDM_145_808_bass_loop_swish_G#m.wav,bass,44
 OS_DPS_150_808_seven_Bm.wav,bass,40
-OS_RCK_140_drum_loop_borough.wav,drums,70
-OS_FIRE_140_drum_loop_global.wav,drums,56
+OS_RCK_140_drum_loop_borough.wav,drums,74
+OS_FIRE_140_drum_loop_global.wav,drums,70
 AB_CT2_Zain_Wolf_140_Synth_Stack_Loop_Mercy_Dm_.wav,melody,17
 OS_SCE_130_synth_melody_stack_sync_F#m.wav,melody,17
 rhh_melodic_loop_lica_90_D#m.wav,melody,13
-OS_SCE_150_808_bass_neighbors_Em.wav,bass,32
-OS_SCE_120_808_bass_talking_C#m.wav,bass,37
-OS_DPS_130_drum_loop_caster.wav,drums,74
-OS_DPS_140_drum_loop_backburner.wav,drums,88
-OS_DPS_124_drum_loop_tuff.wav,drums,72
+OS_SCE_150_808_bass_neighbors_Em.wav,bass,36
+OS_SCE_120_808_bass_talking_C#m.wav,bass,41
+OS_DPS_130_drum_loop_caster.wav,drums,80
+OS_DPS_140_drum_loop_backburner.wav,drums,100
+OS_DPS_124_drum_loop_tuff.wav,drums,78
 AB_CT2_Dabow_150_Synth_Stack_Loop_Change_Me_D#m.wav,melody,18
 AB_CT2_Zain_Wolf_143_Synth_Stack_Loop_Twitch_Notification_F#_.wav,melody,13
 OS_RND_142_piano_keys_clubbing_Am.wav,melody,9
 OS_SCE_150_808_bass_radar_F#m.wav,bass,60
-OS_DPS_140_808_donate_Gm.wav,bass,41
+OS_DPS_140_808_donate_Gm.wav,bass,45
 SO_TI_130_drum_loop_cougars_leaning.wav_v2,drums,113
 SO_TI_130_drum_loop_cougars_leaning.wav_v3,drums,113
 SO_TI_130_drum_loop_cougars_leaning.wav,drums,113
@@ -31,9 +31,9 @@ AB_CT2_Dabow_132_Melodic_Stack_Loop_Practice_Makes_Perfect_D#m.wav,melody,15
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav_v2,melody,13
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav_v3,melody,13
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav,melody,13
-OS_RND_140_808_bass_swag_Gm.wav,bass,45
+OS_RND_140_808_bass_swag_Gm.wav,bass,49
 OS_SCE_130_808_bass_warmth_Cm.wav,bass,43
-OS_FIRE_150_drum_loop_mourning.wav,drums,52
+OS_FIRE_150_drum_loop_mourning.wav,drums,62
 AB_CT2_Rudenote_140_Guitar_Stack_Loop_Painkiller_D#m.wav_v2,melody,7
 AB_CT2_Rudenote_140_Guitar_Stack_Loop_Painkiller_D#m.wav_v3,melody,7
 AB_CT2_Rudenote_140_Guitar_Stack_Loop_Painkiller_D#m.wav,melody,7
@@ -41,7 +41,7 @@ OS_RCK_140_melodic_stack_isles_D#m.wav,melody,15
 AB_CT2_Rudenote_92_Guitar_Stack_Loop_Goals_Am.wav_v2,melody,17
 AB_CT2_Rudenote_92_Guitar_Stack_Loop_Goals_Am.wav_v3,melody,17
 AB_CT2_Rudenote_92_Guitar_Stack_Loop_Goals_Am.wav,melody,17
-JSB_VB_98_drum_loop_full_fairburn.wav,drums,73
+JSB_VB_98_drum_loop_full_fairburn.wav,drums,83
 OS_RND_140_songstarter_regulate_Fm.wav,melody,31
 ABDW2_Dabow_West_Coast_Loop_Surfing_Waves_Cm_95BPM.wav_v2,melody,7
 ABDW2_Dabow_West_Coast_Loop_Surfing_Waves_Cm_95BPM.wav_v3,melody,7
@@ -49,26 +49,26 @@ ABDW2_Dabow_West_Coast_Loop_Surfing_Waves_Cm_95BPM.wav,melody,7
 KMRBI_TDM_173_piano_loop_revenge_D#m.wav_v2,melody,39
 KMRBI_TDM_173_piano_loop_revenge_D#m.wav_v3,melody,39
 KMRBI_TDM_173_piano_loop_revenge_D#m.wav,melody,39
-OS_DPS_160_808_homies_Cm.wav,bass,37
-SO_TI_130_drum_loop_teniente_deep_lows.wav,drums,103
+OS_DPS_160_808_homies_Cm.wav,bass,41
+SO_TI_130_drum_loop_teniente_deep_lows.wav,drums,109
 OS_RCK_140_choir_chords_melodic_stack_borough_D#m.wav,melody,19
 OS_RCK_140_melodic_stack_m1_C#.wav,melody,19
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v2,bass,31
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v3,bass,31
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav,bass,31
-RKU_TJ1_70_drum_loop_full_yakuza.wav,drums,87
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v2,bass,33
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v3,bass,33
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav,bass,33
+RKU_TJ1_70_drum_loop_full_yakuza.wav,drums,91
 AB_CT2_Dabow_140_Melodic_Stack_Loop_Saw_The_Line_Cm.wav,melody,19
 AB_CT2_Zain_Wolf_123_Synth_Stack_Loop_True_Thoughts_D#m.wav,melody,6
-RKU_TJ1_65_drum_loop_full_bored.wav,drums,83
+RKU_TJ1_65_drum_loop_full_bored.wav,drums,87
 AB_CT2_Dabow_125_Melodic_Stack_Loop_No_Signs_Cm.wav,melody,31
 AB_CT2_Rudenote_160_Guitar_Stack_Loop_Shine_Fm.wav_v2,melody,7
 AB_CT2_Rudenote_160_Guitar_Stack_Loop_Shine_Fm.wav_v3,melody,7
 AB_CT2_Rudenote_160_Guitar_Stack_Loop_Shine_Fm.wav,melody,7
 OS_SCE_160_melodic_songstarter_mustard_D#m.wav,melody,11
 OS_SCE_160_melodic_songstarter_set_Cm.wav,melody,7
-RKU_TJ1_65_drum_loop_full_defeat.wav,drums,104
+RKU_TJ1_65_drum_loop_full_defeat.wav,drums,106
 OS_DO_146_piano_melody_killa_D#m.wav,melody,10
-OS_SCE_160_808_bass_set_Cm.wav,bass,30
+OS_SCE_160_808_bass_set_Cm.wav,bass,32
 OS_SCE_150_melodic_songstarter_radar_F#m.wav,melody,12
 OS_SCE_140_melodic_songstarter_slide_Bm.wav,melody,16
 OS_SCE_150_melodic_songstarter_nothingless_F#m.wav,melody,14
@@ -78,22 +78,22 @@ OSS_R_B_99_MUSIC_LOOP_PULSE_Em.wav_v2,melody,28
 OSS_R_B_99_MUSIC_LOOP_PULSE_Em.wav_v3,melody,28
 OSS_R_B_99_MUSIC_LOOP_PULSE_Em.wav,melody,28
 OS_SCE_150_synth_chopped_chords_radar_F#m.wav,melody,10
-OS_SCE_140_808_bass_donate_Gm.wav,bass,46
-OS_DPS_160_drum_loop_homie.wav,drums,58
+OS_SCE_140_808_bass_donate_Gm.wav,bass,50
+OS_DPS_160_drum_loop_homie.wav,drums,60
 OS_DO_162_electric_guitar_stack_tropix_A#m.wav_v2,melody,18
 OS_DO_162_electric_guitar_stack_tropix_A#m.wav_v3,melody,18
 OS_DO_162_electric_guitar_stack_tropix_A#m.wav,melody,18
-OS_SCE_150_synth_bass_tears_Fm.wav,bass,46
+OS_SCE_150_synth_bass_tears_Fm.wav,bass,48
 OS_RCK_140_guitar_melodic_stack_diana_Dm.wav,melody,22
 OS_RND_142_songstarter_perfect_Cm.wav,melody,34
-OS_SCE_140_synth_bass_influence_F#m.wav,bass,40
+OS_SCE_140_synth_bass_influence_F#m.wav,bass,42
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav_v2,melody,12
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav_v3,melody,12
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav,melody,12
 OS_DO_134_piano_chords_dirty_trapperjoe_G#m.wav,melody,10
 OS_SCE_160_synth_melody_cabin_Fm.wav,melody,4
 AB_CT2_AxLi_145_Melodic_Stack_Loop_Twins_A#m.wav,melody,16
-OS_DPS_140_808_backburner_Em.wav,bass,28
+OS_DPS_140_808_backburner_Em.wav,bass,30
 ABDW2_SVGAR_Stack_Portal_Dabow_Flip_Em_110BPM.wav_v2,melody,8
 ABDW2_SVGAR_Stack_Portal_Dabow_Flip_Em_110BPM.wav_v3,melody,8
 ABDW2_SVGAR_Stack_Portal_Dabow_Flip_Em_110BPM.wav,melody,8
@@ -114,7 +114,7 @@ YNG_100_808_sub_deep_push_glide_Dm.wav,bass,10
 Cymatics - Cobra Full Drum Loop 8 - 150 BPM.wav,drums,22
 OZ_86_drum_loop_full_window_shopper.wav,drums,16
 Cymatics - Oracle Dark Melody Loop 17 - 172 BPM C# Min.wav,melody,2
-SDU_120_808_loop_fuzzy_duck_Fm.wav,bass,18
+SDU_120_808_loop_fuzzy_duck_Fm.wav,bass,24
 TRKTRN_DST_120_Drum_Loop_Full_Magnet.wav,drums,18
 Cymatics - Cobra Full Drum Loop 17 - 170 BPM.wav,drums,12
 Cymatics - Angels - 147 BPM G Min.wav,melody,2
@@ -127,7 +127,7 @@ Cymatics - Cobra Melody Loop 17 - 150 BPM C# Min.wav,melody,6
 Cymatics - Cobra Full Drum Loop 16 - 170 BPM.wav,drums,10
 Cymatics - Cobra Full Drum Loop 5 - 140 BPM.wav,drums,20
 RHH2_90_kit_loop_dark_piano_C#min.wav,melody,6
-OS_BNZ_142_D#m_Gremlin_Bass_808.wav,bass,4
+OS_BNZ_142_D#m_Gremlin_Bass_808.wav,bass,6
 Cymatics - Wake Up Drum Loop - 100 BPM.wav_v2,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav_v3,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav,drums,16
@@ -135,56 +135,56 @@ OZ_166_drum_loop_haunted_top.wav,drums,12
 Cymatics - Bae - 110 BPM E Min.wav_v2,melody,8
 Cymatics - Bae - 110 BPM E Min.wav_v3,melody,8
 Cymatics - Bae - 110 BPM E Min.wav,melody,8
-TRAVIS_BARKER_808_loop_distorted_02_125_G#.wav,bass,14
+TRAVIS_BARKER_808_loop_distorted_02_125_G#.wav,bass,16
 Cymatics - Solitude Drum Loop - 134 BPM.wav,drums,16
-SO_TI_130_bass_synth_teniente_808_gunna_Cmin.wav,bass,14
+SO_TI_130_bass_synth_teniente_808_gunna_Cmin.wav,bass,16
 Cymatics - Cobra Full Drum Loop 13 - 160 BPM.wav,drums,22
 PMOD_808_Loop_06_140_F#min.wav,bass,6
 OZ_112_drum_loop_trust_issues_full.wav,drums,26
 Cymatics - Glyph - 80 BPM A# Min.wav_v2,melody,2
 Cymatics - Glyph - 80 BPM A# Min.wav_v3,melody,2
 Cymatics - Glyph - 80 BPM A# Min.wav,melody,2
-PMD_808_Loop_Dm_188BPM_01.wav,bass,4
+PMD_808_Loop_Dm_188BPM_01.wav,bass,8
 Cymatics - Cobra Full Drum Loop 11 - 150 BPM.wav,drums,14
 Cymatics - Angel Wings - 157 BPM F Min.wav_v2,melody,4
 Cymatics - Angel Wings - 157 BPM F Min.wav_v3,melody,4
 Cymatics - Angel Wings - 157 BPM F Min.wav,melody,4
-SO_NC_92_808_flote_distorted_Abmin.wav,bass,18
+SO_NC_92_808_flote_distorted_Abmin.wav,bass,22
 Cymatics - Touchdown Drum Loop - 119 BPM.wav,drums,26
 Cymatics - 999 - 155 BPM C# Min.wav_v2,melody,6
 Cymatics - 999 - 155 BPM C# Min.wav_v3,melody,6
 Cymatics - 999 - 155 BPM C# Min.wav,melody,6
-91V_DV_140_808_loop_enchanted_Dm.wav,bass,18
-PMD_808_Loop_Dm_155BPM_01.wav,bass,10
+91V_DV_140_808_loop_enchanted_Dm.wav,bass,20
+PMD_808_Loop_Dm_155BPM_01.wav,bass,12
 Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v2,melody,4
 Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v3,melody,4
 Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav,melody,4
 Cymatics - Reflection Drum Loop - 165 BPM.wav,drums,24
-TRKTRN_DST_105_808_Bass_Loop_Hunter_Fmin.wav,bass,14
+TRKTRN_DST_105_808_Bass_Loop_Hunter_Fmin.wav,bass,24
 Cymatics - Oracle Simple Melody Loop 3 - 141 BPM C Min.wav,melody,2
 OZ_166_808_loop_haunted_C.wav,bass,8
-OZ_123_808_loop_big_rings_B.wav,bass,24
+OZ_123_808_loop_big_rings_B.wav,bass,26
 ESM_Bass_Loop_146_808_Deep_Bounce_Trap_E_Hip_Hop_Sub.wav,bass,8
 TRAVIS_BARKER_drum_loop_stalked_167.wav,drums,22
 OZ_176_808_loop_the_dynasty_D#.wav,bass,14
 Cymatics - Affiliated Drum Loop - 152 BPM.wav,drums,8
 TRKTRN_DST_105_Drum_Loop_Full_Sauce.wav,drums,20
 OS_SCE_130_synth_arp_melody_total_Em.wav,melody,12
-shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v2,bass,34
-shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v3,bass,34
-shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav,bass,34
-OZ_112_808_loop_trust_issues_C.wav,bass,12
+shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v2,bass,48
+shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v3,bass,48
+shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav,bass,48
+OZ_112_808_loop_trust_issues_C.wav,bass,24
 Cymatics - Cobra Full Drum Loop 7 - 143 BPM.wav,drums,26
 OZ_99_808_loop_morals_C.wav_v2,bass,6
 OZ_99_808_loop_morals_C.wav_v3,bass,6
 OZ_99_808_loop_morals_C.wav,bass,6
 Cymatics - Smack Drum Loop - 125 BPM.wav,drums,18
-shs_witch_75_kit_bass_pad_loop_Storm_C#.wav,bass,12
+shs_witch_75_kit_bass_pad_loop_Storm_C#.wav,bass,22
 TRAVIS_BARKER_drum_loop_hihat_snare_150.wav,drums,12
-PMME_808_09_F_165.wav,bass,12
+PMME_808_09_F_165.wav,bass,18
 Cymatics - Oracle Dark Melody Loop 18 - 177 BPM F Min.wav,melody,2
 OZ_140_drum_loop_secret_love_full.wav,drums,24
-ESM_Bass_Loop_127_808_Punch_Round_Bounce_Trap_A_Hip_Hop_Sub.wav,bass,8
+ESM_Bass_Loop_127_808_Punch_Round_Bounce_Trap_A_Hip_Hop_Sub.wav,bass,14
 Cymatics - Cobra Full Drum Loop 10 - 150 BPM.wav,drums,24
 PMD_808_Loop_Dm_150BPM_01.wav,bass,6
 Cymatics - Jackpot Drum Loop - 155 BPM.wav_v2,drums,10
@@ -194,27 +194,27 @@ SO_NC_145_808_canon_dirty_Cmaj.wav,bass,10
 Cymatics - Wanted - 138 BPM D Min.wav_v2,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav_v3,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav,melody,6
-SDU_145_808_loop_dynomite_Dm.wav,bass,16
+SDU_145_808_loop_dynomite_Dm.wav,bass,18
 RHH2_90_kit_loop_forces_piano_Gmin.wav_v2,melody,2
 RHH2_90_kit_loop_forces_piano_Gmin.wav_v3,melody,2
 RHH2_90_kit_loop_forces_piano_Gmin.wav,melody,2
-SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v2,bass,10
-SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v3,bass,10
-SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav,bass,10
+SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v2,bass,16
+SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v3,bass,16
+SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav,bass,16
 TRKTRN_DST_120_Drum_Loop_Full_Crash.wav,drums,12
 Cymatics - Cobra Melody Loop 13 - 140 BPM D# Min.wav,melody,4
-YNG_120_808_sub_warm_preassure_Fm.wav,bass,16
+YNG_120_808_sub_warm_preassure_Fm.wav,bass,18
 Cymatics - Screw Loose Drum Loop - 125 BPM.wav,drums,10
 Cymatics - Afterlife - 128 BPM C# Min.wav_v2,melody,12
 Cymatics - Afterlife - 128 BPM C# Min.wav_v3,melody,12
 Cymatics - Afterlife - 128 BPM C# Min.wav,melody,12
-SDU_145_808_loop_spectral_phone_C#m.wav,bass,16
+SDU_145_808_loop_spectral_phone_C#m.wav,bass,18
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav_v2,drums,10
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav_v3,drums,10
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav,drums,10
-SO_NC_87_808_apocalisse_trap_Bbmin.wav_v2,bass,12
-SO_NC_87_808_apocalisse_trap_Bbmin.wav_v3,bass,12
-SO_NC_87_808_apocalisse_trap_Bbmin.wav,bass,12
+SO_NC_87_808_apocalisse_trap_Bbmin.wav_v2,bass,16
+SO_NC_87_808_apocalisse_trap_Bbmin.wav_v3,bass,16
+SO_NC_87_808_apocalisse_trap_Bbmin.wav,bass,16
 Cymatics - Atlanta - 132 BPM B Min.wav_v2,melody,6
 Cymatics - Atlanta - 132 BPM B Min.wav_v3,melody,6
 Cymatics - Atlanta - 132 BPM B Min.wav,melody,6
@@ -228,24 +228,24 @@ OZ_156_drum_loop_stfu_full.wav,drums,14
 Cymatics - Cobra Melody Loop 8 - 128 BPM A# Min.wav,melody,2
 TRKTRN_DST_115_808_Bass_Loop_Lines_Fmin.wav,bass,20
 PM_SAV_150_Full_Drum_Loop_dirty.wav,drums,10
-TRKTRN_DST_105_Bass_Loop_Acid_Fmin.wav,bass,6
-OZ_133_808_loop_give_it_C.wav,bass,10
+TRKTRN_DST_105_Bass_Loop_Acid_Fmin.wav,bass,10
+OZ_133_808_loop_give_it_C.wav,bass,14
 STCR2_DLZ_135_Melodic_Stack_Loop_Oldschool_Synth_Pad_Dm.wav,melody,2
 TRKTRN_DST_140_Drum_Loop_Full_Power.wav,drums,12
-OZ_90_808_loop_da_king_C.wav_v2,bass,6
-OZ_90_808_loop_da_king_C.wav_v3,bass,6
-OZ_90_808_loop_da_king_C.wav,bass,6
+OZ_90_808_loop_da_king_C.wav_v2,bass,8
+OZ_90_808_loop_da_king_C.wav_v3,bass,8
+OZ_90_808_loop_da_king_C.wav,bass,8
 OS_RND_144_songstarter_twerk_Em.wav,melody,28
 Cymatics - Cobra Melody Loop 5 - 110 BPM E Min.wav,melody,10
 Cymatics - Cobra Full Drum Loop 14 - 160 BPM.wav,drums,12
-OZ_160_808_loop_dirty_dance_E.wav,bass,12
-OZ_86_808_loop_window_shopper_C.wav,bass,10
+OZ_160_808_loop_dirty_dance_E.wav,bass,16
+OZ_86_808_loop_window_shopper_C.wav,bass,12
 Cymatics - Cobra Melody Loop 19 - 150 BPM G# Min.wav,melody,6
 Cymatics - Layup Drum Loop - 144 BPM.wav,drums,12
 Cymatics - Cobra Full Drum Loop 4 - 130 BPM.wav,drums,8
-CPA_BFD_140_808_loop_chiro_Dm.wav,bass,32
+CPA_BFD_140_808_loop_chiro_Dm.wav,bass,36
 OZ_140_808_loop_thunder_C.wav,bass,4
-RKU_SBS_144_bass_808_loop_burnout_Emin.wav,bass,12
+RKU_SBS_144_bass_808_loop_burnout_Emin.wav,bass,14
 Cymatics - Cobra Melody Loop 7 - 128 BPM D Min.wav,melody,6
 Cymatics - Fear And Greed - 165 BPM C Min.wav_v2,melody,6
 Cymatics - Fear And Greed - 165 BPM C Min.wav_v3,melody,6
@@ -254,7 +254,7 @@ SO_NC_150_bass_chromatichell_dark_trap_Dmin.wav,bass,6
 Cymatics - Influence - 92 BPM D# Min.wav_v2,melody,14
 Cymatics - Influence - 92 BPM D# Min.wav_v3,melody,14
 Cymatics - Influence - 92 BPM D# Min.wav,melody,14
-RKU_HPB_120_bass_synth_loop_caspian_F#min.wav,bass,8
+RKU_HPB_120_bass_synth_loop_caspian_F#min.wav,bass,10
 ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v2,melody,4
 ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v3,melody,4
 ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav,melody,4
@@ -265,24 +265,24 @@ SS_S_110_piano_chords_soul_exciting.wav,melody,2
 Cymatics - Oracle Dark Melody Loop 5 - 130 BPM A Min.wav_v2,melody,2
 Cymatics - Oracle Dark Melody Loop 5 - 130 BPM A Min.wav_v3,melody,2
 Cymatics - Oracle Dark Melody Loop 5 - 130 BPM A Min.wav,melody,2
-RKU_HPB_126_bass_synth_loop_licentious_Bmin.wav,bass,6
+RKU_HPB_126_bass_synth_loop_licentious_Bmin.wav,bass,8
 OZ_140_808_loop_secret_love_C.wav,bass,8
-OZ_130_808_loop_wicked_B.wav,bass,16
-OS_RCK_140_drum_loop_murderah.wav,drums,46
+OZ_130_808_loop_wicked_B.wav,bass,18
+OS_RCK_140_drum_loop_murderah.wav,drums,52
 OS_RND_144_drum_loop_ringing.wav,drums,10
 KMRBI_NGD_140_female_vocal_loop_chopped_icey_Dm.wav,melody,14
 OS_RND_144_808_bass_always_Dm.wav,bass,30
 UKD_141_drum_loop_gappy_ranks.wav,drums,22
-OS_DRL_140_drum_loop_skengborough.wav,drums,40
+OS_DRL_140_drum_loop_skengborough.wav,drums,44
 OS_DRL_140_acoustic_guitar_melody_famington_C#m.wav,melody,10
 RKU_SBS_144_bass_808_loop_blinded_Emin.wav,bass,10
-OS_DRL_140_drum_loop_butters.wav,drums,66
+OS_DRL_140_drum_loop_butters.wav,drums,68
 OS_TE_140_Drum_Loop_Paigon.wav,drums,10
 Cymatics - Infinity Vocal Ambience - Reels - G.wav_v2,melody,6
 Cymatics - Infinity Vocal Ambience - Reels - G.wav_v3,melody,6
 Cymatics - Infinity Vocal Ambience - Reels - G.wav,melody,6
 SO_WA_144_808_medina_Dbmin.wav,bass,16
-OS_RCK_140_drum_loop_diana.wav,drums,56
+OS_RCK_140_drum_loop_diana.wav,drums,64
 OS_RND_142_drum_loop_jam.wav,drums,12
 SO_NC_130_strings_rach_sustain_vintage_Amin.wav,melody,4
 LEX_Opps_137_808_Bassline_Overkill_Emin.wav,bass,24
@@ -302,18 +302,18 @@ CPA_BFD_140_drum_loop_alaska.wav,drums,18
 VVS_144_drum_loop_attack.wav,drums,22
 KMRBI_NGD_145_no_bass_songstarter_loop_reload_D#m.wav,melody,14
 KMRBI_NGD_140_bass_loop_808_block_D#m.wav,bass,18
-OS_RND_140_drum_loop_flow.wav,drums,54
+OS_RND_140_drum_loop_flow.wav,drums,60
 SO_WA_142_soft_pad_mousso_Emin.wav,melody,14
 SO_WA_140_bass_colobane_Bmin.wav,bass,16
-OS_RND_140_drum_loop_clicked.wav,drums,54
+OS_RND_140_drum_loop_clicked.wav,drums,56
 RKU_SBS_138_drum_loop_full_pandora.wav,drums,20
 SO_NC_87_strings_apocalisse_sustain_romantic_Bbmin.wav_v2,melody,8
 SO_NC_87_strings_apocalisse_sustain_romantic_Bbmin.wav_v3,melody,8
 SO_NC_87_strings_apocalisse_sustain_romantic_Bbmin.wav,melody,8
 OS_RND_140_808_bass_shine_Dm.wav,bass,26
-OS_DRL_140_drum_loop_frisco.wav,drums,56
+OS_DRL_140_drum_loop_frisco.wav,drums,60
 BDD_141_piano_melody_lofi_big_city_Cm.wav,melody,20
-OS_RCK_140_drum_loop_geeza.wav,drums,38
+OS_RCK_140_drum_loop_geeza.wav,drums,46
 OS_DRL_140_synth_chords_intro_wet_king_Gm.wav,melody,2
 TRKTRN_DST_105_808_Bass_Loop_Down_Fmin.wav,bass,10
 OS_TE_140_Drum_Loop_Dr_ill.wav,drums,10
@@ -325,19 +325,19 @@ Cymatics - Drill King Drum Loop - 141 BPM.wav,drums,12
 OS_RCK_140_drum_loop_badness.wav,drums,48
 KMRBI_NGD_140_guzheng_loop_bullet_D#m.wav,melody,8
 91V_DV_140_808_loop_tarot_Dm.wav,bass,22
-OS_DRL_140_drum_loop_headtop.wav,drums,60
-OS_RCK_140_drum_loop_dating.wav,drums,42
+OS_DRL_140_drum_loop_headtop.wav,drums,62
+OS_RCK_140_drum_loop_dating.wav,drums,44
 KMRBI_NGD_145_vocal_loop_choir_bounce_mash_Dm.wav,melody,4
 TRKTRN_IDE_142_808_bass_loop_saint_Dmin.wav,bass,10
-KMRBI_NGD_145_full_drum_loop_no_fx_clout.wav,drums,60
-OS_DRL_140_drum_loop_knockers.wav,drums,56
+KMRBI_NGD_145_full_drum_loop_no_fx_clout.wav,drums,66
+OS_DRL_140_drum_loop_knockers.wav,drums,60
 OS_TE_140_Cm_Madnesses_Guitar.wav,melody,12
 SO_WA_140_808_sandaga_Ebmin.wav,bass,12
 OS_TE_140_D#_Yesnow_Guitar_Variations_1.wav,melody,8
-OS_RCK_140_drum_loop_bax.wav,drums,62
+OS_RCK_140_drum_loop_bax.wav,drums,64
 OS_RCK_140_violin_melody_boydem_D#.wav,melody,16
 91V_RV_140_drum_loop_sixth_heavy.wav,drums,12
-OS_DRL_140_drum_loop_famington.wav,drums,28
+OS_DRL_140_drum_loop_famington.wav,drums,30
 KMRBI_NGD_140_female_vocal_loop_bullet_D#m.wav,melody,8
 OS_RND_144_808_bass_diamond_Dm.wav,bass,20
 X10_DEM_146_drum_loop_tired_nights.wav,drums,14
@@ -366,17 +366,17 @@ BDD_144_piano_melody_trouble_Gm.wav,melody,14
 OS_RND_140_drum_loop_poppin.wav,drums,20
 SO_NC_140_songstarter_chromaticdeath_chords_horror_Dmin.wav,melody,8
 91V_RV_140_drum_loop_blowup.wav,drums,22
-OS_RCK_140_drum_loop_vexed.wav,drums,50
+OS_RCK_140_drum_loop_vexed.wav,drums,52
 KMRBI_NGD_143_keys_loop_piano_delay_paris_F#m.wav,melody,12
 BDD_140_808_sub_tip_toe_D#m.wav,bass,8
-OS_RND_142_drum_loop_banging.wav,drums,64
+OS_RND_142_drum_loop_banging.wav,drums,68
 OS_TE_140_Drum_Loop_ENDS.wav,drums,10
 OS_DRL_140_vocal_melody_thames_Bm.wav,melody,20
-OS_RCK_140_drum_loop_saxon.wav,drums,46
+OS_RCK_140_drum_loop_saxon.wav,drums,54
 OS_RND_142_808_bass_perfect_Cm.wav,bass,16
 Cymatics - Hands Down - 130 BPM C# Min.wav,melody,6
 KMRBI_NGD_143_strings_loop_violin_brixton_D#m.wav,melody,12
-OS_RND_142_drum_loop_knock.wav,drums,18
+OS_RND_142_drum_loop_knock.wav,drums,20
 KMRBI_NGD_143_female_vocal_loop_riff_beef_Dm.wav,melody,14
 SO_WA_144_808_bango_Fmin.wav,bass,10
 KMRBI_NGD_143_strings_loop_violin_red_F#m.wav,melody,14
@@ -390,7 +390,7 @@ KMRBI_NGD_143_no_bass_songstarter_loop_paris_F#m.wav,melody,18
 SO_WA_140_808_colobane_Bmin.wav,bass,6
 OS_RND_142_808_bass_love_G#m.wav,bass,8
 OS_DRL_140_vocal_call_hotrain_C#m.wav,melody,14
-KMRBI_NGD_143_full_drum_loop_red.wav,drums,46
+KMRBI_NGD_143_full_drum_loop_red.wav,drums,52
 OS_RND_142_songstarter_peaches_C#m.wav,melody,18
 BDD_144_piano_melody_right_time_Gm.wav,melody,14
 SO_NC_140_songstarter_chromaticdeath_full_dark_Dmin.wav,melody,4
@@ -406,127 +406,127 @@ Cymatics - City Of God - 158 BPM F# Min.wav_v3,melody,2
 Cymatics - City Of God - 158 BPM F# Min.wav,melody,2
 OS_DRL_140_piano_melody_lengman_Cm.wav,melody,12
 OS_RND_140_808_bass_regulate_Fm.wav,bass,6
-X10_MTN_130_piano_matchbox_Dm.wav,melody,4
-PMME_Bell_75_A#min_120.wav,melody,6
+X10_MTN_130_piano_matchbox_Dm.wav,melody,6
+PMME_Bell_75_A#min_120.wav,melody,8
 TRAVIS_BARKER_808_loop_mids_distorted_155_Amaj.wav,bass,6
-PMME_Bell_08_Bmin_135.wav,melody,6
-SO_NC_92_flute_arp_flote_classical_Abmin.wav,melody,2
+PMME_Bell_08_Bmin_135.wav,melody,8
+SO_NC_92_flute_arp_flote_classical_Abmin.wav,melody,4
 GM_piano_loop_trap_03_60_Cmin.wav_v2,melody,8
 GM_piano_loop_trap_03_60_Cmin.wav_v3,melody,8
 GM_piano_loop_trap_03_60_Cmin.wav,melody,8
 X10_MTN_140_piano_ice_Am.wav,melody,4
 OS_DD_140_Fm_Freeway_Piano.wav,melody,4
 SO_WA_142_afro_drill_guitar_mousso_Emin.wav,melody,6
-SO_NC_130_808_rach_heavy_Amin.wav,bass,4
+SO_NC_130_808_rach_heavy_Amin.wav,bass,8
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v2,melody,6
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v3,melody,6
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav,melody,6
-TRKTRN_PTSP_144_808_bass_loop_hound_Emin.wav,bass,4
-AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav_v2,melody,2
-AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav_v3,melody,2
-AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav,melody,2
+TRKTRN_PTSP_144_808_bass_loop_hound_Emin.wav,bass,6
+AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav_v2,melody,4
+AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav_v3,melody,4
+AB_CT2_Rudenote_90_Guitar_Stack_Loop_Ocean_Em.wav,melody,4
 SO_SSW_142_piano_airy_reverb_drilltime_Fmin.wav_v2,melody,4
 SO_SSW_142_piano_airy_reverb_drilltime_Fmin.wav_v3,melody,4
 SO_SSW_142_piano_airy_reverb_drilltime_Fmin.wav,melody,4
-SOUTHSIDE_melody_loop_flutes_156_F#m.wav,melody,6
-SO_NC_130_piano_melody_rach_romantic_Amin.wav,melody,8
-OS_CK1_150_Melody_D#_Lion_Synth_2.wav,melody,6
-SS_WDTB_136_kit_05_loop_wavez_bass_dirty_808_F#min.wav,bass,4
+SOUTHSIDE_melody_loop_flutes_156_F#m.wav,melody,10
+SO_NC_130_piano_melody_rach_romantic_Amin.wav,melody,14
+OS_CK1_150_Melody_D#_Lion_Synth_2.wav,melody,8
+SS_WDTB_136_kit_05_loop_wavez_bass_dirty_808_F#min.wav,bass,6
 SS_GM_90_Electric_Guitar_Loop_Lofi_Forrest_Rhythimc_Groove_Dmin.wav_v2,melody,16
 SS_GM_90_Electric_Guitar_Loop_Lofi_Forrest_Rhythimc_Groove_Dmin.wav_v3,melody,16
 SS_GM_90_Electric_Guitar_Loop_Lofi_Forrest_Rhythimc_Groove_Dmin.wav,melody,16
-HOSN_Melodic_Loop_80_G_Static_Bellz_14.wav,melody,8
-SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav_v2,bass,4
-SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav_v3,bass,4
-SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav,bass,4
-91V_RV_140_lofi_guitar_empress_cuts_Dm.wav,melody,8
-X10_MTN_160_lofi_piano_lost_Gm.wav,melody,2
+HOSN_Melodic_Loop_80_G_Static_Bellz_14.wav,melody,10
+SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav_v2,bass,6
+SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav_v3,bass,6
+SO_NC_94_bass_afterdeath_dark_distorted_Cmin.wav,bass,6
+91V_RV_140_lofi_guitar_empress_cuts_Dm.wav,melody,12
+X10_MTN_160_lofi_piano_lost_Gm.wav,melody,4
 ESM_Bass_Loop_100_Deep_808_Bass_Trap_Dm_Hip_Hop_Sub.wav,bass,4
 ABDW2_SVGAR_Piano_Loop_Block_A#m_94BPM.wav,melody,8
 DIA_BAJO_116_guitar_mexico_arp_Bmin.wav,melody,2
-AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v2,melody,4
-AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v3,melody,4
-AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav,melody,4
-MTVR2_132_vocal_dry_clipz_Cm.wav,melody,6
-TRKTRN_DST_105_808_Bass_Loop_Lose_Fmin.wav,bass,2
-X10_MTN_140_piano_state_Fm.wav,melody,8
+AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v2,melody,10
+AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v3,melody,10
+AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav,melody,10
+MTVR2_132_vocal_dry_clipz_Cm.wav,melody,8
+TRKTRN_DST_105_808_Bass_Loop_Lose_Fmin.wav,bass,4
+X10_MTN_140_piano_state_Fm.wav,melody,16
 AS_115_kit_concierge_guitar_Bmin.wav,melody,2
-SO_NC_120_808_nacht_trap_Fmin.wav,bass,4
+SO_NC_120_808_nacht_trap_Fmin.wav,bass,8
 SO_JC_90_vocal_riff_aero_Dm.wav_v2,melody,2
 SO_JC_90_vocal_riff_aero_Dm.wav_v3,melody,2
 SO_JC_90_vocal_riff_aero_Dm.wav,melody,2
-RKU_BME3_Melodic_Loop_Piano_Arp_Trail_85_Dmin.wav,melody,6
-VHM_140_vocal_hook_take_it_you_want_it_dry_Dm.wav,melody,8
-VHM_130_vocal_chop_open_up_90s_Fm.wav,melody,4
+RKU_BME3_Melodic_Loop_Piano_Arp_Trail_85_Dmin.wav,melody,8
+VHM_140_vocal_hook_take_it_you_want_it_dry_Dm.wav,melody,10
+VHM_130_vocal_chop_open_up_90s_Fm.wav,melody,6
 OS_SHD2_160_Em_Penguine_Melody.wav,melody,6
-X10_MTN_134_synth_reversed_pain_A#m.wav,melody,2
+X10_MTN_134_synth_reversed_pain_A#m.wav,melody,4
 PMME_Keys_28_C#min_140.wav,melody,4
 TRKTRN_DST_105_Drum_Loop_Full_Down.wav,drums,4
-SO_DRA_157_piano_drill_splatter_Dmin.wav,melody,4
-PMD_808_Loop_C#_135BPM_03.wav,bass,6
-91V_PSB_115_acoustic_guitar_silver_skies_strum_C#m.wav,melody,4
+SO_DRA_157_piano_drill_splatter_Dmin.wav,melody,6
+PMD_808_Loop_C#_135BPM_03.wav,bass,8
+91V_PSB_115_acoustic_guitar_silver_skies_strum_C#m.wav,melody,6
 OSS_SFJ_101_GUITAR_LOOP_FLOSSING_LEAD_Ebm.wav_v2,melody,8
 OSS_SFJ_101_GUITAR_LOOP_FLOSSING_LEAD_Ebm.wav_v3,melody,8
 OSS_SFJ_101_GUITAR_LOOP_FLOSSING_LEAD_Ebm.wav,melody,8
-OZ_135_melody_loop_bang_outside_02_Cmin.wav,melody,2
+OZ_135_melody_loop_bang_outside_02_Cmin.wav,melody,6
 GM_piano_loop_nyc_80_C#min.wav_v2,melody,2
 GM_piano_loop_nyc_80_C#min.wav_v3,melody,2
 GM_piano_loop_nyc_80_C#min.wav,melody,2
 HOSN_Melodic_Loop_120_E_New_Clock_25.wav,melody,4
 HOSN_Melodic_Loop_80_D#_Patrol_Arp_06.wav,melody,4
-AU_MEI_140_acoustic_guitar_loop_miracle_G#min.wav,melody,2
-SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav_v2,melody,6
-SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav_v3,melody,6
-SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav,melody,6
-OS_CK1_140_Melody_C#m_Ranch_Piano.wav,melody,4
-SO_WA_144_drill_guitar_medina_Dbmin.wav,melody,2
-AS_80_guitar_miso_full_Amin.wav,melody,8
-OS_130_Dm_Spanish_Guitar_Chords.wav,melody,4
+AU_MEI_140_acoustic_guitar_loop_miracle_G#min.wav,melody,4
+SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav_v2,melody,8
+SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav_v3,melody,8
+SO_NC_140_piano_melody_chiarodiluna_classical_Amin.wav,melody,8
+OS_CK1_140_Melody_C#m_Ranch_Piano.wav,melody,6
+SO_WA_144_drill_guitar_medina_Dbmin.wav,melody,4
+AS_80_guitar_miso_full_Amin.wav,melody,10
+OS_130_Dm_Spanish_Guitar_Chords.wav,melody,6
 OSS_TL_88_acoustic_guitar_loop_small_nylon_Fmaj.wav_v2,melody,4
 OSS_TL_88_acoustic_guitar_loop_small_nylon_Fmaj.wav_v3,melody,4
 OSS_TL_88_acoustic_guitar_loop_small_nylon_Fmaj.wav,melody,4
-SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav_v2,melody,24
-SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav_v3,melody,24
-SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav,melody,24
-SO_NC_120_piano_midsommar_gliss_verb_Abmin.wav,melody,14
-SO_NC_92_piano_melody_flote_classical_Abmin.wav,melody,8
+SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav_v2,melody,30
+SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav_v3,melody,30
+SO_NC_65_vocal_deathslullaby_opera_german_Cmin.wav,melody,30
+SO_NC_120_piano_midsommar_gliss_verb_Abmin.wav,melody,16
+SO_NC_92_piano_melody_flote_classical_Abmin.wav,melody,10
 SO_NC_87_piano_arp_apocalisse_high_Bbmin.wav_v2,melody,4
 SO_NC_87_piano_arp_apocalisse_high_Bbmin.wav_v3,melody,4
 SO_NC_87_piano_arp_apocalisse_high_Bbmin.wav,melody,4
 BO_FAF_120_Electric_Guitar_Loop_First_Midnight_Em.wav,melody,4
-SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav_v2,melody,2
-SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav_v3,melody,2
-SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav,melody,2
+SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav_v2,melody,4
+SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav_v3,melody,4
+SO_NC_87_piano_chords_apocalisse_high_Bbmin.wav,melody,4
 AU_FS_100_electric_guitar_loop_grey_Bmin.wav,melody,8
-SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav_v2,melody,18
-SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav_v3,melody,18
-SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav,melody,18
+SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav_v2,melody,30
+SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav_v3,melody,30
+SO_NC_65_vocal_deathslullaby_opera_vintage_Cmin.wav,melody,30
 OS_RND_142_sub_bass_girls_Am.wav,bass,2
-HOSN_Melodic_Loop_150_Fmin_Dark_Chords_46.wav,melody,2
-X10_MTN_160_piano_lost_Gm.wav,melody,6
+HOSN_Melodic_Loop_150_Fmin_Dark_Chords_46.wav,melody,4
+X10_MTN_160_piano_lost_Gm.wav,melody,8
 SOUTHSIDE_melody_loop_fences_144_Em.wav_v2,melody,12
 SOUTHSIDE_melody_loop_fences_144_Em.wav_v3,melody,12
 SOUTHSIDE_melody_loop_fences_144_Em.wav,melody,12
 PMME_Keys_27_Gmin_155.wav,melody,2
-Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav_v2,melody,2
-Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav_v3,melody,2
-Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav,melody,2
+Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav_v2,melody,8
+Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav_v3,melody,8
+Cymatics - Vocal Loop - Avarice - 96 BPM E Min.wav,melody,8
 AU_ARG2_90_electric_guitar_loop_freak_me_Amin.wav,melody,4
-SO_JC_90_vocal_hook_lookwhat_Gm.wav_v2,melody,10
-SO_JC_90_vocal_hook_lookwhat_Gm.wav_v3,melody,10
-SO_JC_90_vocal_hook_lookwhat_Gm.wav,melody,10
-CAS_130_acoustic_nylon_guitar_broken_tale_Fm.wav,melody,2
-X10_MSK_150_piano_melody_scary_hours_Gm.wav,melody,4
+SO_JC_90_vocal_hook_lookwhat_Gm.wav_v2,melody,12
+SO_JC_90_vocal_hook_lookwhat_Gm.wav_v3,melody,12
+SO_JC_90_vocal_hook_lookwhat_Gm.wav,melody,12
+CAS_130_acoustic_nylon_guitar_broken_tale_Fm.wav,melody,4
+X10_MSK_150_piano_melody_scary_hours_Gm.wav,melody,6
 SO_NC_120_piano_nacht_arp_dark_Fmin.wav,melody,2
-SO_NC_130_piano_rach_romantic_reverb_Amin.wav,melody,10
-SO_WA_140_808_gounass_Ebmin.wav,bass,2
+SO_NC_130_piano_rach_romantic_reverb_Amin.wav,melody,16
+SO_WA_140_808_gounass_Ebmin.wav,bass,4
 OS_JRSS_60_F#m_Midnight_Vocals_Blur.wav_v2,melody,2
 OS_JRSS_60_F#m_Midnight_Vocals_Blur.wav_v3,melody,2
 OS_JRSS_60_F#m_Midnight_Vocals_Blur.wav,melody,2
 OS_SHE_100_electric_guitar_melody_dreamy_G#m.wav_v2,melody,4
 OS_SHE_100_electric_guitar_melody_dreamy_G#m.wav_v3,melody,4
 OS_SHE_100_electric_guitar_melody_dreamy_G#m.wav,melody,4
-SO_NC_92_bass_synth_flote_dark_Abmin.wav,bass,2
+SO_NC_92_bass_synth_flote_dark_Abmin.wav,bass,6
 CPA_BFD_140_808_loop_alaska_D#m.wav,bass,24
 Cymatics - Infinity Vocal Ambience - Fairy Dust - 140 BPM BPM F Maj.wav,melody,2
 OS_RND_144_808_bass_inspiration_Cm.wav,bass,28
@@ -546,38 +546,58 @@ OS_DRL_140_acoustic_guitar_slb_Dm.wav,melody,10
 Cymatics - Frequencies - 132 BPM C Min.wav,melody,2
 OS_SCE_150_melodic_songstarter_lust_F#m.wav,melody,12
 VHM_140_vocal_hook_break_down_my_walls_dry_Dm.wav,melody,4
-OS_NU_95_electric_guitar_chords_twink_Bm.wav_v2,melody,2
-OS_NU_95_electric_guitar_chords_twink_Bm.wav_v3,melody,2
-OS_NU_95_electric_guitar_chords_twink_Bm.wav,melody,2
+OS_NU_95_electric_guitar_chords_twink_Bm.wav_v2,melody,6
+OS_NU_95_electric_guitar_chords_twink_Bm.wav_v3,melody,6
+OS_NU_95_electric_guitar_chords_twink_Bm.wav,melody,6
 Cymatics - Euphoria Processed Phrase 2 - Pull Up On That - 90 BPM.wav,melody,2
-SO_SAV_130_piano_melody_drill_deviledegg_Gmin.wav,melody,4
+SO_SAV_130_piano_melody_drill_deviledegg_Gmin.wav,melody,6
 OZ_172_melody_loop_san_andreas_04_C#min.wav_v2,melody,4
 OZ_172_melody_loop_san_andreas_04_C#min.wav_v3,melody,4
 OZ_172_melody_loop_san_andreas_04_C#min.wav,melody,4
-SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav_v2,melody,2
-SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav_v3,melody,2
-SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav,melody,2
+SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav_v2,melody,4
+SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav_v3,melody,4
+SO_NC_140_piano_arp_chiarodiluna_classical_Amin.wav,melody,4
 AHA_DO_120_vocal_stack_loop_final_curtain_Bm.wav_v2,melody,4
 AHA_DO_120_vocal_stack_loop_final_curtain_Bm.wav_v3,melody,4
 AHA_DO_120_vocal_stack_loop_final_curtain_Bm.wav,melody,4
-AS_70_guitar_electric_blossom_lead_Dmaj.wav,melody,2
-808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav_v2,melody,2
-808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav_v3,melody,2
-808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav,melody,2
+AS_70_guitar_electric_blossom_lead_Dmaj.wav,melody,6
+808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav_v2,melody,4
+808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav_v3,melody,4
+808MAFIA_CC_149_melodic_loop_pericolo_Dbmin.wav,melody,4
 OSS_TL_92_acoustic_guitar_loop_moody_nylon_D#min.wav,melody,2
 SD_LV_60_vocals_ensemble_cathedral_choral_Dbmin.wav_v2,melody,2
 SD_LV_60_vocals_ensemble_cathedral_choral_Dbmin.wav_v3,melody,2
 SD_LV_60_vocals_ensemble_cathedral_choral_Dbmin.wav,melody,2
-SO_NC_145_piano_melody_canon_cute_Cmaj.wav,melody,2
-SO_WA_144_guitar_chords_medina_Dbmin.wav,melody,4
+SO_NC_145_piano_melody_canon_cute_Cmaj.wav,melody,4
+SO_WA_144_guitar_chords_medina_Dbmin.wav,melody,6
 bp_90_guitar_loop_yokid_Dmaj.wav,melody,2
 X10_MTN_160_piano_gentle_A#.wav,melody,2
-SOULSURPLUS_trapjewels_synth_melodic_loop_5_arpeggio_ambient_melody_75bpm_Fmin.wav,melody,2
-OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav_v2,melody,4
-OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav_v3,melody,4
-OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav,melody,4
+SOULSURPLUS_trapjewels_synth_melodic_loop_5_arpeggio_ambient_melody_75bpm_Fmin.wav,melody,4
+OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav_v2,melody,8
+OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav_v3,melody,8
+OSS_R&B_76_GUITAR_LOOP_LADY_LOVE_Cm.wav,melody,8
 SO_NC_90_piano_arp_allegro_high_Cmin.wav_v2,melody,2
 SO_NC_90_piano_arp_allegro_high_Cmin.wav_v3,melody,2
 SO_NC_90_piano_arp_allegro_high_Cmin.wav,melody,2
 BOI1DA_melodic_loop_piano_4bar_110_Cmin.wav,melody,6
 91V_DV_140_synth_arp_loop_rosewood_D#m.wav,melody,2
+RKU_BME3_Melodic_Loop_Piano_Arp_Detuned_65_A#min.wav,melody,4
+DIA_BAJO_134_guitar_lempira_A#min.wav,melody,2
+LBN_75_guitar_teenage_dreams_Fm.wav_v2,melody,2
+LBN_75_guitar_teenage_dreams_Fm.wav_v3,melody,2
+LBN_75_guitar_teenage_dreams_Fm.wav,melody,2
+GM_piano_loop_night_01_80_Emin.wav,melody,4
+PL_BA_125_Piano_Loop_Mayhem_Melody_Fm.wav,melody,2
+PL_BA_90_Piano_Loop_Places_Melody_Em.wav,melody,4
+Lex_DSP_142_Song_Starter_Kaa_G.wav,melody,2
+ABDW_Piano_Melody_Pairs_Well_with_Bass_D#min_100BPM.wav_v2,melody,4
+ABDW_Piano_Melody_Pairs_Well_with_Bass_D#min_100BPM.wav_v3,melody,4
+ABDW_Piano_Melody_Pairs_Well_with_Bass_D#min_100BPM.wav,melody,4
+SC_NG_70_guitar_nylon_melody_early_spring_main_Emaj.wav,melody,6
+OZ_140_melody_loop_lose_myself_03_D#min.wav,melody,2
+SGT_Loop_Melody_Piano_Upiter_140_C_Minor.wav,melody,4
+PL_BA_80_Piano_Loop_Eruption_Melody_Dm.wav,melody,2
+TRKTRN_DST_105_808_Bass_Loop_Touch_Fmin.wav,bass,2
+SO_NC_120_piano_chords_nacht_build_Fmin.wav,melody,2
+OSS_TBK_126_GUITAR_LOOP_MUTED_Em.wav,melody,2
+ABDW_Piano_Melody_Something_About_Money_G#min_090BPM.wav,melody,2

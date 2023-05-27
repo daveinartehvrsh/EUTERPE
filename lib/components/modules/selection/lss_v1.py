@@ -9,7 +9,7 @@ class LSS(AudioSelectionSystem):
         self.info = {
             'name': 'LSS_v1',
             'gen_no': gen_no,
-            'BPM': system_info['BPM'],
+            'bpm': system_info['bpm'],
             'loop_beats': system_info['loop_beats'],
             'sr': system_info['sr'],
             'kits': {
@@ -28,7 +28,6 @@ class LSS(AudioSelectionSystem):
                     'n_loops': int(system_info['m_n_loops']),
                     'gain': system_info['m_gain'],
                 },
-                
             }
         }
         self.dataset = Dataset(gen_no)

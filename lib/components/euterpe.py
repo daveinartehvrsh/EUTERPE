@@ -18,24 +18,34 @@ class Euterpe():
         self.sections = {}
         self.intensity_schemes = []
         
-    def init_lss(self, gen_no):       
+    def init_lss(self, gen_no):
+        if self.system_info['bpm'] != 'auto':
+            self.system_info['bar_lenght'] = self.system_info['bpm'] * self.system_info['sr'] * 16
+            logger.info(f'GLOBAL: {self.system_info["bpm"]} bpm: Bar lenght set to {self.system_info["bar_lenght"]} as ')    
         self.lss = LSS(self.system_info, gen_no)
         self.lss.init_lss()
     
     def export_section(self, section: Mixer, name):
-        logger.info(f'mixing track no. {name}')    
         beat, trackouts = section.render_section(self.lss.dataset.get_heir().get_len())
         beat = audio.transform.normalize(beat)
-        os.chdir(self.system_info['outputdirectory'])         
-        audio.file.export(name=(f'{name}.wav'),audio=beat)
-        logger.info(f'Track exported at: {os.getcwd()}/{name}.wav | lenght: {len(beat)/self.system_info["sr"]} sec')
+        os.chdir(self.system_info['outputdirectory'])
+
+        if self.system_info['bpm'] == 'auto':
+            beat_name = f'{name}_{self.lss.dataset.get_heir().get_bpm()}_{self.lss.dataset.get_heir().get_scale()}.wav'
+        else:
+            beat_name = f'{name}_{self.system_info["bpm"]}_{self.lss.dataset.get_heir().get_scale()}.wav'
+
+        audio.file.export(name=beat_name,audio=beat)
+
+
+        logger.info(f'Track exported at: {os.getcwd()}/{beat_name}')
         if len(trackouts.get_data()) > 0:
             os.mkdir('stems')
             os.chdir('stems')
             for i, trackout in enumerate(trackouts.get_items()):
                 audio.file.export(name=(f'{name}_{i}.wav'),audio=trackout)
             
-            logger.info(f'track exported at {os.getcwd()}\n')
+            logger.info(f'Trackout included in: {os.getcwd()}/stems')
         os.chdir(self.system_info['basefolder'])
 
     def get_info():
@@ -68,37 +78,27 @@ class Euterpe():
         self.beatmaker = None
         self.beatmaker = Ronald(self.system_info)
 
-    def context_init(self):        
-        self.system_info["basefolder"] = os.getcwd()
-        os.chdir(self.system_info['output_path'])
-        gen_dir = f'{time.strftime("%d%m_%H%M_%S", time.localtime())}'
-        os.mkdir(gen_dir)
-        os.chdir(gen_dir)
-        self.system_info['output_path'] = os.getcwd()
-        os.chdir(self.system_info["basefolder"])
-
-    def setup_log(self):
+    def init_log(self):
         formatter = logging.Formatter('%(asctime)s> %(message)s')
         log_file = f'{self.system_info["outputdirectory"]}/log.log'
         file_handler = logging.FileHandler(log_file)
-        file_handler.setLevel(logging.DEBUG)
+        file_handler.setLevel(logging.INFO)
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)
         return file_handler
 
-    def export_info(self, file_handler):
+    def export_info(self, log_info):
         self.lss.dataset.to_csv(csv_name=f'{self.system_info["output_path"]}/loops.csv')
-        logger.removeHandler(file_handler)
+        logger.removeHandler(log_info)
 
-    def run(self, n_tracks):         
-        self.context_init()
+    def run(self, n_tracks):
 
         for i in range(n_tracks):
             self.refresh(i)
-            file_handler = self.setup_log()
+            log_info = self.init_log()
             self.init_lss(gen_no=i)
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
-            self.export_info(file_handler)
+            self.export_info(log_info)
 
             

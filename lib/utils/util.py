@@ -5,7 +5,7 @@ import pandas as pd
 def loop_to_CSV(input_string, csv_file=None):
     
     result1 = input_string
-    result2 = scale_to_numeric(extract_tonality_from_str(input_string))
+    result2 = scale_to_numeric(extract_scale_from_str(input_string))
 
     new_row = pd.DataFrame({
         'Loop name': [result1],
@@ -70,7 +70,7 @@ def remove_whitespace(input_string):
     # Use the replace() method to remove all whitespace characters
     return input_string.replace(" ", "").replace("\t", "").replace("\n", "").replace("\r", "")
 
-def extract_tonality_from_str(string):
+def extract_scale_from_str(string):
     if string[-4:] == '.wav' or string[:-4] == '.mp3':
         string = string[:-4]
 
@@ -80,8 +80,21 @@ def extract_tonality_from_str(string):
         match = re.search(regex, element)
         if match:
             tonality = match.group(0)
-            return remove_whitespace(tonality)
-        
+            return remove_whitespace(tonality)        
+    return None
+
+import re
+
+def extract_bpm_from_str(string):
+    if string[-4:] == '.wav' or string[:-4] == '.mp3':
+        string = string[:-4]
+    elements = re.split(' |_', string)
+    regex = r'^(7[0-9]|8[0-9]|9[0-9]|1[0-7][0-9]|18[0-9])(BPM|bpm)?$'
+    for element in elements:
+        match = re.search(regex, element)
+        if match:
+            tonality = match.group(0)
+            return remove_whitespace(tonality)  
     return None
 
 def scale_to_numeric(string):
@@ -130,8 +143,11 @@ def scale_to_numeric(string):
         return root
     
 def main():
-    loop_name = 'CPA_BFD_140_808_loop_alaska_D#m'
-    print(extract_tonality_from_str(loop_name))
+    for root, dir, file in os.walk("D:\Calliope\dataset\essential"):
+        for f in file:
+            if f[-4:] == '.wav' or f[-4:] == '.mp3':
+                numbers = extract_bpm_from_str(f)
+                print(f, numbers)
     
 if __name__ == "__main__":
     main()

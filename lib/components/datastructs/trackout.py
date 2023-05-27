@@ -8,7 +8,7 @@ logger = logging.getLogger('my_logger')
 
 class Trackout(Sequence):
 
-    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme=False):
+    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme):
         
         logger.info(f'filling {self.get_name()} sequence')
 
@@ -22,12 +22,9 @@ class Trackout(Sequence):
                 logger.info(f' |{i+1}|: empty')
             else:
                 logger.error('something strange happened')
-            if tune_scheme[i]:
-                tuned_data = audio.tune.st_shift(loop, tune_scheme[i])
-                tuned = Loop(id=loop.id, name=loop.get_name(), data=tuned_data, sr=loop.sr, path=loop.path)           
-                self.add(tuned)
-            else:
-                self.add(loop)
+            tuned_data = audio.tune.st_shift(loop, tune_scheme[i])
+            tuned = Loop(id=loop.id, name=loop.get_name(), data=tuned_data, sr=loop.sr, path=loop.path)           
+            self.add(tuned)
         
         logger.info(f'Completed {self.get_name()} sequencencing\n')
 

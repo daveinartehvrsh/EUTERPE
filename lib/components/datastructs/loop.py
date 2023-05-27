@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger('my_logger')
 
 class Loop(AudioComponent):
-    def __init__(self, id: int, name: str, data, sr: int, path: str, st_shift: int = 0, scale: int = None):
+    def __init__(self, id: int, name: str, data, sr: int, path: str, bpm: int = None, st_shift: int = 0, scale: int = None):
         self.id = id
         self.name = name
         self.data = data
@@ -14,6 +14,7 @@ class Loop(AudioComponent):
         self.st_shift = st_shift
         self.scale = scale
         self.gain = 1
+        self.bpm = bpm
     
     def trim(self, lenght):
         loops = audio.transform.trim_loop(self, lenght)
@@ -27,7 +28,7 @@ class Loop(AudioComponent):
         self.st_shift += st_shift
 
     def stretch(self, bar_lenght, mode='key'):
-        logger.info(f'Stretching {self.get_name()} from {self.get_len()/self.sr}s to {bar_lenght/self.sr}s with {mode} mode')
+        logger.debug(f'Stretching {self.get_name()} from {float("{:.2f}".format(self.get_len()/self.sr))}s to {float("{:.2f}".format(bar_lenght/self.sr))}s with {mode} mode')
         if mode == 'key':
             self.set_data(audio.stretch.stretch_key(self, bar_lenght))
         elif mode == 'resample':
@@ -50,6 +51,9 @@ class Loop(AudioComponent):
 
     def get_repr(self):
         return f'{self.get_tune()}'
+
+    def get_bpm(self):
+        return self.bpm
         
     def get_info(self):
         info = {
