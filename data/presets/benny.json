@@ -1,0 +1,20 @@
+{
+    "drums": {
+        "path": "D:\\calliope\\dataset\\Essential\\club\\drums",
+        "n_loops": "2",
+        "intensity": "0.8",
+        "gain": "4"
+    },
+    "bass": {
+        "path": "D:\\calliope\\dataset\\Essential\\808",
+        "n_loops": "1",
+        "intensity": "0.6",
+        "gain": "8"
+    },
+    "melody": {
+        "path": "D:\\calliope\\dataset\\Essential\\club\\melody",
+        "n_loops": "1",
+        "intensity": "0.9",
+        "gain": "12"
+    }
+}

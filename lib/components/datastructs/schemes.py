@@ -1,8 +1,23 @@
 import random
 import numpy as np
+from lib.components.abstract.abstract import ValueComponent
 
-def Scheme(ValueComponent):
-    ...
+class Scheme(ValueComponent):
+    
+    def load_from_str(self, scheme_str):
+        temp = []
+        for value in scheme_str.split(','):
+            temp.append(float(value))
+        self.data = temp
+
+    def convert_to_len(self, lenght):
+        rate = int(lenght/len(self.data) + 0.9)
+        longer = np.repeat(self.data, rate)
+        resized = np.resize(longer, lenght)
+        self.data = resized
+
+    def get_info(self):
+        return super().get_info()
 
 def load_from_str(scheme_str):
     data = []
@@ -16,28 +31,37 @@ def convert_to_len(data, lenght):
     resized = np.resize(longer, lenght)
     return resized
     
-def make_rantune(len, prob=0.5):        
-    return random.choices([0, -12], [prob, 1-prob], k=len)
+def make_rantune(len, prob=0.5):
+    temp = random.choices([0, -12], [prob, 1-prob], k=len)
+    scheme = Scheme()
+    scheme.set_data(temp)
+    return scheme
 
 def make_ranbinary(len, prob=0.5):
-    out = []
+    temp = []
     if isinstance(prob, float):
         prob = np.repeat(prob, len)
     else:
         prob = load_from_str(prob)
         prob = convert_to_len(prob, len)
     for i in range(len):
-        out.append(random.choices([1, 0], [prob[i], 1-prob[i]], k=1)[0])
-    return out
+        temp.append(random.choices([1, 0], [prob[i], 1-prob[i]], k=1)[0])
+    scheme = Scheme()
+    scheme.set_data(temp)
+    return scheme
 
 def make_ones(len):
-    scheme = []
+    temp = []
     for i in range(len):
-        scheme.append(1)
+        temp.append(1)
+    scheme = Scheme()
+    scheme.set_data(temp)
     return scheme
 
 def make_zeros(len):
-    scheme = []
+    temp = []
     for i in range(len):
-        scheme.append(0)
+        temp.append(0)
+    scheme = Scheme()
+    scheme.set_data(temp)
     return scheme

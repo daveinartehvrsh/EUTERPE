@@ -1,5 +1,6 @@
 from lib.components.abstract.abstract import AudioSelectionSystem
 from lib.components.datastructs.dataset import Dataset
+import lib.components.presets as presets
 import logging
 logger = logging.getLogger('my_logger')
 
@@ -12,24 +13,12 @@ class LSS(AudioSelectionSystem):
             'bpm': system_info['bpm'],
             'loop_beats': system_info['loop_beats'],
             'sr': system_info['sr'],
-            'kits': {
-                'bass': {
-                    'path': system_info['b_path'],
-                    'n_loops': int(system_info['b_n_loops']),
-                    'gain': system_info['b_gain'],
-                },
-                'drums': {
-                    'path': system_info['d_path'],
-                    'n_loops': int(system_info['d_n_loops']),
-                    'gain': system_info['d_gain'],
-                },
-                'melody': {
-                    'path': system_info['m_path'],
-                    'n_loops': int(system_info['m_n_loops']),
-                    'gain': system_info['m_gain'],
-                },
-            }
+            'kits': presets.load(system_info['preset'])
         }
+
+        if 'bar_lenght' in system_info:
+            self.info['bar_lenght'] = system_info['bar_lenght']
+
         self.dataset = Dataset(gen_no)
     
     def init_lss(self):

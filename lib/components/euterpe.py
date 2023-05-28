@@ -21,12 +21,12 @@ class Euterpe():
     def init_lss(self, gen_no):
         if self.system_info['bpm'] != 'auto':
             self.system_info['bar_lenght'] = self.system_info['bpm'] * self.system_info['sr'] * 16
-            logger.info(f'GLOBAL: {self.system_info["bpm"]} bpm: Bar lenght set to {self.system_info["bar_lenght"]} as ')    
+            logger.info(f'GLOBAL: {self.system_info["bpm"]} bpm: Bar lenght set to {self.system_info["bar_lenght"]}')    
         self.lss = LSS(self.system_info, gen_no)
         self.lss.init_lss()
     
     def export_section(self, section: Mixer, name):
-        beat, trackouts = section.render_section(self.lss.dataset.get_heir().get_len())
+        beat, trackouts = section.render_section()
         beat = audio.transform.normalize(beat)
         os.chdir(self.system_info['outputdirectory'])
 
@@ -97,6 +97,7 @@ class Euterpe():
             self.refresh(i)
             log_info = self.init_log()
             self.init_lss(gen_no=i)
+            self.beatmaker.info['bar_lenght'] = self.lss.info['bar_lenght']
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
             self.export_info(log_info)
