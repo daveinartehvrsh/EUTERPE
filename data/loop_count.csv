@@ -14,7 +14,7 @@ OS_FIRE_140_drum_loop_global.wav,drums,72
 AB_CT2_Zain_Wolf_140_Synth_Stack_Loop_Mercy_Dm_.wav,melody,17
 OS_SCE_130_synth_melody_stack_sync_F#m.wav,melody,17
 rhh_melodic_loop_lica_90_D#m.wav,melody,13
-OS_SCE_150_808_bass_neighbors_Em.wav,bass,38
+OS_SCE_150_808_bass_neighbors_Em.wav,bass,40
 OS_SCE_120_808_bass_talking_C#m.wav,bass,41
 OS_DPS_130_drum_loop_caster.wav,drums,82
 OS_DPS_140_drum_loop_backburner.wav,drums,100
@@ -22,7 +22,7 @@ OS_DPS_124_drum_loop_tuff.wav,drums,78
 AB_CT2_Dabow_150_Synth_Stack_Loop_Change_Me_D#m.wav,melody,18
 AB_CT2_Zain_Wolf_143_Synth_Stack_Loop_Twitch_Notification_F#_.wav,melody,13
 OS_RND_142_piano_keys_clubbing_Am.wav,melody,9
-OS_SCE_150_808_bass_radar_F#m.wav,bass,60
+OS_SCE_150_808_bass_radar_F#m.wav,bass,62
 OS_DPS_140_808_donate_Gm.wav,bass,45
 SO_TI_130_drum_loop_cougars_leaning.wav_v2,drums,115
 SO_TI_130_drum_loop_cougars_leaning.wav_v3,drums,115
@@ -31,8 +31,8 @@ AB_CT2_Dabow_132_Melodic_Stack_Loop_Practice_Makes_Perfect_D#m.wav,melody,15
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav_v2,melody,13
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav_v3,melody,13
 ABDW2_Dabow_West_Coast_Loop_Pressure_Guitar_Dm_98BPM.wav,melody,13
-OS_RND_140_808_bass_swag_Gm.wav,bass,49
-OS_SCE_130_808_bass_warmth_Cm.wav,bass,45
+OS_RND_140_808_bass_swag_Gm.wav,bass,55
+OS_SCE_130_808_bass_warmth_Cm.wav,bass,47
 OS_FIRE_150_drum_loop_mourning.wav,drums,64
 AB_CT2_Rudenote_140_Guitar_Stack_Loop_Painkiller_D#m.wav_v2,melody,7
 AB_CT2_Rudenote_140_Guitar_Stack_Loop_Painkiller_D#m.wav_v3,melody,7
@@ -53,9 +53,9 @@ OS_DPS_160_808_homies_Cm.wav,bass,41
 SO_TI_130_drum_loop_teniente_deep_lows.wav,drums,109
 OS_RCK_140_choir_chords_melodic_stack_borough_D#m.wav,melody,19
 OS_RCK_140_melodic_stack_m1_C#.wav,melody,19
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v2,bass,35
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v3,bass,35
-KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav,bass,35
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v2,bass,39
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav_v3,bass,39
+KMRBI_TDM_166_808_bass_loop_ghost_Amaj.wav,bass,39
 RKU_TJ1_70_drum_loop_full_yakuza.wav,drums,93
 AB_CT2_Dabow_140_Melodic_Stack_Loop_Saw_The_Line_Cm.wav,melody,19
 AB_CT2_Zain_Wolf_123_Synth_Stack_Loop_True_Thoughts_D#m.wav,melody,6
@@ -68,7 +68,7 @@ OS_SCE_160_melodic_songstarter_mustard_D#m.wav,melody,11
 OS_SCE_160_melodic_songstarter_set_Cm.wav,melody,7
 RKU_TJ1_65_drum_loop_full_defeat.wav,drums,108
 OS_DO_146_piano_melody_killa_D#m.wav,melody,10
-OS_SCE_160_808_bass_set_Cm.wav,bass,32
+OS_SCE_160_808_bass_set_Cm.wav,bass,34
 OS_SCE_150_melodic_songstarter_radar_F#m.wav,melody,12
 OS_SCE_140_melodic_songstarter_slide_Bm.wav,melody,16
 OS_SCE_150_melodic_songstarter_nothingless_F#m.wav,melody,14
@@ -86,7 +86,7 @@ OS_DO_162_electric_guitar_stack_tropix_A#m.wav,melody,18
 OS_SCE_150_synth_bass_tears_Fm.wav,bass,48
 OS_RCK_140_guitar_melodic_stack_diana_Dm.wav,melody,22
 OS_RND_142_songstarter_perfect_Cm.wav,melody,34
-OS_SCE_140_synth_bass_influence_F#m.wav,bass,44
+OS_SCE_140_synth_bass_influence_F#m.wav,bass,46
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav_v2,melody,12
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav_v3,melody,12
 OSS_R_B_98_GUITAR_LOOP_ABRA_ARP_Abm.wav,melody,12
@@ -114,11 +114,11 @@ YNG_100_808_sub_deep_push_glide_Dm.wav,bass,10
 Cymatics - Cobra Full Drum Loop 8 - 150 BPM.wav,drums,22
 OZ_86_drum_loop_full_window_shopper.wav,drums,16
 Cymatics - Oracle Dark Melody Loop 17 - 172 BPM C# Min.wav,melody,2
-SDU_120_808_loop_fuzzy_duck_Fm.wav,bass,26
+SDU_120_808_loop_fuzzy_duck_Fm.wav,bass,32
 TRKTRN_DST_120_Drum_Loop_Full_Magnet.wav,drums,18
 Cymatics - Cobra Full Drum Loop 17 - 170 BPM.wav,drums,12
 Cymatics - Angels - 147 BPM G Min.wav,melody,2
-SS_DST_80_Bass_Loop_Kit03_Vibes_Dirty_808_C.wav,bass,10
+SS_DST_80_Bass_Loop_Kit03_Vibes_Dirty_808_C.wav,bass,12
 Cymatics - Slowed Time Drum Loop - 109 BPM.wav_v2,drums,32
 Cymatics - Slowed Time Drum Loop - 109 BPM.wav_v3,drums,32
 Cymatics - Slowed Time Drum Loop - 109 BPM.wav,drums,32
@@ -126,24 +126,24 @@ TRKTRN_DST_105_Drum_Loop_Full_Shadow.wav,drums,24
 Cymatics - Cobra Melody Loop 17 - 150 BPM C# Min.wav,melody,6
 Cymatics - Cobra Full Drum Loop 16 - 170 BPM.wav,drums,10
 Cymatics - Cobra Full Drum Loop 5 - 140 BPM.wav,drums,20
-RHH2_90_kit_loop_dark_piano_C#min.wav,melody,6
-OS_BNZ_142_D#m_Gremlin_Bass_808.wav,bass,8
+RHH2_90_kit_loop_dark_piano_C#min.wav,melody,8
+OS_BNZ_142_D#m_Gremlin_Bass_808.wav,bass,12
 Cymatics - Wake Up Drum Loop - 100 BPM.wav_v2,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav_v3,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav,drums,16
 OZ_166_drum_loop_haunted_top.wav,drums,12
-Cymatics - Bae - 110 BPM E Min.wav_v2,melody,8
-Cymatics - Bae - 110 BPM E Min.wav_v3,melody,8
-Cymatics - Bae - 110 BPM E Min.wav,melody,8
+Cymatics - Bae - 110 BPM E Min.wav_v2,melody,12
+Cymatics - Bae - 110 BPM E Min.wav_v3,melody,12
+Cymatics - Bae - 110 BPM E Min.wav,melody,12
 TRAVIS_BARKER_808_loop_distorted_02_125_G#.wav,bass,18
 Cymatics - Solitude Drum Loop - 134 BPM.wav,drums,16
 SO_TI_130_bass_synth_teniente_808_gunna_Cmin.wav,bass,16
 Cymatics - Cobra Full Drum Loop 13 - 160 BPM.wav,drums,22
 PMOD_808_Loop_06_140_F#min.wav,bass,8
 OZ_112_drum_loop_trust_issues_full.wav,drums,26
-Cymatics - Glyph - 80 BPM A# Min.wav_v2,melody,2
-Cymatics - Glyph - 80 BPM A# Min.wav_v3,melody,2
-Cymatics - Glyph - 80 BPM A# Min.wav,melody,2
+Cymatics - Glyph - 80 BPM A# Min.wav_v2,melody,4
+Cymatics - Glyph - 80 BPM A# Min.wav_v3,melody,4
+Cymatics - Glyph - 80 BPM A# Min.wav,melody,4
 PMD_808_Loop_Dm_188BPM_01.wav,bass,8
 Cymatics - Cobra Full Drum Loop 11 - 150 BPM.wav,drums,14
 Cymatics - Angel Wings - 157 BPM F Min.wav_v2,melody,4
@@ -156,9 +156,9 @@ Cymatics - 999 - 155 BPM C# Min.wav_v3,melody,6
 Cymatics - 999 - 155 BPM C# Min.wav,melody,6
 91V_DV_140_808_loop_enchanted_Dm.wav,bass,20
 PMD_808_Loop_Dm_155BPM_01.wav,bass,18
-Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v2,melody,4
-Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v3,melody,4
-Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav,melody,4
+Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v2,melody,8
+Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav_v3,melody,8
+Cymatics - Oracle Simple Melody Loop 1 - 86 BPM D# Min.wav,melody,8
 Cymatics - Reflection Drum Loop - 165 BPM.wav,drums,24
 TRKTRN_DST_105_808_Bass_Loop_Hunter_Fmin.wav,bass,24
 Cymatics - Oracle Simple Melody Loop 3 - 141 BPM C Min.wav,melody,2
@@ -175,9 +175,9 @@ shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v3,bass,48
 shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav,bass,48
 OZ_112_808_loop_trust_issues_C.wav,bass,24
 Cymatics - Cobra Full Drum Loop 7 - 143 BPM.wav,drums,26
-OZ_99_808_loop_morals_C.wav_v2,bass,6
-OZ_99_808_loop_morals_C.wav_v3,bass,6
-OZ_99_808_loop_morals_C.wav,bass,6
+OZ_99_808_loop_morals_C.wav_v2,bass,8
+OZ_99_808_loop_morals_C.wav_v3,bass,8
+OZ_99_808_loop_morals_C.wav,bass,8
 Cymatics - Smack Drum Loop - 125 BPM.wav,drums,18
 shs_witch_75_kit_bass_pad_loop_Storm_C#.wav,bass,24
 TRAVIS_BARKER_drum_loop_hihat_snare_150.wav,drums,12
@@ -190,14 +190,14 @@ PMD_808_Loop_Dm_150BPM_01.wav,bass,6
 Cymatics - Jackpot Drum Loop - 155 BPM.wav_v2,drums,10
 Cymatics - Jackpot Drum Loop - 155 BPM.wav_v3,drums,10
 Cymatics - Jackpot Drum Loop - 155 BPM.wav,drums,10
-SO_NC_145_808_canon_dirty_Cmaj.wav,bass,12
+SO_NC_145_808_canon_dirty_Cmaj.wav,bass,14
 Cymatics - Wanted - 138 BPM D Min.wav_v2,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav_v3,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav,melody,6
 SDU_145_808_loop_dynomite_Dm.wav,bass,18
-RHH2_90_kit_loop_forces_piano_Gmin.wav_v2,melody,2
-RHH2_90_kit_loop_forces_piano_Gmin.wav_v3,melody,2
-RHH2_90_kit_loop_forces_piano_Gmin.wav,melody,2
+RHH2_90_kit_loop_forces_piano_Gmin.wav_v2,melody,4
+RHH2_90_kit_loop_forces_piano_Gmin.wav_v3,melody,4
+RHH2_90_kit_loop_forces_piano_Gmin.wav,melody,4
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v2,bass,16
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v3,bass,16
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav,bass,16
@@ -205,10 +205,10 @@ TRKTRN_DST_120_Drum_Loop_Full_Crash.wav,drums,12
 Cymatics - Cobra Melody Loop 13 - 140 BPM D# Min.wav,melody,4
 YNG_120_808_sub_warm_preassure_Fm.wav,bass,18
 Cymatics - Screw Loose Drum Loop - 125 BPM.wav,drums,10
-Cymatics - Afterlife - 128 BPM C# Min.wav_v2,melody,12
-Cymatics - Afterlife - 128 BPM C# Min.wav_v3,melody,12
-Cymatics - Afterlife - 128 BPM C# Min.wav,melody,12
-SDU_145_808_loop_spectral_phone_C#m.wav,bass,18
+Cymatics - Afterlife - 128 BPM C# Min.wav_v2,melody,18
+Cymatics - Afterlife - 128 BPM C# Min.wav_v3,melody,18
+Cymatics - Afterlife - 128 BPM C# Min.wav,melody,18
+SDU_145_808_loop_spectral_phone_C#m.wav,bass,20
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav_v2,drums,10
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav_v3,drums,10
 TRKTRN_DST_105_Drum_Loop_Full_Touch.wav,drums,10
@@ -222,13 +222,13 @@ TRKTRN_DST_105_Drum_Loop_Full_Hunter.wav,drums,22
 SO_NC_90_bass_sub_rach_trap_Amin.wav_v2,bass,4
 SO_NC_90_bass_sub_rach_trap_Amin.wav_v3,bass,4
 SO_NC_90_bass_sub_rach_trap_Amin.wav,bass,4
-OZ_156_808_loop_stfu_C.wav,bass,8
+OZ_156_808_loop_stfu_C.wav,bass,10
 TRKTRN_DST_105_Drum_Loop_Full_Lose.wav,drums,14
 OZ_156_drum_loop_stfu_full.wav,drums,14
-Cymatics - Cobra Melody Loop 8 - 128 BPM A# Min.wav,melody,2
+Cymatics - Cobra Melody Loop 8 - 128 BPM A# Min.wav,melody,6
 TRKTRN_DST_115_808_Bass_Loop_Lines_Fmin.wav,bass,20
 PM_SAV_150_Full_Drum_Loop_dirty.wav,drums,10
-TRKTRN_DST_105_Bass_Loop_Acid_Fmin.wav,bass,10
+TRKTRN_DST_105_Bass_Loop_Acid_Fmin.wav,bass,22
 OZ_133_808_loop_give_it_C.wav,bass,14
 STCR2_DLZ_135_Melodic_Stack_Loop_Oldschool_Synth_Pad_Dm.wav,melody,2
 TRKTRN_DST_140_Drum_Loop_Full_Power.wav,drums,12
@@ -239,7 +239,7 @@ OS_RND_144_songstarter_twerk_Em.wav,melody,28
 Cymatics - Cobra Melody Loop 5 - 110 BPM E Min.wav,melody,10
 Cymatics - Cobra Full Drum Loop 14 - 160 BPM.wav,drums,12
 OZ_160_808_loop_dirty_dance_E.wav,bass,16
-OZ_86_808_loop_window_shopper_C.wav,bass,12
+OZ_86_808_loop_window_shopper_C.wav,bass,16
 Cymatics - Cobra Melody Loop 19 - 150 BPM G# Min.wav,melody,6
 Cymatics - Layup Drum Loop - 144 BPM.wav,drums,12
 Cymatics - Cobra Full Drum Loop 4 - 130 BPM.wav,drums,8
@@ -250,14 +250,14 @@ Cymatics - Cobra Melody Loop 7 - 128 BPM D Min.wav,melody,6
 Cymatics - Fear And Greed - 165 BPM C Min.wav_v2,melody,6
 Cymatics - Fear And Greed - 165 BPM C Min.wav_v3,melody,6
 Cymatics - Fear And Greed - 165 BPM C Min.wav,melody,6
-SO_NC_150_bass_chromatichell_dark_trap_Dmin.wav,bass,6
-Cymatics - Influence - 92 BPM D# Min.wav_v2,melody,14
-Cymatics - Influence - 92 BPM D# Min.wav_v3,melody,14
-Cymatics - Influence - 92 BPM D# Min.wav,melody,14
-RKU_HPB_120_bass_synth_loop_caspian_F#min.wav,bass,14
-ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v2,melody,6
-ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v3,melody,6
-ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav,melody,6
+SO_NC_150_bass_chromatichell_dark_trap_Dmin.wav,bass,8
+Cymatics - Influence - 92 BPM D# Min.wav_v2,melody,20
+Cymatics - Influence - 92 BPM D# Min.wav_v3,melody,20
+Cymatics - Influence - 92 BPM D# Min.wav,melody,20
+RKU_HPB_120_bass_synth_loop_caspian_F#min.wav,bass,16
+ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v2,melody,8
+ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav_v3,melody,8
+ESM_GFS_92_keys_piano_loop_moods_slow_calming_rythmic.wav,melody,8
 OZ_152_drum_loop_time_stretch_full.wav,drums,8
 SS_S_110_piano_chords_soul_exciting.wav_v2,melody,2
 SS_S_110_piano_chords_soul_exciting.wav_v3,melody,2
@@ -417,7 +417,7 @@ GM_piano_loop_trap_03_60_Cmin.wav,melody,8
 X10_MTN_140_piano_ice_Am.wav,melody,6
 OS_DD_140_Fm_Freeway_Piano.wav,melody,4
 SO_WA_142_afro_drill_guitar_mousso_Emin.wav,melody,6
-SO_NC_130_808_rach_heavy_Amin.wav,bass,8
+SO_NC_130_808_rach_heavy_Amin.wav,bass,10
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v2,melody,8
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v3,melody,8
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav,melody,8
@@ -448,7 +448,7 @@ AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v2,melody,10
 AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav_v3,melody,10
 AU_AMHM_95_acoustic_guitar_loop_melting_Gmin.wav,melody,10
 MTVR2_132_vocal_dry_clipz_Cm.wav,melody,8
-TRKTRN_DST_105_808_Bass_Loop_Lose_Fmin.wav,bass,4
+TRKTRN_DST_105_808_Bass_Loop_Lose_Fmin.wav,bass,6
 X10_MTN_140_piano_state_Fm.wav,melody,18
 AS_115_kit_concierge_guitar_Bmin.wav,melody,2
 SO_NC_120_808_nacht_trap_Fmin.wav,bass,12
@@ -603,11 +603,51 @@ OSS_TBK_126_GUITAR_LOOP_MUTED_Em.wav,melody,2
 ABDW_Piano_Melody_Something_About_Money_G#min_090BPM.wav,melody,2
 SO_NC_125_piano_arp_meineliebe_classical_Cmin.wav,melody,2
 DECAP_drum_loop_oh_u_fancy_103.wav,drums,2
-PMVR_Kick&Snare_Loop_90_Dirty.wav,drums,2
+PMVR_Kick&Snare_Loop_90_Dirty.wav,drums,6
 Cymatics - Oracle Dark Melody Loop 1 - 89 BPM F# Min.wav_v2,melody,2
 Cymatics - Oracle Dark Melody Loop 1 - 89 BPM F# Min.wav_v3,melody,2
 Cymatics - Oracle Dark Melody Loop 1 - 89 BPM F# Min.wav,melody,2
-Cymatics - Guidance Drum Loop - 96 BPM.wav_v2,drums,2
-Cymatics - Guidance Drum Loop - 96 BPM.wav_v3,drums,2
-Cymatics - Guidance Drum Loop - 96 BPM.wav,drums,2
-RKU_LHH2_Kick&Snare_Loop_Club_90.wav,drums,2
+Cymatics - Guidance Drum Loop - 96 BPM.wav_v2,drums,4
+Cymatics - Guidance Drum Loop - 96 BPM.wav_v3,drums,4
+Cymatics - Guidance Drum Loop - 96 BPM.wav,drums,4
+RKU_LHH2_Kick&Snare_Loop_Club_90.wav,drums,6
+TRKTRN_Drum_Loop_90_Industrial_Full.wav,drums,2
+DJDS_bwmf_kit_loop_club_groove_01_105.wav,drums,6
+Cymatics - Scorpio Drum Loop - 99 BPM.wav,drums,2
+DECAP_drum_loop_tao_99.wav,drums,2
+Cymatics - Lucid - 101 BPM F Min.wav_v2,melody,30
+Cymatics - Lucid - 101 BPM F Min.wav_v3,melody,30
+Cymatics - Lucid - 101 BPM F Min.wav,melody,30
+Cymatics - Caribbean Drum Loop - 103 BPM.wav_v2,drums,4
+Cymatics - Caribbean Drum Loop - 103 BPM.wav_v3,drums,4
+Cymatics - Caribbean Drum Loop - 103 BPM.wav,drums,4
+Cymatics - Cobra Full Drum Loop 1 - 100 BPM.wav,drums,10
+Cymatics - Double Up Drum Loop - 95 BPM.wav_v2,drums,2
+Cymatics - Double Up Drum Loop - 95 BPM.wav_v3,drums,2
+Cymatics - Double Up Drum Loop - 95 BPM.wav,drums,2
+Cymatics - Cobra Full Drum Loop 3 - 130 BPM.wav,drums,8
+DECAP_synth_plucked_loop_87_A.wav,melody,10
+TRKTRN_DST_120_Drum_Loop_Full_Drive.wav,drums,2
+Cymatics - Underscore Drum Loop - 95 BPM.wav,drums,2
+DECAP_drum_loop_early_2000s_88.wav,drums,2
+Cymatics - Neck Snap Drum Loop - 90 BPM.wav,drums,4
+DECAP_drum_loop_slaptacular_114.wav,drums,4
+SO_NC_87_drum_loop_apocalisse_dry_trap.wav_v2,drums,4
+SO_NC_87_drum_loop_apocalisse_dry_trap.wav_v3,drums,4
+SO_NC_87_drum_loop_apocalisse_dry_trap.wav,drums,4
+OZ_158_drum_loop_texas_bounce_full.wav,drums,6
+Cymatics - Wonder Drum Loop - 115 BPM.wav,drums,4
+TRKTRN_DST_115_Drum_Loop_Full_Club.wav,drums,6
+Cymatics - Cobra Full Drum Loop 15 - 160 BPM.wav,drums,2
+Cymatics - Victory - 108 BPM C# Min.wav_v2,melody,12
+Cymatics - Victory - 108 BPM C# Min.wav_v3,melody,12
+Cymatics - Victory - 108 BPM C# Min.wav,melody,12
+cm_drum_85_club_full.wav,drums,8
+Cymatics - Stumble Drum Loop - 112 BPM.wav,drums,2
+OZ_102_drum_loop_bright_lights_full.wav_v2,drums,2
+OZ_102_drum_loop_bright_lights_full.wav_v3,drums,2
+OZ_102_drum_loop_bright_lights_full.wav,drums,2
+DECAP_drum_loop_big_bop_87.wav,drums,4
+AT_Solar_136_Drum_Kick_Loop_Asteroid.wav,drums,2
+DJDS_bwmf_kit_loop_club_groove_02_105.wav,drums,2
+Cymatics - Cobra Full Drum Loop 2 - 103 BPM.wav,drums,2

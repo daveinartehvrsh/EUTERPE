@@ -37,9 +37,9 @@ logger.warning(f'preset selected: {preset_batch}\n')
 print(time.time() - timer, 'seconds to start')
 context_init(system_info)
 for preset in preset_batch:
-    system_info['preset'] = preset
-    presets.load_preset(preset, system_info)
 
+    system_info['channels'] = presets.load(preset)
+    system_info['preset'] = preset
     euterpe = Euterpe(system_info)
     time.sleep(1)
     logger.warning('starting generation...\n')

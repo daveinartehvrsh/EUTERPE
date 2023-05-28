@@ -1,18 +1,17 @@
 import random
 import lib.audio as audio
 from lib.components.datastructs.loop import Loop
-from lib.components.abstract.abstract import Sequence
+from lib.components.abstract.sequence import Sequence
 import numpy as np
 import logging
 logger = logging.getLogger('my_logger')
 
 class Trackout(Sequence):
 
-    def fill(self, loopkit, loop_rep, gain, structure, tune_scheme):
+    def fill(self, loopkit, loop_rep, structure, tune_scheme):
         
         logger.info(f'filling {self.get_name()} sequence')
 
-        self.gain = gain
         self.structure = structure
         for i in range(loop_rep):
             loop = random.choice(loopkit)
@@ -31,7 +30,7 @@ class Trackout(Sequence):
     def render_sequence(self): 
         out = np.array([])
         for i, item in enumerate(self.get_items()):
-            gain = self.structure.get_data()[i]# * self.gain
+            gain = self.structure.get_data()[i]
             out = np.append(out, item.get_data()*float(gain))
         
         return out

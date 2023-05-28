@@ -1,4 +1,4 @@
-from lib.components.abstract.abstract import Container
+from lib.components.abstract.container import Container
 import lib.audio as audio
 from lib.components.datastructs.loop import Loop
 import lib.utils.util as util  
@@ -18,6 +18,7 @@ class Loopkit(Container):
     def fill(self, path, n_loops, info):
         
         sr = info['sr']
+        
 
         logger.info(f'Starting "{self.get_name()}" loopkit filling process...')
 
@@ -49,16 +50,12 @@ class Loopkit(Container):
 
         logger.info(f'"{self.get_name()}" loopkit filling process completed\n\n')
 
-    def normalize_loop_length(self, info):
-        
-        if 'bar_lenght' not in info:
-            info['bar_lenght'] = self.get_heir().get_len()
-            logger.info(f'GLOBAL lenght set to {float("{:.2f}".format(info["bar_lenght"]/info["sr"]))} sec')
+    def normalize_duration(self, bar_lenght):
         for item in self.get_items():
-            loops = item.trim(info['bar_lenght'])
+            loops = item.trim(bar_lenght)
             if loops is not None:
                 for new_data in loops:
-                    new_loop = Loop(id=0, name=item.get_name(), data=new_data, sr=info['sr'], path=item.get_path())
+                    new_loop = Loop(id=0, name=item.get_name(), data=new_data, sr=item.sr, path=item.get_path())
                     
                     self.add_item(new_loop)
 

@@ -23,7 +23,7 @@ class Euterpe():
             self.system_info['bar_lenght'] = self.system_info['bpm'] * self.system_info['sr'] * 16
             logger.info(f'GLOBAL: {self.system_info["bpm"]} bpm: Bar lenght set to {self.system_info["bar_lenght"]}')    
         self.lss = LSS(self.system_info, gen_no)
-        self.lss.init_lss()
+        self.lss.init_lss(system_info=self.system_info)
     
     def export_section(self, section: Mixer, name):
         beat, trackouts = section.render_section()
@@ -72,6 +72,7 @@ class Euterpe():
         logger.info(f'Output folder: {os.getcwd()}')
 
         os.chdir(self.system_info["basefolder"])
+
         self.lss = None
         self.lss = LSS(self.system_info, gen_no)
 
@@ -97,7 +98,6 @@ class Euterpe():
             self.refresh(i)
             log_info = self.init_log()
             self.init_lss(gen_no=i)
-            self.beatmaker.info['bar_lenght'] = self.lss.info['bar_lenght']
             self.beatmaker.make_track(self.lss.dataset)
             self.export_section(self.beatmaker.track, i)
             self.export_info(log_info)

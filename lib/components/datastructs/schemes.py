@@ -31,8 +31,9 @@ def convert_to_len(data, lenght):
     resized = np.resize(longer, lenght)
     return resized
     
-def make_rantune(len, prob=0.5):
-    temp = random.choices([0, -12], [prob, 1-prob], k=len)
+def make_rantune(len, tunes, prob=0.5):
+    
+    temp = random.choices([0, tunes], [prob, 1-prob], k=len)
     scheme = Scheme()
     scheme.set_data(temp)
     return scheme
