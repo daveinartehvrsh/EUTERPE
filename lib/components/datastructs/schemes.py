@@ -40,10 +40,10 @@ def make_rantune(len, tunes, prob=0.5):
 
 def make_ranbinary(len, prob=0.5):
     temp = []
-    if isinstance(prob, float):
+    if isinstance(prob, (float, int)):
         prob = np.repeat(prob, len)
     else:
-        prob = load_from_str(prob)
+        prob = list(prob)
         prob = convert_to_len(prob, len)
     for i in range(len):
         temp.append(random.choices([1, 0], [prob[i], 1-prob[i]], k=1)[0])

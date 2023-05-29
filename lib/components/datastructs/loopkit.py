@@ -7,6 +7,11 @@ import logging
 logger = logging.getLogger('my_logger')
 
 class Loopkit(Container):
+
+    def stretch(self, lenght):
+        for item in self.get_items():
+            item.stretch(lenght, mode='resample')
+        return item
               
     def tune(self, tonality):
         for item in self.get_items():

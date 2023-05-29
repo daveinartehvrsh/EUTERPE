@@ -132,9 +132,9 @@ Cymatics - Wake Up Drum Loop - 100 BPM.wav_v2,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav_v3,drums,16
 Cymatics - Wake Up Drum Loop - 100 BPM.wav,drums,16
 OZ_166_drum_loop_haunted_top.wav,drums,12
-Cymatics - Bae - 110 BPM E Min.wav_v2,melody,12
-Cymatics - Bae - 110 BPM E Min.wav_v3,melody,12
-Cymatics - Bae - 110 BPM E Min.wav,melody,12
+Cymatics - Bae - 110 BPM E Min.wav_v2,melody,14
+Cymatics - Bae - 110 BPM E Min.wav_v3,melody,14
+Cymatics - Bae - 110 BPM E Min.wav,melody,14
 TRAVIS_BARKER_808_loop_distorted_02_125_G#.wav,bass,18
 Cymatics - Solitude Drum Loop - 134 BPM.wav,drums,16
 SO_TI_130_bass_synth_teniente_808_gunna_Cmin.wav,bass,16
@@ -173,7 +173,7 @@ OS_SCE_130_synth_arp_melody_total_Em.wav,melody,12
 shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v2,bass,48
 shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav_v3,bass,48
 shs_witch_90_kit_bass_reese_loop_Victor_F#m.wav,bass,48
-OZ_112_808_loop_trust_issues_C.wav,bass,24
+OZ_112_808_loop_trust_issues_C.wav,bass,30
 Cymatics - Cobra Full Drum Loop 7 - 143 BPM.wav,drums,26
 OZ_99_808_loop_morals_C.wav_v2,bass,8
 OZ_99_808_loop_morals_C.wav_v3,bass,8
@@ -195,9 +195,9 @@ Cymatics - Wanted - 138 BPM D Min.wav_v2,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav_v3,melody,6
 Cymatics - Wanted - 138 BPM D Min.wav,melody,6
 SDU_145_808_loop_dynomite_Dm.wav,bass,18
-RHH2_90_kit_loop_forces_piano_Gmin.wav_v2,melody,4
-RHH2_90_kit_loop_forces_piano_Gmin.wav_v3,melody,4
-RHH2_90_kit_loop_forces_piano_Gmin.wav,melody,4
+RHH2_90_kit_loop_forces_piano_Gmin.wav_v2,melody,6
+RHH2_90_kit_loop_forces_piano_Gmin.wav_v3,melody,6
+RHH2_90_kit_loop_forces_piano_Gmin.wav,melody,6
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v2,bass,16
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav_v3,bass,16
 SO_NC_87_bass_sub_apocalisse_synth_Bbmin.wav,bass,16
@@ -417,7 +417,7 @@ GM_piano_loop_trap_03_60_Cmin.wav,melody,8
 X10_MTN_140_piano_ice_Am.wav,melody,6
 OS_DD_140_Fm_Freeway_Piano.wav,melody,4
 SO_WA_142_afro_drill_guitar_mousso_Emin.wav,melody,6
-SO_NC_130_808_rach_heavy_Amin.wav,bass,10
+SO_NC_130_808_rach_heavy_Amin.wav,bass,16
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v2,melody,8
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav_v3,melody,8
 OS_FK_90_vocal_pitched_this_is_love_G#m.wav,melody,8
@@ -613,7 +613,7 @@ Cymatics - Guidance Drum Loop - 96 BPM.wav,drums,4
 RKU_LHH2_Kick&Snare_Loop_Club_90.wav,drums,6
 TRKTRN_Drum_Loop_90_Industrial_Full.wav,drums,2
 DJDS_bwmf_kit_loop_club_groove_01_105.wav,drums,6
-Cymatics - Scorpio Drum Loop - 99 BPM.wav,drums,2
+Cymatics - Scorpio Drum Loop - 99 BPM.wav,drums,4
 DECAP_drum_loop_tao_99.wav,drums,2
 Cymatics - Lucid - 101 BPM F Min.wav_v2,melody,30
 Cymatics - Lucid - 101 BPM F Min.wav_v3,melody,30
@@ -651,3 +651,24 @@ DECAP_drum_loop_big_bop_87.wav,drums,4
 AT_Solar_136_Drum_Kick_Loop_Asteroid.wav,drums,2
 DJDS_bwmf_kit_loop_club_groove_02_105.wav,drums,2
 Cymatics - Cobra Full Drum Loop 2 - 103 BPM.wav,drums,2
+SO_HZ_100_drum_loop_clubbing.wav,drums,2
+RKU_LHH2_Drum_Loop_Club_90.wav,drums,2
+DECAP_drum_loop_bwnce_102.wav,drums,2
+RONALD_drill_001_ KICK.wav,kick,16
+RONALD_drill_002_ SNARE.wav,snare,16
+RONALD_drill_004_ HH.wav,hh,18
+RONALD_drill_003_ SNARE.wav,snare,14
+RONALD_drill_005_ HH.wav,hh,18
+RONALD_drill_002_ KICK.wav,kick,16
+RONALD_drill_001_ SNARE.wav,snare,28
+RONALD_drill_003_ HH.wav,hh,18
+RONALD_drill_005_ SNARE.wav,snare,8
+RONALD_drill_005_ KICK.wav,kick,18
+RONALD_drill_003_ KICK.wav,kick,10
+RONALD_drill_006_ HH.wav,hh,14
+RONALD_drill_004_ KICK.wav,kick,18
+RONALD_drill_006_ KICK.wav,kick,10
+RONALD_drill_002_ HH.wav,hh,12
+RONALD_drill_001_ HH.wav,hh,8
+RONALD_drill_006_ SNARE.wav,snare,14
+RONALD_drill_004_ SNARE.wav,snare,8
