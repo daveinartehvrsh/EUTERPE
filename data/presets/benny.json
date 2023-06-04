@@ -1,20 +1,21 @@
-{
-    "drums": {
-        "path": "D:\\calliope\\dataset\\Essential\\club\\drums",
-        "n_loops":2,
-        "intensity": 0.8,
-        "gain": 4,
-        "tunes": -3
-    },
+{   
     "bass": {
         "path": "D:\\calliope\\dataset\\Essential\\808",
         "n_loops": 1,
         "intensity": 0.6,
-        "gain": 8,
+        "gain": 8.0,
         "tunes": 0
     },
+    "drums": {
+        "path": "D:\\calliope\\dataset\\Essential\\trap\\drums",
+        "n_loops":2.0,
+        "intensity": 0.8,
+        "gain": 4.0,
+        "tunes": -6
+    },
+    
     "melody": {
-        "path": "D:\\calliope\\dataset\\Essential\\club\\melody",
+        "path": "D:\\calliope\\dataset\\Minimal",
         "n_loops":1,
         "intensity": 0.9,
         "gain": 12,

@@ -1,8 +1,4 @@
-data\output\*
-
-*.wav
-*.jpg
-*.mp4
-*.txt
-
+*\output
 *\__pycache__
+*.log
+
