@@ -12,10 +12,10 @@ def check_install_library(library_name):
         subprocess.check_call(['pip', 'install', library_name])
         print(f"{library_name} has been installed successfully.")
 
-if len(sys.argv) > 1 and sys.argv[1] == "69":
+'''if len(sys.argv) > 1 and sys.argv[1] == "69":
     print("Verified identity")
 else:
-    sys.exit(1)
+    sys.exit(1)'''
 
 required_libraries = ['librosa', 'numpy', 'scipy', 'pandas', 'soundfile']
 

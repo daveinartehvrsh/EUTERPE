@@ -11,13 +11,12 @@
         "n_loops":2.0,
         "intensity": 0.8,
         "gain": 4.0,
-        "tunes": -6
-    },
-    
+        "tunes": 0
+    },    
     "melody": {
-        "path": "D:\\calliope\\dataset\\Minimal",
+        "path": "D:\\calliope\\dataset\\Minimal\\melody\\dark",
         "n_loops":1,
-        "intensity": 0.9,
+        "intensity": 1,
         "gain": 12,
         "tunes": -12
     }

@@ -19,7 +19,7 @@ class Ronald(BeatMaker):
         for item in dataset.get_items():
             tracks[item.get_name()] = {
                 'structure': schemes.make_ranbinary(self.loop_rep, item.intensity),
-                'tune_scheme': schemes.make_rantune(self.loop_rep, tunes = item.tunes, prob = item.intensity)
+                'tune_scheme': schemes.make_rantune(self.loop_rep, tunes = item.tunes, prob = 0.7)
             }
         self.track = Mixer()
         self.track.fill(dataset=dataset, loop_rep=self.loop_rep, info=tracks)
