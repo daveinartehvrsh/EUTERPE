@@ -1,4 +1,4 @@
 # EUTERPE
 
-!! _docs are on building stage_ !!
+_this project is closed_
 
